@@ -56,13 +56,6 @@ public class Main extends Application implements Serializable {
         initializeMedia();
         playMainMenuMusic();
         stage.show();
-//        stage.setTitle("Will Hero");
-//        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("assets/icon-256.png"))));
-//        stage.setResizable(false);
-//        AnchorPane anchorPane= FXMLLoader.load(Objects.requireNonNull(getClass().getResource("mainMenu.fxml")));
-//        stage.setScene(new Scene(anchorPane, 1024, 768));
-//        playMusic();
-//        stage.show();
     }
 
     public static void main(String[] args) {

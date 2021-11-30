@@ -1,23 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.Group?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.willhero.HelloController">
-   <children>
-      <ImageView fx:id="background" fitHeight="769.0" fitWidth="1025.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@assets/background.png" />
-         </image>
+<AnchorPane fx:id="anchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="game.willhero.MainController">
+   <ImageView fx:id="background" fitHeight="768.0" fitWidth="1024.0" pickOnBounds="true" preserveRatio="true">
+      <Image url="@assets/background.png"/>
+   </ImageView>
+   <Group layoutX="10.0" layoutY="10.0">
+      <ImageView fx:id="btnMusic" fitHeight="55.0" fitWidth="55.0" onMouseClicked="#onMusicButtonClick"
+                 pickOnBounds="true" preserveRatio="true">
+         <Image url="@assets/btnmusic0.png"/>
       </ImageView>
-      <ImageView fitHeight="208.0" fitWidth="436.0" layoutX="519.0" layoutY="439.0" pickOnBounds="true">
-         <image>
-            <Image url="@assets/ground1.png" />
-         </image>
+      <ImageView fx:id="btnSound" fitHeight="55.0" fitWidth="55.0" layoutX="70.0" onMouseClicked="#onSoundButtonClick"
+                 pickOnBounds="true" preserveRatio="true">
+         <Image url="@assets/btnsound0.png"/>
       </ImageView>
-      <Text fx:id="score" layoutX="496.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-   </children>
+   </Group>
+   <Group fx:id="clouds">
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="500.0" layoutY="100.0" pickOnBounds="true"
+                 preserveRatio="true">
+         <Image url="@assets/cloud1.png"/>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="750.0" layoutY="150.0" pickOnBounds="true"
+                 preserveRatio="true">
+         <Image url="@assets/cloud0.png"/>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="80.0" layoutY="200.0" pickOnBounds="true"
+                 preserveRatio="true">
+         <Image url="@assets/cloud2.png"/>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="200.0" layoutY="80.0" pickOnBounds="true"
+                 preserveRatio="true">
+         <Image url="@assets/cloud0.png"/>
+      </ImageView>
+   </Group>
+   <ImageView fx:id="hero" fitHeight="77.0" fitWidth="75.0" layoutX="121.0" layoutY="337.0" pickOnBounds="true"
+              preserveRatio="true">
+      <Image url="@assets/hero.png"/>
+   </ImageView>
+   <ImageView fitHeight="120.0" fitWidth="202.0" layoutX="60.0" layoutY="520.0" pickOnBounds="true">
+      <Image url="@assets/ground1.png"/>
+   </ImageView>
+   <ImageView fitHeight="181.0" fitWidth="279.0" layoutX="371.0" layoutY="118.0" pickOnBounds="true"
+              preserveRatio="true">
+      <Image url="@assets/gamename.png"/>
+   </ImageView>
+   <ImageView fx:id="btnStartGame" fitHeight="66.0" fitWidth="66.0" layoutX="438.0" layoutY="331.0"
+              onMouseClicked="#onStartGameButtonClick" pickOnBounds="true" preserveRatio="true">
+      <Image url="@assets/btnresume.png"/>
+   </ImageView>
+   <ImageView fx:id="btnLoadGame" fitHeight="66.0" fitWidth="66.0" layoutX="522.0" layoutY="331.0"
+              onMouseClicked="#onLoadGameButtonClick" pickOnBounds="true" preserveRatio="true">
+      <Image url="@assets/btnload.png"/>
+   </ImageView>
 </AnchorPane>
