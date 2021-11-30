@@ -1,16 +1,9 @@
 package game.willhero;
 
-import javafx.animation.*;
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -23,13 +16,14 @@ import java.util.Objects;
 
 public class Main extends Application implements Serializable {
 
+    private static Stage primaryStage;
+
+    public static Stage getPrimaryStage() {
+        return primaryStage;
+    }
+
     private static boolean playMusic = true;
     private static boolean playSound = true;
-    private static MediaPlayer mainMenuMusic;
-    private static MediaPlayer gameMusic;
-
-
-    private static AudioClip buttonSound;
 
     public static boolean isPlayMusic() {
         return playMusic;
@@ -39,11 +33,20 @@ public class Main extends Application implements Serializable {
         return playSound;
     }
 
+    private static MediaPlayer mainMenuMusic;
+    private static MediaPlayer gameMusic;
+    private static AudioClip buttonSound;
+
+
+
+
+
 
 
 
     @Override
     public void start(Stage stage) throws IOException {
+        primaryStage=stage;
         stage.setTitle("Will Hero");
         stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("assets/icon-256.png"))));
         stage.setResizable(false);
@@ -51,7 +54,7 @@ public class Main extends Application implements Serializable {
         Scene scene = new Scene(fxmlLoader.load(), 1024, 768);
         stage.setScene(scene);
         initializeMedia();
-        playMusic();
+        playMainMenuMusic();
         stage.show();
 //        stage.setTitle("Will Hero");
 //        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("assets/icon-256.png"))));
@@ -84,14 +87,24 @@ public class Main extends Application implements Serializable {
         buttonSound = new AudioClip(media.getSource());
     }
 
-    public static void playMusic() {
+    public static void playMainMenuMusic() {
         playMusic = true;
         mainMenuMusic.play();
     }
 
-    public static void stopMusic() {
+    public static void stopMainMenuMusic() {
         playMusic = false;
         mainMenuMusic.stop();
+    }
+
+    public static void playGameMusic() {
+        playMusic = true;
+        gameMusic.play();
+    }
+
+    public static void stopGameMusic() {
+        playMusic = false;
+        gameMusic.stop();
     }
 
     public static void playSound() {

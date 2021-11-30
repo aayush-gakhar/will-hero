@@ -13,17 +13,11 @@
             <Image url="@assets/background.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="hero" fitHeight="150.0" fitWidth="200.0" layoutX="685.0" layoutY="150.0" onKeyPressed="#onHeroButtonClick" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@assets/hero.png" />
-         </image>
-      </ImageView>
       <ImageView fitHeight="208.0" fitWidth="436.0" layoutX="519.0" layoutY="439.0" pickOnBounds="true">
          <image>
             <Image url="@assets/ground1.png" />
          </image>
       </ImageView>
       <Text fx:id="score" layoutX="496.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <Button layoutX="263.0" layoutY="604.0" mnemonicParsing="false" onAction="#onHeroButtonClick" text="Button" />
    </children>
 </AnchorPane>
