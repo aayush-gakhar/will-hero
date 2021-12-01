@@ -11,7 +11,7 @@ public class Hero extends GameObject {
 
 
     Hero(int x, int y) {
-        super(new Vector(x,y),new Vector(0,0),new Vector(0,0),0);
+        super(new Vector(x,y),new Vector(0,0),new Vector(0,0));
         heroImage = new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("assets/hero.png"))));
         heroImage.setX(x);
         heroImage.setY(y);

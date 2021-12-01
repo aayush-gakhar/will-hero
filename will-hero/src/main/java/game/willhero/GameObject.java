@@ -4,13 +4,11 @@ public abstract class GameObject {
     private Vector position;
     private Vector speed;
     private Vector acceleration;
-    private double mass;
 
-    public GameObject(Vector position, Vector speed, Vector acceleration, double mass) {
+    public GameObject(Vector position, Vector speed, Vector acceleration) {
         this.position = position;
         this.speed = speed;
         this.acceleration = acceleration;
-        this.mass = mass;
     }
 
     public Vector getPosition() {
@@ -38,7 +36,7 @@ public abstract class GameObject {
     }
 
     public boolean isColliding(GameObject other) {
-        return this.position.distance(other.position) < (this.mass + other.mass);
+        return false;
     }
 
 //    public abstract void collisionWith(GameObject other);

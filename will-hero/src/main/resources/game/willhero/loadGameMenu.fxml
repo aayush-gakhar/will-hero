@@ -43,9 +43,28 @@
    <ImageView fx:id="hero" fitHeight="77.0" fitWidth="75.0" layoutX="121.0" layoutY="337.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@assets/hero.png" />
    </ImageView>
-   <ImageView fitHeight="120.0" fitWidth="202.0" layoutX="60.0" layoutY="520.0" pickOnBounds="true">
-      <Image url="@assets/ground1.png" />
-   </ImageView>
+   <Group fx:id="islands" layoutX="60.0" layoutY="520.0">
+      <children>
+         <ImageView fitHeight="120.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@assets/ground0.png" />
+            </image>
+         </ImageView>
+         <ImageView fitHeight="226.0" fitWidth="178.0" layoutX="751.0" layoutY="-100.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@assets/groundmenu0.png" />
+            </image>
+         </ImageView>
+         <ImageView fitHeight="222.0" fitWidth="202.0" layoutX="296.0" layoutY="-59.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@assets/groundmenu2.png" />
+            </image>
+         </ImageView>
+         <ImageView fitHeight="210.0" fitWidth="187.0" layoutX="497.0" layoutY="-54.0" pickOnBounds="true">
+            <Image url="@assets/groundmenu.png" />
+         </ImageView>
+      </children>
+   </Group>
    <VBox layoutX="325.0" layoutY="197.0" prefHeight="360.0" prefWidth="349.0">
       <children>
          <Text fill="#00b91f" strokeType="OUTSIDE" strokeWidth="0.0" text="Load Game" textAlignment="CENTER">

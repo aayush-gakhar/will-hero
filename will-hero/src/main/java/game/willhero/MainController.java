@@ -4,6 +4,7 @@ import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
@@ -28,7 +29,10 @@ public class MainController {
     private ImageView hero;
 
     @FXML
-    public Group clouds;
+    private Group clouds;
+
+    @FXML
+    private Group buttons;
 
     @FXML
     private ImageView btnSound;
@@ -42,15 +46,8 @@ public class MainController {
     @FXML
     public ImageView btnLoadGame;
 
-    class customInterpolator extends Interpolator {
-        @Override
-//        protected double curve(double t) {
-//            return Math.abs(0.5-t)*2 ;
-//        }
-        protected double curve(double var1) {
-            return (var1 < 0.2D ? 2.7777777777777777D * var1 * var1 : 1.1111111111111112D * var1 - 0.1111111111111111D);
-        }
-    }
+    @FXML
+    public ImageView btnExit;
 
     public void initialize(){
         menuAnimations(hero, clouds);
@@ -115,5 +112,11 @@ public class MainController {
         Main.playButtonSound();
         AnchorPane a = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("loadGameMenu.fxml")));
         anchorPane.getChildren().setAll(a);
+    }
+
+    @FXML
+    protected void onExitButtonClick() {
+        Main.playButtonSound();
+        System.exit(0);
     }
 }
