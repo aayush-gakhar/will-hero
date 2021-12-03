@@ -48,6 +48,16 @@
          <ImageView fx:id="island3" fitHeight="114.0" fitWidth="187.0" pickOnBounds="true" x="497.0" y="40.0">
             <Image url="@assets/ground2.png" />
          </ImageView>
+         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" x="1200.0">
+            <image>
+               <Image url="@assets/ground1.png" />
+            </image>
+         </ImageView>
+         <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" x="1500.0">
+            <image>
+               <Image url="@assets/ground1.png" />
+            </image>
+         </ImageView>
       </children>
    </Group>
 </AnchorPane>
