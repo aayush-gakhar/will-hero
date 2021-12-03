@@ -112,11 +112,13 @@ public class GameController {
                 for (Node i:islands.getChildren()) {
                     if (GameObject.isColliding(hero, (ImageView) i)) {
                         hero.setSpeed(new Vector(0,-400));
-//                        break;
+                        while (GameObject.isColliding(hero, (ImageView) i)){
+                            hero.move(deltaTime);
+                        }
                     }
                 }
                 if(hero.getPosition().getX()>=300){
-                    anchorPane.getChildren().get(3).setTranslateX(300-hero.getPosition().getX());
+                    islands.setTranslateX(300-hero.getPosition().getX());
                 }
                 hero.accelerate(deltaTime);
                 hero.move(deltaTime);
