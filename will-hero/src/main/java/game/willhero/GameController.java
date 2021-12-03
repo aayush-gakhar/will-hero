@@ -116,7 +116,7 @@ public class GameController {
                     }
                 }
                 if(hero.getPosition().getX()>=300){
-                    anchorPane.getChildren().get(4).setTranslateX(300-hero.getPosition().getX());
+                    anchorPane.getChildren().get(3).setTranslateX(300-hero.getPosition().getX());
                 }
                 hero.accelerate(deltaTime);
                 hero.move(deltaTime);
