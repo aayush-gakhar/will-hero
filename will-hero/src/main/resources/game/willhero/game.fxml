@@ -5,7 +5,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="anchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.willhero.GameController">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#keyPressed" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.willhero.GameController">
    <ImageView fx:id="background" fitHeight="768.0" fitWidth="1024.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@assets/background.png" />
    </ImageView>
@@ -30,18 +30,24 @@
       <ImageView fx:id="btnSound" fitHeight="55.0" fitWidth="55.0" layoutX="70.0" onMouseClicked="#onSoundButtonClick" pickOnBounds="true" preserveRatio="true">
          <Image url="@assets/btnsound0.png" />
       </ImageView>
-      <ImageView fx:id="btnBack" fitHeight="55.0" fitWidth="55.0" layoutX="160.0" onMouseClicked="#onBackButtonClick"
-                 pickOnBounds="true" preserveRatio="true">
-         <Image url="@assets/btnback.png"/>
+      <ImageView fx:id="btnBack" fitHeight="55.0" fitWidth="55.0" layoutX="160.0" onMouseClicked="#onBackButtonClick" pickOnBounds="true" preserveRatio="true">
+         <Image url="@assets/btnback.png" />
       </ImageView>
    </Group>
-   <ImageView fx:id="hero" fitHeight="77.0" fitWidth="75.0" layoutX="121.0" layoutY="337.0" pickOnBounds="true" preserveRatio="true">
-      <Image url="@assets/hero.png" />
-   </ImageView>
-   <ImageView fitHeight="120.0" fitWidth="202.0" layoutX="60.0" layoutY="520.0" pickOnBounds="true">
-      <Image url="@assets/ground1.png" />
-   </ImageView>
-   <ImageView fitHeight="181.0" fitWidth="279.0" layoutX="371.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true">
-      <Image url="@assets/gamename.png" />
-   </ImageView>
+   <Group fx:id="islands" layoutX="60.0" layoutY="520.0">
+      <children>
+         <ImageView fx:id="island1" fitHeight="120.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@assets/ground0.png" />
+         </ImageView>
+         <ImageView fx:id="island4" fitHeight="226.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true" x="850.0">
+            <Image url="@assets/ground0.png" />
+         </ImageView>
+         <ImageView fx:id="island2" fitHeight="120.0" fitWidth="202.0" pickOnBounds="true" preserveRatio="true" x="296.0" y="40.0">
+            <Image url="@assets/ground1.png" />
+         </ImageView>
+         <ImageView fx:id="island3" fitHeight="114.0" fitWidth="187.0" pickOnBounds="true" x="497.0" y="40.0">
+            <Image url="@assets/ground2.png" />
+         </ImageView>
+      </children>
+   </Group>
 </AnchorPane>

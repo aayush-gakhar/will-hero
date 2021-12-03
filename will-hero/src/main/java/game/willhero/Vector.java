@@ -28,4 +28,23 @@ public class Vector {
     public double distance(Vector v) {
         return Math.sqrt(Math.pow(this.x - v.getX(), 2) + Math.pow(this.y - v.getY(), 2));
     }
+
+    public void add(Vector v) {
+        this.x += v.getX();
+        this.y += v.getY();
+    }
+
+    public void subtract(Vector v) {
+        this.x -= v.getX();
+        this.y -= v.getY();
+    }
+
+    public void reverse() {
+        this.x= -this.x;
+        this.y= -this.y;
+    }
+
+    public Vector scale(double s) {
+        return new Vector(this.x*s, this.y*s);
+    }
 }

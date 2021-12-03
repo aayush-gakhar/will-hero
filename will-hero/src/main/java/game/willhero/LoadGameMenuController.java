@@ -71,86 +71,96 @@ public class LoadGameMenuController {
 
     @FXML
     protected void onSoundButtonClick() {
-        if (Main.isPlaySound()) {
+        if (Audio.isPlaySound()) {
             btnSound.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("assets/btnsound1.png"))));
-            Main.stopSound();
+            Audio.stopSound();
         }else {
             btnSound.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("assets/btnsound0.png"))));
-            Main.playSound();
+            Audio.playSound();
         }
-        Main.playButtonSound();
+        Audio.playButtonSound();
     }
 
     @FXML
     protected void onMusicButtonClick() {
-        Main.playButtonSound();
-        if(Main.isPlayMusic()){
+        Audio.playButtonSound();
+        if(Audio.isPlayMusic()){
             btnMusic.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("assets/btnmusic1.png"))));
-            Main.stopMainMenuMusic();
+            Audio.stopMainMenuMusic();
         }else {
             btnMusic.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("assets/btnmusic0.png"))));
-            Main.playMainMenuMusic();
+            Audio.playMainMenuMusic();
         }
     }
 
     @FXML
     protected void onSave1ButtonClick() throws IOException {
-        Main.playButtonSound();
-        if(Main.isPlayMusic()) {
-            Main.stopMainMenuMusic();
-            Main.playGameMusic();
+        Audio.playButtonSound();
+        if(Audio.isPlayMusic()) {
+            Audio.stopMainMenuMusic();
+            Audio.playGameMusic();
         }
-        AnchorPane a = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("game.fxml")));
-        anchorPane.getChildren().setAll(a);
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("game.fxml")));
+        Scene scene = new Scene(loader.load());
+        scene.setOnKeyPressed(event -> ((GameController)loader.getController()).keyPressed(event));
+        Main.getPrimaryStage().setScene(scene);
     }
 
     @FXML
     protected void onSave2ButtonClick() throws IOException {
-        Main.playButtonSound();
-        if(Main.isPlayMusic()) {
-            Main.stopMainMenuMusic();
-            Main.playGameMusic();
+        Audio.playButtonSound();
+        if(Audio.isPlayMusic()) {
+            Audio.stopMainMenuMusic();
+            Audio.playGameMusic();
         }
-        AnchorPane a = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("game.fxml")));
-        anchorPane.getChildren().setAll(a);
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("game.fxml")));
+        Scene scene = new Scene(loader.load());
+        scene.setOnKeyPressed(event -> ((GameController)loader.getController()).keyPressed(event));
+        Main.getPrimaryStage().setScene(scene);
     }
 
     @FXML
     protected void onSave3ButtonClick() throws IOException {
-        Main.playButtonSound();
-        if(Main.isPlayMusic()) {
-            Main.stopMainMenuMusic();
-            Main.playGameMusic();
+        Audio.playButtonSound();
+        if(Audio.isPlayMusic()) {
+            Audio.stopMainMenuMusic();
+            Audio.playGameMusic();
         }
-        AnchorPane a = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("game.fxml")));
-        anchorPane.getChildren().setAll(a);
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("game.fxml")));
+        Scene scene = new Scene(loader.load());
+        scene.setOnKeyPressed(event -> ((GameController)loader.getController()).keyPressed(event));
+        Main.getPrimaryStage().setScene(scene);
     }
 
     @FXML
     protected void onSave4ButtonClick() throws IOException {
-        Main.playButtonSound();
-        if(Main.isPlayMusic()) {
-            Main.stopMainMenuMusic();
-            Main.playGameMusic();
+        Audio.playButtonSound();
+        if(Audio.isPlayMusic()) {
+            Audio.stopMainMenuMusic();
+            Audio.playGameMusic();
         }
-        AnchorPane a = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("game.fxml")));
-        anchorPane.getChildren().setAll(a);
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("game.fxml")));
+        Scene scene = new Scene(loader.load());
+        scene.setOnKeyPressed(event -> ((GameController)loader.getController()).keyPressed(event));
+        Main.getPrimaryStage().setScene(scene);
     }
 
     @FXML
     protected void onSave5ButtonClick() throws IOException {
-        Main.playButtonSound();
-        if(Main.isPlayMusic()) {
-            Main.stopMainMenuMusic();
-            Main.playGameMusic();
+        Audio.playButtonSound();
+        if(Audio.isPlayMusic()) {
+            Audio.stopMainMenuMusic();
+            Audio.playGameMusic();
         }
-        AnchorPane a = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("game.fxml")));
-        anchorPane.getChildren().setAll(a);
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("game.fxml")));
+        Scene scene = new Scene(loader.load());
+        scene.setOnKeyPressed(event -> ((GameController)loader.getController()).keyPressed(event));
+        Main.getPrimaryStage().setScene(scene);
     }
 
     @FXML
     protected void onBackButtonClick() throws IOException {
-        Main.playButtonSound();
+        Audio.playButtonSound();
         AnchorPane a = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("mainMenu.fxml")));
         anchorPane.getChildren().setAll(a);
     }

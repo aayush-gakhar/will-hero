@@ -1,15 +1,41 @@
 package game.willhero;
 
-public abstract class GameObject {
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
+import java.util.Objects;
+
+public abstract class GameObject extends ImageView {
     private Vector position;
     private Vector speed;
     private Vector acceleration;
 
+    public GameObject(Vector position, Vector speed, Vector acceleration, String imagePath) {
+        super(new Image(Objects.requireNonNull(Main.class.getResourceAsStream(imagePath))));
+        this.position = position;
+        this.speed = speed;
+        this.acceleration = acceleration;
+        this.setX(position.getX());
+        this.setY(position.getY());
+    }
+
+    public GameObject(Vector position, Vector speed, Vector acceleration,ImageView imageView) {
+        super(imageView.getImage());
+        this.position = position;
+        this.speed = speed;
+        this.acceleration = acceleration;
+        this.setX(position.getX());
+        this.setY(position.getY());
+    }
+
     public GameObject(Vector position, Vector speed, Vector acceleration) {
+//        super(new Image(imagePath));
         this.position = position;
         this.speed = speed;
         this.acceleration = acceleration;
     }
+
+
 
     public Vector getPosition() {
         return position;
@@ -35,11 +61,21 @@ public abstract class GameObject {
         this.acceleration = acceleration;
     }
 
-    public boolean isColliding(GameObject other) {
-        return false;
+    public static boolean isColliding(ImageView a,ImageView b) {
+        return a!=b && a.getLayoutBounds().intersects(b.getLayoutBounds());
     }
 
-//    public abstract void collisionWith(GameObject other);
+    public void move(double deltaTime) {
+//        System.out.println(position.getX()+" "+position.getY());
+        this.position.add(this.speed.scale(deltaTime));
+//        System.out.println(position.getX()+" "+position.getY());
+        this.setX(this.position.getX());
+        this.setY(this.position.getY());
+    }
 
+    public void accelerate(double deltaTime) {
+        this.speed.add(this.acceleration.scale(deltaTime));
+//        System.out.println(speed.getX()+" "+speed.getY());
+    }
 
 }

@@ -1,14 +1,15 @@
 package game.willhero;
 
-import javafx.animation.Interpolator;
+import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -19,13 +20,13 @@ public class GameController {
     private AnchorPane anchorPane;
 
     @FXML
-    public ImageView background;
+    private ImageView background;
 
     @FXML
-    private ImageView hero;
+    private Group clouds;
 
     @FXML
-    public Group clouds;
+    private Group islands;
 
     @FXML
     private ImageView btnSound;
@@ -36,44 +37,93 @@ public class GameController {
     @FXML
     private ImageView btnBack;
 
+    @FXML
+    private ImageView island1;
+
+    private Hero hero;
+
 
 
     public void initialize(){
-        MainController.menuAnimations(hero, clouds);
+        Main.setGameStarted(true);
+        hero = new Hero(61,-183);
+        ((Group)anchorPane.getChildren().get(3)).getChildren().add(hero);
+//        MainController.menuAnimations(hero, clouds);
+        anchorPane.setOnKeyPressed((event) -> System.out.println("key pressed"));
+//        anchorPane.getChildren().add(new Hero(121,337));
+        startTimers();
     }
 
     @FXML
-    protected void onSoundButtonClick() {
-        if (Main.isPlaySound()) {
+    public void onSoundButtonClick() {
+        if (Audio.isPlaySound()) {
             btnSound.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("assets/btnsound1.png"))));
-            Main.stopSound();
+            Audio.stopSound();
         }else {
             btnSound.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("assets/btnsound0.png"))));
-            Main.playSound();
+            Audio.playSound();
         }
-        Main.playButtonSound();
+        Audio.playButtonSound();
     }
 
     @FXML
-    protected void onMusicButtonClick() {
-        Main.playButtonSound();
-        if(Main.isPlayMusic()){
+    public void onMusicButtonClick() {
+        Audio.playButtonSound();
+        if(Audio.isPlayMusic()){
             btnMusic.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("assets/btnmusic1.png"))));
-            Main.stopMainMenuMusic();
+            Audio.stopGameMusic();
         }else {
             btnMusic.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("assets/btnmusic0.png"))));
-            Main.playMainMenuMusic();
+            Audio.playGameMusic();
         }
     }
 
     @FXML
-    protected void onBackButtonClick() throws IOException {
-        Main.playButtonSound();
-        if(Main.isPlayMusic()){
-            Main.stopGameMusic();
-            Main.playMainMenuMusic();
+    public void onBackButtonClick() throws IOException {
+        Audio.playButtonSound();
+        if(Audio.isPlayMusic()){
+            Audio.stopGameMusic();
+            Audio.playMainMenuMusic();
         }
-        AnchorPane a = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("mainMenu.fxml")));
-        anchorPane.getChildren().setAll(a);
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("mainMenu.fxml")));
+        Main.getPrimaryStage().setScene(new Scene(loader.load()));
+//        Main.setGameStarted(false);
+    }
+
+    @FXML
+    public void keyPressed(KeyEvent event) {
+        switch (event.getCode()) {
+            case SPACE -> {
+                if(Main.isGameStarted()) {
+                    Audio.playHeroMoveSound();
+                    hero.getPosition().add(new Vector(100,0));
+                }
+            }
+        }
+    }
+
+
+    public void startTimers(){
+        AnimationTimer timer = new AnimationTimer() {
+            long lastUpdate=System.nanoTime();
+            @Override
+            public void handle(long now) {
+                double deltaTime=(now-lastUpdate)/1000000000.0;
+                for (Node i:islands.getChildren()) {
+                    if (GameObject.isColliding(hero, (ImageView) i)) {
+                        hero.setSpeed(new Vector(0,-400));
+//                        break;
+                    }
+                }
+                if(hero.getPosition().getX()>=300){
+                    anchorPane.getChildren().get(3).setTranslateX(300-hero.getPosition().getX());
+                }
+                hero.accelerate(deltaTime);
+                hero.move(deltaTime);
+                lastUpdate=now;
+
+            }
+        };
+        timer.start();
     }
 }
