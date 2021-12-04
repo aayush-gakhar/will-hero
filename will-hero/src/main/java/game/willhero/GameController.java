@@ -10,11 +10,20 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.TilePane;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.Objects;
 
 public class GameController {
+
+    private AnimationTimer timer;
+    private Hero hero;
+    private AnchorPane pauseMenu;
+    private boolean paused;
+
+
 
     @FXML
     private AnchorPane anchorPane;
@@ -38,20 +47,31 @@ public class GameController {
     private ImageView btnBack;
 
     @FXML
+    public ImageView btnOptions;
+
+    @FXML
     private ImageView island1;
-
-    private Hero hero;
-
 
 
     public void initialize(){
         Main.setGameStarted(true);
         hero = new Hero(61,-183);
         ((Group)anchorPane.getChildren().get(3)).getChildren().add(hero);
-//        MainController.menuAnimations(hero, clouds);
-        anchorPane.setOnKeyPressed((event) -> System.out.println("key pressed"));
-//        anchorPane.getChildren().add(new Hero(121,337));
+        moveClouds();
+        initializeTimers();
         startTimers();
+        Main.setGame(new Game(hero));
+    }
+
+    public void moveClouds(){
+        Timeline timeline2 = new Timeline();
+        timeline2.setCycleCount(Timeline.INDEFINITE);
+        timeline2.setAutoReverse(true);
+        KeyValue cloudYValue  = new KeyValue(clouds.translateYProperty(), -20, Interpolator.EASE_BOTH);
+        KeyValue cloudXValue  = new KeyValue(clouds.translateXProperty(), -30, Interpolator.EASE_BOTH);
+        KeyFrame cloudKeyFrame  = new KeyFrame(Duration.millis(4000), cloudXValue, cloudYValue);
+        timeline2.getKeyFrames().addAll(cloudKeyFrame);
+        timeline2.play();
     }
 
     @FXML
@@ -91,6 +111,22 @@ public class GameController {
     }
 
     @FXML
+    public void onPauseButtonClick() throws IOException {
+        if(!Main.getGame().isPaused()){
+            stopTimers();
+            pauseMenu = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("pauseMenu.fxml")));
+            anchorPane.getChildren().add(pauseMenu);
+            pauseMenu.setLayoutX(anchorPane.getWidth()/2 - 118);
+            pauseMenu.setLayoutY(anchorPane.getHeight()/2 - 100);
+            Main.getGame().setPaused(true);
+        }else {
+            anchorPane.getChildren().remove(pauseMenu);
+            startTimers();
+            Main.getGame().setPaused(false);
+        }
+    }
+
+    @FXML
     public void keyPressed(KeyEvent event) {
         switch (event.getCode()) {
             case SPACE -> {
@@ -102,13 +138,15 @@ public class GameController {
         }
     }
 
-
-    public void startTimers(){
-        AnimationTimer timer = new AnimationTimer() {
+    public void initializeTimers(){
+        timer = new AnimationTimer() {
             long lastUpdate=System.nanoTime();
             @Override
             public void handle(long now) {
                 double deltaTime=(now-lastUpdate)/1000000000.0;
+                if(deltaTime>0.02){
+                    deltaTime=0.02;
+                }
                 for (Node i:islands.getChildren()) {
                     if (GameObject.isColliding(hero, (ImageView) i)) {
                         hero.setSpeed(new Vector(0,-400));
@@ -117,15 +155,23 @@ public class GameController {
                         }
                     }
                 }
-                if(hero.getPosition().getX()>=300){
-                    islands.setTranslateX(300-hero.getPosition().getX());
+                if(hero.getPosition().getX()+islands.getTranslateX()>=300){
+//                    islands.setTranslateX(300-hero.getPosition().getX());
+//                    islands.setTranslateX(islands.getTranslateX()-10);
+                    islands.setTranslateX(islands.getTranslateX()-(hero.getPosition().getX()+islands.getTranslateX()-300)/10.0);
                 }
                 hero.accelerate(deltaTime);
                 hero.move(deltaTime);
                 lastUpdate=now;
-
             }
         };
+    }
+
+    public void startTimers(){
         timer.start();
+    }
+
+    public void stopTimers(){
+        timer.stop();
     }
 }

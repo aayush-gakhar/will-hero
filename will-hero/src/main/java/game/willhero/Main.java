@@ -4,12 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
-import javafx.util.Duration;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Objects;
@@ -17,6 +12,15 @@ import java.util.Objects;
 public class Main extends Application implements Serializable {
 
     private static boolean gameStarted = false;
+
+    public static Game getGame() {
+        return game;
+    }
+
+    public static void setGame(Game game) {
+        Main.game = game;
+    }
+
     private static Game game;
 
     private static Stage primaryStage;
@@ -38,7 +42,6 @@ public class Main extends Application implements Serializable {
         Audio.initializeMedia();
         Audio.playMainMenuMusic();
         stage.show();
-
     }
 
     public static void main(String[] args) {

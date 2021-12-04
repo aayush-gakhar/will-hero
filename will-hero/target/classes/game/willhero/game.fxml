@@ -33,236 +33,160 @@
       <ImageView fx:id="btnBack" fitHeight="55.0" fitWidth="55.0" layoutX="160.0" onMouseClicked="#onBackButtonClick" pickOnBounds="true" preserveRatio="true">
          <Image url="@assets/btnback.png" />
       </ImageView>
+      <ImageView fx:id="btnOptions" fitHeight="55.0" fitWidth="55.0" layoutX="240.0" onMouseClicked="#onPauseButtonClick" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/btnoption.png" />
+         </image>
+      </ImageView>
    </Group>
    <Group fx:id="islands" layoutX="60.0" layoutY="520.0">
-      <children>
-         <ImageView fx:id="island1" fitHeight="120.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true">
-            <Image url="@assets/ground0.png" />
-         </ImageView>
-         <ImageView fx:id="island4" fitHeight="226.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true" x="850.0">
-            <Image url="@assets/ground0.png" />
-         </ImageView>
-         <ImageView fx:id="island2" fitHeight="120.0" fitWidth="202.0" pickOnBounds="true" preserveRatio="true" x="296.0" y="40.0">
-            <Image url="@assets/ground1.png" />
-         </ImageView>
-         <ImageView fx:id="island3" fitHeight="114.0" fitWidth="187.0" pickOnBounds="true" x="497.0" y="40.0">
-            <Image url="@assets/ground2.png" />
-         </ImageView>
-         <ImageView fitHeight="120.0" fitWidth="202.0" pickOnBounds="true" preserveRatio="true" x="1200.0">
-            <image>
-               <Image url="@assets/ground1.png" />
-            </image>
-         </ImageView>
-         <ImageView fitHeight="120.0" fitWidth="202.0" pickOnBounds="true" preserveRatio="true" x="1500.0">
-            <image>
-               <Image url="@assets/ground1.png" />
-            </image>
-         </ImageView>
-         <ImageView fitHeight="102.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" x="2500.0">
-            <image>
-               <Image url="@assets/ground4.png" />
-            </image>
-         </ImageView>
-         <ImageView fitHeight="94.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" x="1950.0" y="40.0">
-            <image>
-               <Image url="@assets/ground3.png" />
-            </image>
-         </ImageView>
-         <ImageView fx:id="island41" fitHeight="226.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true" x="1700.0">
-            <image>
-               <Image url="@assets/ground0.png" />
-            </image>
-         </ImageView>
-         <ImageView fitHeight="120.0" fitWidth="202.0" pickOnBounds="true" preserveRatio="true" x="2150.0" y="25.0">
-            <image>
-               <Image url="@assets/ground1.png" />
-            </image>
-         </ImageView>
-         <ImageView fx:id="island411" fitHeight="226.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true" x="2700.0">
-            <image>
-               <Image url="@assets/ground0.png" />
-            </image>
-         </ImageView>
-         <ImageView fitHeight="102.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" x="3000.0" y="40.0">
-            <image>
-               <Image url="@assets/ground4.png" />
-            </image>
-         </ImageView>
-         <ImageView fitHeight="102.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" x="3085.0" y="40.0">
-            <image>
-               <Image url="@assets/ground4.png" />
-            </image>
-         </ImageView>
-         <ImageView fx:id="island31" fitHeight="114.0" fitWidth="187.0" pickOnBounds="true" x="3285.0" y="-10.0">
-            <image>
-               <Image url="@assets/ground2.png" />
-            </image>
-         </ImageView>
-         <ImageView fitHeight="120.0" fitWidth="202.0" pickOnBounds="true" preserveRatio="true" x="3600.0" y="-50.0">
-            <image>
-               <Image url="@assets/ground1.png" />
-            </image>
-         </ImageView>
-         <ImageView fitHeight="102.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" x="3875.0" y="40.0">
-            <image>
-               <Image url="@assets/ground4.png" />
-            </image>
-         </ImageView>
-         <ImageView fx:id="island311" fitHeight="114.0" fitWidth="187.0" pickOnBounds="true" x="4100.0" y="40.0">
-            <image>
-               <Image url="@assets/ground2.png" />
-            </image>
-         </ImageView>
-         <ImageView fx:id="island42" fitHeight="226.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true" x="4400.0">
-            <image>
-               <Image url="@assets/ground0.png" />
-            </image>
-         </ImageView>
-         <ImageView fx:id="island421" fitHeight="226.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true" x="4575.0">
-            <image>
-               <Image url="@assets/ground0.png" />
-            </image>
-         </ImageView>
-         <ImageView fitHeight="94.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" x="4850.0" y="-40.0">
-            <image>
-               <Image url="@assets/ground3.png" />
-            </image>
-         </ImageView>
-         <ImageView fitHeight="94.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" x="4920.0" y="-40.0">
-            <image>
-               <Image url="@assets/ground3.png" />
-            </image>
-         </ImageView>
-         <ImageView fx:id="island3111" fitHeight="114.0" fitWidth="187.0" pickOnBounds="true" x="5100.0" y="-70.0">
-            <image>
-               <Image url="@assets/ground2.png" />
-            </image>
-         </ImageView>
-         <ImageView fitHeight="120.0" fitWidth="202.0" pickOnBounds="true" preserveRatio="true" x="5400.0" y="40.0">
-            <image>
-               <Image url="@assets/ground1.png" />
-            </image>
-         </ImageView>
-         <ImageView fx:id="island4211" fitHeight="226.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true" x="5750.0" y="80.0">
-            <image>
-               <Image url="@assets/ground0.png" />
-            </image>
-         </ImageView>
-         <ImageView fitHeight="102.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" x="6025.0" y="80.0">
-            <image>
-               <Image url="@assets/ground4.png" />
-            </image>
-         </ImageView>
-         <ImageView fx:id="island42111" fitHeight="226.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true" x="6250.0" y="120.0">
-            <image>
-               <Image url="@assets/ground0.png" />
-            </image>
-         </ImageView>
-         <ImageView fitHeight="94.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" x="6550.0" y="160.0">
-            <image>
-               <Image url="@assets/ground3.png" />
-            </image>
-         </ImageView>
-         <ImageView fitHeight="94.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" x="6620.0" y="160.0">
-            <image>
-               <Image url="@assets/ground3.png" />
-            </image>
-         </ImageView>
-         <ImageView fitHeight="102.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" x="6685.0" y="160.0">
-            <image>
-               <Image url="@assets/ground4.png" />
-            </image>
-         </ImageView>
-         <ImageView fx:id="island31111" fitHeight="114.0" fitWidth="187.0" pickOnBounds="true" x="6900.0" y="100.0">
-            <image>
-               <Image url="@assets/ground2.png" />
-            </image>
-         </ImageView>
-         <ImageView fx:id="island311111" fitHeight="114.0" fitWidth="187.0" pickOnBounds="true" x="7085.0" y="100.0">
-            <image>
-               <Image url="@assets/ground2.png" />
-            </image>
-         </ImageView>
-         <ImageView fx:id="island421111" fitHeight="226.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true" x="7400.0" y="140.0">
-            <image>
-               <Image url="@assets/ground0.png" />
-            </image>
-         </ImageView>
-         <ImageView fitHeight="120.0" fitWidth="202.0" pickOnBounds="true" preserveRatio="true" x="7600.0" y="40.0">
-            <image>
-               <Image url="@assets/ground1.png" />
-            </image>
-         </ImageView>
-         <ImageView fitHeight="102.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" x="7900.0">
-            <image>
-               <Image url="@assets/ground4.png" />
-            </image>
-         </ImageView>
-         <ImageView fitHeight="102.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" x="7985.0">
-            <image>
-               <Image url="@assets/ground4.png" />
-            </image>
-         </ImageView>
-         <ImageView fx:id="island3111111" fitHeight="114.0" fitWidth="187.0" pickOnBounds="true" x="8200.0" y="-40.0">
-            <image>
-               <Image url="@assets/ground2.png" />
-            </image>
-         </ImageView>
-         <ImageView fitHeight="120.0" fitWidth="202.0" pickOnBounds="true" preserveRatio="true" x="8500.0" y="-40.0">
-            <image>
-               <Image url="@assets/ground1.png" />
-            </image>
-         </ImageView>
-         <ImageView fitHeight="94.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" x="8800.0" y="-40.0">
-            <image>
-               <Image url="@assets/ground3.png" />
-            </image>
-         </ImageView>
-         <ImageView fx:id="island4211111" fitHeight="226.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true" x="9000.0" y="-40.0">
-            <image>
-               <Image url="@assets/ground0.png" />
-            </image>
-         </ImageView>
-         <ImageView fx:id="island42111111" fitHeight="226.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true" x="9175.0" y="-40.0">
-            <image>
-               <Image url="@assets/ground0.png" />
-            </image>
-         </ImageView>
-         <ImageView fx:id="island421111111" fitHeight="226.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true" x="9500.0" y="-70.0">
-            <image>
-               <Image url="@assets/ground0.png" />
-            </image>
-         </ImageView>
-         <ImageView fitHeight="120.0" fitWidth="202.0" pickOnBounds="true" preserveRatio="true" x="9850.0" y="-70.0">
-            <image>
-               <Image url="@assets/ground1.png" />
-            </image>
-         </ImageView>
-         <ImageView fx:id="island31111111" fitHeight="114.0" fitWidth="187.0" pickOnBounds="true" x="10150.0" y="-100.0">
-            <image>
-               <Image url="@assets/ground2.png" />
-            </image>
-         </ImageView>
-         <ImageView fitHeight="94.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" x="10450.0" y="-20.0">
-            <image>
-               <Image url="@assets/ground3.png" />
-            </image>
-         </ImageView>
-         <ImageView fitHeight="94.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" x="10515.0" y="-20.0">
-            <image>
-               <Image url="@assets/ground3.png" />
-            </image>
-         </ImageView>
-         <ImageView fitHeight="94.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" x="10585.0" y="-20.0">
-            <image>
-               <Image url="@assets/ground3.png" />
-            </image>
-         </ImageView>
-         <ImageView fx:id="island311111111" fitHeight="114.0" fitWidth="187.0" pickOnBounds="true" x="10800.0" y="-20.0">
-            <image>
-               <Image url="@assets/ground2.png" />
-            </image>
-         </ImageView>
-      </children>
+      <ImageView fx:id="island1" fitHeight="120.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@assets/ground0.png" />
+      </ImageView>
+      <ImageView fitHeight="226.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true" x="850.0">
+         <Image url="@assets/ground0.png" />
+      </ImageView>
+      <ImageView fitHeight="120.0" fitWidth="202.0" pickOnBounds="true" preserveRatio="true" x="296.0" y="40.0">
+         <Image url="@assets/ground1.png" />
+      </ImageView>
+      <ImageView fitHeight="114.0" fitWidth="187.0" pickOnBounds="true" x="497.0" y="40.0">
+         <Image url="@assets/ground2.png" />
+      </ImageView>
+<!--      <ImageView fitHeight="120.0" fitWidth="202.0" pickOnBounds="true" preserveRatio="true" x="1200.0">-->
+<!--         <Image url="@assets/ground1.png" />-->
+<!--      </ImageView>-->
+<!--      <ImageView fitHeight="120.0" fitWidth="202.0" pickOnBounds="true" preserveRatio="true" x="1500.0">-->
+<!--         <Image url="@assets/ground1.png" />-->
+<!--      </ImageView>-->
+<!--      <ImageView fitHeight="102.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" x="2500.0">-->
+<!--         <Image url="@assets/ground4.png" />-->
+<!--      </ImageView>-->
+<!--      <ImageView fitHeight="94.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" x="1950.0" y="40.0">-->
+<!--         <Image url="@assets/ground3.png" />-->
+<!--      </ImageView>-->
+<!--      <ImageView fitHeight="226.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true" x="1700.0">-->
+<!--         <Image url="@assets/ground0.png" />-->
+<!--      </ImageView>-->
+<!--      <ImageView fitHeight="120.0" fitWidth="202.0" pickOnBounds="true" preserveRatio="true" x="2150.0" y="25.0">-->
+<!--         <Image url="@assets/ground1.png"/>-->
+<!--      </ImageView>-->
+<!--      <ImageView fitHeight="226.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true"-->
+<!--                 x="2700.0">-->
+<!--         <Image url="@assets/ground0.png"/>-->
+<!--      </ImageView>-->
+<!--      <ImageView fitHeight="102.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" x="3000.0" y="40.0">-->
+<!--         <Image url="@assets/ground4.png"/>-->
+<!--      </ImageView>-->
+<!--      <ImageView fitHeight="102.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" x="3085.0" y="40.0">-->
+<!--         <Image url="@assets/ground4.png"/>-->
+<!--      </ImageView>-->
+<!--      <ImageView fitHeight="114.0" fitWidth="187.0" pickOnBounds="true" x="3285.0" y="-10.0">-->
+<!--         <Image url="@assets/ground2.png"/>-->
+<!--      </ImageView>-->
+<!--      <ImageView fitHeight="120.0" fitWidth="202.0" pickOnBounds="true" preserveRatio="true" x="3600.0" y="-50.0">-->
+<!--         <Image url="@assets/ground1.png"/>-->
+<!--      </ImageView>-->
+<!--      <ImageView fitHeight="102.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" x="3875.0" y="40.0">-->
+<!--         <Image url="@assets/ground4.png"/>-->
+<!--      </ImageView>-->
+<!--      <ImageView fitHeight="114.0" fitWidth="187.0" pickOnBounds="true" x="4100.0" y="40.0">-->
+<!--         <Image url="@assets/ground2.png"/>-->
+<!--      </ImageView>-->
+<!--      <ImageView fitHeight="226.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true"-->
+<!--                 x="4400.0">-->
+<!--         <Image url="@assets/ground0.png"/>-->
+<!--      </ImageView>-->
+<!--      <ImageView fitHeight="226.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true"-->
+<!--                 x="4575.0">-->
+<!--         <Image url="@assets/ground0.png"/>-->
+<!--      </ImageView>-->
+<!--      <ImageView fitHeight="94.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" x="4850.0" y="-40.0">-->
+<!--         <Image url="@assets/ground3.png"/>-->
+<!--      </ImageView>-->
+<!--      <ImageView fitHeight="94.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" x="4920.0" y="-40.0">-->
+<!--         <Image url="@assets/ground3.png"/>-->
+<!--      </ImageView>-->
+<!--      <ImageView fitHeight="114.0" fitWidth="187.0" pickOnBounds="true" x="5100.0" y="-70.0">-->
+<!--         <Image url="@assets/ground2.png"/>-->
+<!--      </ImageView>-->
+<!--      <ImageView fitHeight="120.0" fitWidth="202.0" pickOnBounds="true" preserveRatio="true" x="5400.0" y="40.0">-->
+<!--         <Image url="@assets/ground1.png"/>-->
+<!--      </ImageView>-->
+<!--      <ImageView fitHeight="226.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true"-->
+<!--                 x="5750.0" y="80.0">-->
+<!--         <Image url="@assets/ground0.png"/>-->
+<!--      </ImageView>-->
+<!--      <ImageView fitHeight="102.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" x="6025.0" y="80.0">-->
+<!--         <Image url="@assets/ground4.png"/>-->
+<!--      </ImageView>-->
+<!--      <ImageView fitHeight="226.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true"-->
+<!--                 x="6250.0" y="120.0">-->
+<!--         <Image url="@assets/ground0.png"/>-->
+<!--      </ImageView>-->
+<!--      <ImageView fitHeight="94.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" x="6550.0" y="160.0">-->
+<!--         <Image url="@assets/ground3.png"/>-->
+<!--      </ImageView>-->
+<!--      <ImageView fitHeight="94.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" x="6620.0" y="160.0">-->
+<!--         <Image url="@assets/ground3.png"/>-->
+<!--      </ImageView>-->
+<!--      <ImageView fitHeight="102.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" x="6685.0" y="160.0">-->
+<!--         <Image url="@assets/ground4.png"/>-->
+<!--      </ImageView>-->
+<!--      <ImageView fitHeight="114.0" fitWidth="187.0" pickOnBounds="true" x="6900.0" y="100.0">-->
+<!--         <Image url="@assets/ground2.png"/>-->
+<!--      </ImageView>-->
+<!--      <ImageView fitHeight="114.0" fitWidth="187.0" pickOnBounds="true" x="7085.0" y="100.0">-->
+<!--         <Image url="@assets/ground2.png"/>-->
+<!--      </ImageView>-->
+<!--      <ImageView fitHeight="226.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true"-->
+<!--                 x="7400.0" y="140.0">-->
+<!--         <Image url="@assets/ground0.png"/>-->
+<!--      </ImageView>-->
+<!--      <ImageView fitHeight="120.0" fitWidth="202.0" pickOnBounds="true" preserveRatio="true" x="7600.0" y="40.0">-->
+<!--         <Image url="@assets/ground1.png"/>-->
+<!--      </ImageView>-->
+<!--      <ImageView fitHeight="102.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" x="7900.0">-->
+<!--         <Image url="@assets/ground4.png"/>-->
+<!--      </ImageView>-->
+<!--      <ImageView fitHeight="102.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" x="7985.0">-->
+<!--         <Image url="@assets/ground4.png"/>-->
+<!--      </ImageView>-->
+<!--      <ImageView fitHeight="114.0" fitWidth="187.0" pickOnBounds="true" x="8200.0" y="-40.0">-->
+<!--         <Image url="@assets/ground2.png"/>-->
+<!--      </ImageView>-->
+<!--      <ImageView fitHeight="120.0" fitWidth="202.0" pickOnBounds="true" preserveRatio="true" x="8500.0" y="-40.0">-->
+<!--         <Image url="@assets/ground1.png"/>-->
+<!--      </ImageView>-->
+<!--      <ImageView fitHeight="94.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" x="8800.0" y="-40.0">-->
+<!--         <Image url="@assets/ground3.png"/>-->
+<!--      </ImageView>-->
+<!--      <ImageView fitHeight="226.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true"-->
+<!--                 x="9000.0" y="-40.0">-->
+<!--         <Image url="@assets/ground0.png"/>-->
+<!--      </ImageView>-->
+<!--      <ImageView fitHeight="226.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true"-->
+<!--                 x="9175.0" y="-40.0">-->
+<!--         <Image url="@assets/ground0.png"/>-->
+<!--      </ImageView>-->
+<!--      <ImageView fitHeight="226.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true"-->
+<!--                 x="9500.0" y="-70.0">-->
+<!--         <Image url="@assets/ground0.png"/>-->
+<!--      </ImageView>-->
+<!--      <ImageView fitHeight="120.0" fitWidth="202.0" pickOnBounds="true" preserveRatio="true" x="9850.0" y="-70.0">-->
+<!--         <Image url="@assets/ground1.png"/>-->
+<!--      </ImageView>-->
+<!--      <ImageView fitHeight="114.0" fitWidth="187.0" pickOnBounds="true" x="10150.0"-->
+<!--                 y="-100.0">-->
+<!--         <Image url="@assets/ground2.png"/>-->
+<!--      </ImageView>-->
+<!--      <ImageView fitHeight="94.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" x="10450.0" y="-20.0">-->
+<!--         <Image url="@assets/ground3.png"/>-->
+<!--      </ImageView>-->
+<!--      <ImageView fitHeight="94.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" x="10515.0" y="-20.0">-->
+<!--         <Image url="@assets/ground3.png"/>-->
+<!--      </ImageView>-->
+<!--      <ImageView fitHeight="94.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" x="10585.0" y="-20.0">-->
+<!--         <Image url="@assets/ground3.png"/>-->
+<!--      </ImageView>-->
    </Group>
 </AnchorPane>

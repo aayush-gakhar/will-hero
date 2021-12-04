@@ -8,7 +8,25 @@ public class Game implements Serializable {
     private long score;
     private long coins;
     private boolean revivedOnce;
+    private boolean paused=false;
+
+    public boolean isPaused() {
+        return paused;
+    }
+
+    public void setPaused(boolean paused) {
+        this.paused = paused;
+    }
+
+
     private List<GameObject> gameObjects;
+
+    Game(Hero hero){
+        this.hero=hero;
+        score = 0;
+        this.coins = 0;
+        revivedOnce = false;
+    }
 
     public Hero getHero() {
         return hero;
