@@ -6,12 +6,12 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.willhero.PauseMenuController">
    <children>
-      <ImageView fitHeight="66.0" fitWidth="66.0" layoutX="170.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="66.0" fitWidth="66.0" layoutX="170.0" onMouseClicked="#onRestartButtonClick" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@assets/btnretry.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="66.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="66.0" fitWidth="66.0" onMouseClicked="#onHomeButtonClick" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@assets/btnhome.png" />
          </image>

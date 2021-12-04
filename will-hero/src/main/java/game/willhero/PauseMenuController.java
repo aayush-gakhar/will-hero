@@ -38,6 +38,26 @@ public class PauseMenuController {
     }
 
     @FXML
+    protected void onHomeButtonClick() throws IOException {
+        Audio.playButtonSound();
+        if(Audio.isPlayMusic()){
+            Audio.stopGameMusic();
+            Audio.playMainMenuMusic();
+        }
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("mainMenu.fxml")));
+        Main.getPrimaryStage().setScene(new Scene(loader.load()));
+    }
+
+    @FXML
+    protected void onRestartButtonClick() throws IOException {
+        Audio.playButtonSound();
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("game.fxml")));
+        Scene scene = new Scene(loader.load());
+        scene.setOnKeyPressed(event -> ((GameController)loader.getController()).keyPressed(event));
+        Main.getPrimaryStage().setScene(scene);
+    }
+
+    @FXML
     protected void onSave1ButtonClick() throws IOException {
         Audio.playButtonSound();
         if(Audio.isPlayMusic()) {
