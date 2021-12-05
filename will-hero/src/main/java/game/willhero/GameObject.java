@@ -10,6 +10,7 @@ public abstract class GameObject extends ImageView implements Serializable {
     private Vector position;
     private Vector speed;
     private Vector acceleration;
+    
 
     public GameObject(Vector position, Vector speed, Vector acceleration, String imagePath) {
         super(new Image(Objects.requireNonNull(Main.class.getResourceAsStream(imagePath))));

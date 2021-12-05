@@ -79,7 +79,9 @@ public class GameController {
         score.setText(""+Main.getGame().getScore());
         coins.setText(""+Main.getGame().getCoins());
         System.out.println("Game started");
-        characters.getChildren().add(hero);
+        for(GameObject object: Main.getGame().getGameObjects()) {
+            characters.getChildren().add(object);
+        }
         hero.setX(hero.getPosition().getX());
         hero.setY(hero.getPosition().getY());
         moveClouds();
@@ -201,11 +203,13 @@ public class GameController {
                 if(deltaTime>0.02){
                     deltaTime=0.02;
                 }
-                for (Node i:islands.getChildren()) {
-                    if (GameObject.isColliding(hero, (ImageView) i)) {
-                        hero.setSpeed(new Vector(0,-400));
-                        while (GameObject.isColliding(hero, (ImageView) i)){
-                            hero.move(deltaTime);
+                for(GameObject gameObject: Main.getGame().getGameObjects()){
+                    for (Node i : islands.getChildren()) {
+                        if (GameObject.isColliding(gameObject, (ImageView) i)) {
+                            gameObject.setSpeed(gameObject.getAcceleration().scale(-1));
+                            while (GameObject.isColliding(gameObject, (ImageView) i)) {
+                                gameObject.move(deltaTime);
+                            }
                         }
                     }
                 }
@@ -214,8 +218,11 @@ public class GameController {
                     islands.setTranslateX(islands.getTranslateX()-(hero.getPosition().getX()+islands.getTranslateX()-300)/10.0);
                     characters.setTranslateX(islands.getTranslateX()-(hero.getPosition().getX()+islands.getTranslateX()-300)/10.0);
                 }
-                hero.accelerate(deltaTime);
-                hero.move(deltaTime);
+                for (GameObject object:Main.getGame().getGameObjects()) {
+                    object.accelerate(deltaTime);
+                    object.move(deltaTime);
+                }
+
                 if(hero.getPosition().getY()>185){
                     Main.getGame().over();
                     System.out.println("Game Over");

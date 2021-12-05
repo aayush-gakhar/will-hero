@@ -2,7 +2,7 @@ package game.willhero;
 
 import java.io.Serializable;
 
-public class Vector implements Serializable {
+public class Vector implements Serializable,Cloneable {
     private double x;
     private double y;
 
@@ -29,6 +29,10 @@ public class Vector implements Serializable {
 
     public String toString() {
         return "(" + x + ", " + y + ")";
+    }
+
+    public Vector clone() throws CloneNotSupportedException {
+        return (Vector) super.clone();
     }
 
     public double distance(Vector v) {

@@ -44,7 +44,7 @@ public abstract class Orc extends GameObject{
     }
 
     Orc(double x, double y, String imagePath) {
-        super(new Vector(x,y),new Vector(0,0),new Vector(0,500),"assets/hero.png");
+        super(new Vector(x,y),new Vector(0,0),new Vector(0,200),imagePath);
     }
 
 }

@@ -1,6 +1,7 @@
 package game.willhero;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Game implements Serializable {
@@ -26,7 +27,7 @@ public class Game implements Serializable {
     }
 
 
-    private List<GameObject> gameObjects;
+    private List<GameObject> gameObjects=new ArrayList<>();
 
     public Hero getHero() {
         return hero;
@@ -67,6 +68,11 @@ public class Game implements Serializable {
         }
     }
 
+    public void setGameObjects() {
+        gameObjects.add(hero);
+        gameObjects.add(new GreenOrc(500));
+    }
+
     public boolean isGameOver() {
         return gameOver;
     }
@@ -84,6 +90,7 @@ public class Game implements Serializable {
         score = 0;
         this.coins = 0;
         revivedOnce = false;
+        setGameObjects();
     }
 
     public Game(Game prevGame) {
@@ -95,6 +102,7 @@ public class Game implements Serializable {
         gameObjects= prevGame.getGameObjects();
         gameOver=prevGame.isGameOver();
         gameWon=prevGame.isGameWon();
+        setGameObjects();
     }
 
     public void serialize(int i) throws IOException {
