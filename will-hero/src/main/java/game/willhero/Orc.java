@@ -6,6 +6,11 @@ public abstract class Orc extends GameObject{
     private long jumpHeight;
     private long size;
     private long coinsOnKill;
+    private boolean dead=false;
+
+    public boolean isDead(){
+        return dead;
+    }
 
     public long getHealth(){
         return this.health;

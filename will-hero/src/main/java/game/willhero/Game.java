@@ -10,8 +10,8 @@ public class Game implements Serializable {
     private static final long serialVersionUID = 1L;
     private final Hero hero;
     private long score;
-    private long coins;
-    private boolean revivedOnce;
+    private long coins=100;
+    private boolean revivedOnce=false;
     private boolean paused=false;
     private boolean gameOver=false;
     private boolean gameWon=false;
@@ -54,8 +54,7 @@ public class Game implements Serializable {
     }
 
     public boolean isRevivable() {
-        return true;
-//        return !revivedOnce && coins >= coinsForRevive;
+        return !revivedOnce && coins >= coinsForRevive;
     }
 
     public void revive(){
@@ -73,9 +72,13 @@ public class Game implements Serializable {
         characters.add(new GreenOrc(500));
     }
 
-    public void setGameObjects(List<GameObject> gameObjects) {
-        characters.add(hero);
-        characters.add(new GreenOrc(500));
+    public void setGameObjects(List<GameObject> characters) {
+        this.characters.add(hero);
+        for(GameObject gameObject:characters){
+            if(!((Orc)gameObject).isDead()) {
+                this.characters.add(new GreenOrc(gameObject.getPosition().getX()));
+            }
+        }
     }
 
     public boolean isGameOver() {
