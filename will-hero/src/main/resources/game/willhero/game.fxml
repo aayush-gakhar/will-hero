@@ -54,7 +54,7 @@
          <Image url="@assets/btnback.png" />
       </ImageView>
       <ImageView fx:id="btnOptions" fitHeight="55.0" fitWidth="55.0" layoutX="240.0" onMouseClicked="#onPauseButtonClick" pickOnBounds="true" preserveRatio="true">
-         <Image url="@assets/btnoption.png" />
+         <Image url="@assets/pause.png" />
       </ImageView>
    </Group>
    <Group fx:id="islands" layoutX="60.0" layoutY="520.0">

@@ -212,7 +212,6 @@ public class GameController {
                     }
                 }
                 if(hero.getPosition().getX()+islands.getTranslateX()>=300){
-//                    islands.setTranslateX(300-hero.getPosition().getX());
                     islands.setTranslateX(islands.getTranslateX()-(hero.getPosition().getX()+islands.getTranslateX()-300)/10.0);
                     characters.setTranslateX(islands.getTranslateX()-(hero.getPosition().getX()+islands.getTranslateX()-300)/10.0);
                 }
