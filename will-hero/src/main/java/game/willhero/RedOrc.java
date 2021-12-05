@@ -1,8 +1,7 @@
 package game.willhero;
 
 public class RedOrc extends Orc {
-
-    public RedOrc(Vector position, Vector speed, Vector acceleration){
-        super(position, speed, acceleration);
+    RedOrc(double x, double y) {
+        super(x,y,"assets/orcRed.png");
     }
 }

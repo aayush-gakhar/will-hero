@@ -22,6 +22,7 @@ public class GameController {
     private Hero hero;
     private AnchorPane pauseMenu;
     private boolean paused;
+    private Game game;
 
 
 
@@ -52,10 +53,15 @@ public class GameController {
     @FXML
     private ImageView island1;
 
+    @FXML
+    private Hero hero1;
+
 
     public void initialize(){
         Main.setGameStarted(true);
-        hero = new Hero(61,-183);
+        Game game = Main.getGame();
+        hero= game.getHero();
+//        hero = new Hero(61,-183);
         ((Group)anchorPane.getChildren().get(3)).getChildren().add(hero);
         moveClouds();
         initializeTimers();
@@ -75,27 +81,13 @@ public class GameController {
     }
 
     @FXML
-    public void onSoundButtonClick() {
-        if (Audio.isPlaySound()) {
-            btnSound.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("assets/btnsound1.png"))));
-            Audio.stopSound();
-        }else {
-            btnSound.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("assets/btnsound0.png"))));
-            Audio.playSound();
-        }
-        Audio.playButtonSound();
+    protected void onSoundButtonClick() {
+        Audio.onSoundButtonClick(btnSound);
     }
 
     @FXML
-    public void onMusicButtonClick() {
-        Audio.playButtonSound();
-        if(Audio.isPlayMusic()){
-            btnMusic.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("assets/btnmusic1.png"))));
-            Audio.stopGameMusic();
-        }else {
-            btnMusic.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("assets/btnmusic0.png"))));
-            Audio.playGameMusic();
-        }
+    protected void onMusicButtonClick() {
+        Audio.onMusicButtonClick(btnMusic);
     }
 
     @FXML
@@ -131,8 +123,13 @@ public class GameController {
         switch (event.getCode()) {
             case SPACE -> {
                 if(Main.isGameStarted()) {
+                    Timeline timeline = new Timeline();
+                    KeyValue keyValue = new KeyValue(hero.xProperty(), hero.getX()+100, Interpolator.EASE_BOTH);
+                    KeyFrame keyFrame = new KeyFrame(Duration.millis(10), keyValue);
+                    timeline.getKeyFrames().add(keyFrame);
+                    timeline.play();
                     Audio.playHeroMoveSound();
-                    hero.getPosition().add(new Vector(100,0));
+//                    hero.getPosition().add(new Vector(100,0));
                 }
             }
         }

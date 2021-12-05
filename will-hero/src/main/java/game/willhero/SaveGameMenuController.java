@@ -1,9 +1,5 @@
 package game.willhero;
 
-import javafx.animation.Interpolator;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
@@ -12,12 +8,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
-import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.Objects;
 
-public class LoadGameMenuController {
+public class SaveGameMenuController {
 
     @FXML
     private AnchorPane anchorPane;
@@ -71,7 +66,6 @@ public class LoadGameMenuController {
 
     @FXML
     protected void onSave1ButtonClick() throws IOException {
-        Main.setGame(new Game());
         Audio.playButtonSound();
         if(Audio.isPlayMusic()) {
             Audio.stopMainMenuMusic();
@@ -85,7 +79,6 @@ public class LoadGameMenuController {
 
     @FXML
     protected void onSave2ButtonClick() throws IOException {
-        Main.setGame(new Game());
         Audio.playButtonSound();
         if(Audio.isPlayMusic()) {
             Audio.stopMainMenuMusic();
@@ -99,7 +92,6 @@ public class LoadGameMenuController {
 
     @FXML
     protected void onSave3ButtonClick() throws IOException {
-        Main.setGame(new Game());
         Audio.playButtonSound();
         if(Audio.isPlayMusic()) {
             Audio.stopMainMenuMusic();
@@ -113,7 +105,6 @@ public class LoadGameMenuController {
 
     @FXML
     protected void onSave4ButtonClick() throws IOException {
-        Main.setGame(new Game());
         Audio.playButtonSound();
         if(Audio.isPlayMusic()) {
             Audio.stopMainMenuMusic();
@@ -127,7 +118,7 @@ public class LoadGameMenuController {
 
     @FXML
     protected void onSave5ButtonClick() throws IOException {
-        Main.setGame(new Game());
+
         Audio.playButtonSound();
         if(Audio.isPlayMusic()) {
             Audio.stopMainMenuMusic();

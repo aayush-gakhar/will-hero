@@ -41,6 +41,11 @@ public class Hero extends GameObject {
         this.moves = moves;
     }
 
+
+    Hero(){
+        super(new Vector(60,-300),new Vector(0,0),new Vector(0,500),"assets/hero.png");
+    }
+
     Hero(double x, double y) {
         super(new Vector(x,y),new Vector(0,0),new Vector(0,500),"assets/hero.png");
     }

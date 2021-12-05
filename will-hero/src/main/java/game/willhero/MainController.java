@@ -75,26 +75,12 @@ public class MainController {
 
     @FXML
     protected void onSoundButtonClick() {
-        if (Audio.isPlaySound()) {
-            btnSound.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("assets/btnsound1.png"))));
-            Audio.stopSound();
-        }else {
-            btnSound.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("assets/btnsound0.png"))));
-            Audio.playSound();
-        }
-        Audio.playButtonSound();
+        Audio.onSoundButtonClick(btnSound);
     }
 
     @FXML
     protected void onMusicButtonClick() {
-        Audio.playButtonSound();
-        if(Audio.isPlayMusic()){
-            btnMusic.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("assets/btnmusic1.png"))));
-            Audio.stopMainMenuMusic();
-        }else {
-            btnMusic.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("assets/btnmusic0.png"))));
-            Audio.playMainMenuMusic();
-        }
+        Audio.onMusicButtonClick(btnMusic);
     }
 
     @FXML
@@ -104,6 +90,7 @@ public class MainController {
             Audio.stopMainMenuMusic();
             Audio.playGameMusic();
         }
+        Main.setGame(new Game());
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("game.fxml")));
         Scene scene = new Scene(loader.load(),1024,768);
         scene.setOnKeyPressed(event -> ((GameController)loader.getController()).keyPressed(event));

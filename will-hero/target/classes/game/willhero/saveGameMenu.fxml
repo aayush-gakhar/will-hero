@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="anchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.willhero.LoadGameMenuController">
+<AnchorPane fx:id="anchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.willhero.SaveGameMenuController">
    <ImageView fx:id="background" fitHeight="768.0" fitWidth="1024.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@assets/background.png" />
    </ImageView>
@@ -67,7 +67,7 @@
    </Group>
    <VBox layoutX="325.0" layoutY="197.0" prefHeight="360.0" prefWidth="349.0">
       <children>
-         <Text fill="#00b91f" strokeType="OUTSIDE" strokeWidth="0.0" text="Load Game" textAlignment="CENTER">
+         <Text fill="#00b91f" strokeType="OUTSIDE" strokeWidth="0.0" text="Save Game" textAlignment="CENTER">
             <font>
                <Font size="72.0" />
             </font>
@@ -103,8 +103,7 @@
          </Text>
       </children>
    </VBox>
-   <ImageView fitHeight="142.0" fitWidth="142.0" layoutX="820.0" layoutY="385.0" pickOnBounds="true"
-              preserveRatio="true">
-      <Image url="@assets/orcBoss.png"/>
+   <ImageView fitHeight="142.0" fitWidth="142.0" layoutX="820.0" layoutY="385.0" pickOnBounds="true" preserveRatio="true">
+      <Image url="@assets/orcBoss.png" />
    </ImageView>
 </AnchorPane>

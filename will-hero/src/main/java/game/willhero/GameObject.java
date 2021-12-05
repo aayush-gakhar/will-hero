@@ -35,6 +35,10 @@ public abstract class GameObject extends ImageView {
         this.acceleration = acceleration;
     }
 
+    GameObject(){
+
+    }
+
 
 
     public Vector getPosition() {
@@ -66,6 +70,8 @@ public abstract class GameObject extends ImageView {
     }
 
     public void move(double deltaTime) {
+        this.position.setX(this.getX());
+        this.position.setY(this.getY());
 //        System.out.println(position.getX()+" "+position.getY());
         this.position.add(this.speed.scale(deltaTime));
 //        System.out.println(position.getX()+" "+position.getY());

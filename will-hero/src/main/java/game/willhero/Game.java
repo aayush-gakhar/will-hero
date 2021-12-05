@@ -45,7 +45,7 @@ public class Game implements Serializable {
     }
 
     public Game() {
-        hero = new Hero(0,0);
+        hero = new Hero(60,0);
         score = 0;
         this.coins = 0;
         revivedOnce = false;

@@ -1,5 +1,7 @@
 package game.willhero;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -101,6 +103,28 @@ public class Audio {
 
     public static void playGameOverSound() {
         if(playSound)gameOverSound.play();
+    }
+
+    public static void onSoundButtonClick(ImageView btnSound) {
+        if (Audio.isPlaySound()) {
+            btnSound.setImage(new Image(Objects.requireNonNull(Main.class.getResourceAsStream("assets/btnsound1.png"))));
+            Audio.stopSound();
+        }else {
+            btnSound.setImage(new Image(Objects.requireNonNull(Main.class.getResourceAsStream("assets/btnsound0.png"))));
+            Audio.playSound();
+        }
+        Audio.playButtonSound();
+    }
+
+    public static void onMusicButtonClick(ImageView btnMusic) {
+        Audio.playButtonSound();
+        if(Audio.isPlayMusic()){
+            btnMusic.setImage(new Image(Objects.requireNonNull(Main.class.getResourceAsStream("assets/btnmusic1.png"))));
+            Audio.stopMainMenuMusic();
+        }else {
+            btnMusic.setImage(new Image(Objects.requireNonNull(Main.class.getResourceAsStream("assets/btnmusic0.png"))));
+            Audio.playMainMenuMusic();
+        }
     }
 
 }
