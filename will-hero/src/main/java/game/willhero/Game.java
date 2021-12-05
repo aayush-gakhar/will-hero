@@ -27,7 +27,7 @@ public class Game implements Serializable {
     }
 
 
-    private List<GameObject> gameObjects=new ArrayList<>();
+    private List<GameObject> characters =new ArrayList<>();
 
     public Hero getHero() {
         return hero;
@@ -69,8 +69,13 @@ public class Game implements Serializable {
     }
 
     public void setGameObjects() {
-        gameObjects.add(hero);
-        gameObjects.add(new GreenOrc(500));
+        characters.add(hero);
+        characters.add(new GreenOrc(500));
+    }
+
+    public void setGameObjects(List<GameObject> gameObjects) {
+        characters.add(hero);
+        characters.add(new GreenOrc(500));
     }
 
     public boolean isGameOver() {
@@ -81,8 +86,8 @@ public class Game implements Serializable {
         return gameWon;
     }
 
-    public List<GameObject> getGameObjects() {
-        return gameObjects;
+    public List<GameObject> getCharacters() {
+        return characters;
     }
 
     public Game() {
@@ -99,7 +104,7 @@ public class Game implements Serializable {
         this.coins = prevGame.getCoins();
         revivedOnce = prevGame.isRevivedOnce();
         paused=prevGame.isPaused();
-        gameObjects= prevGame.getGameObjects();
+        characters = prevGame.getCharacters();
         gameOver=prevGame.isGameOver();
         gameWon=prevGame.isGameWon();
         setGameObjects();

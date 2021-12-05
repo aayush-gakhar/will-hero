@@ -6,11 +6,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.TilePane;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
@@ -79,7 +77,7 @@ public class GameController {
         score.setText(""+Main.getGame().getScore());
         coins.setText(""+Main.getGame().getCoins());
         System.out.println("Game started");
-        for(GameObject object: Main.getGame().getGameObjects()) {
+        for(GameObject object: Main.getGame().getCharacters()) {
             characters.getChildren().add(object);
         }
         hero.setX(hero.getPosition().getX());
@@ -203,7 +201,7 @@ public class GameController {
                 if(deltaTime>0.02){
                     deltaTime=0.02;
                 }
-                for(GameObject gameObject: Main.getGame().getGameObjects()){
+                for(GameObject gameObject: Main.getGame().getCharacters()){
                     for (Node i : islands.getChildren()) {
                         if (GameObject.isColliding(gameObject, (ImageView) i)) {
                             gameObject.setSpeed(gameObject.getAcceleration().scale(-1));
@@ -218,7 +216,7 @@ public class GameController {
                     islands.setTranslateX(islands.getTranslateX()-(hero.getPosition().getX()+islands.getTranslateX()-300)/10.0);
                     characters.setTranslateX(islands.getTranslateX()-(hero.getPosition().getX()+islands.getTranslateX()-300)/10.0);
                 }
-                for (GameObject object:Main.getGame().getGameObjects()) {
+                for (GameObject object:Main.getGame().getCharacters()) {
                     object.accelerate(deltaTime);
                     object.move(deltaTime);
                 }
