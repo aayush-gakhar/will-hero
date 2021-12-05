@@ -66,6 +66,7 @@ public class SaveGameMenuController {
 
     @FXML
     protected void onSave1ButtonClick() throws IOException {
+        Main.getGame().serialize(1);
         Audio.playButtonSound();
         if(Audio.isPlayMusic()) {
             Audio.stopMainMenuMusic();
@@ -79,6 +80,7 @@ public class SaveGameMenuController {
 
     @FXML
     protected void onSave2ButtonClick() throws IOException {
+        Main.getGame().serialize(2);
         Audio.playButtonSound();
         if(Audio.isPlayMusic()) {
             Audio.stopMainMenuMusic();
@@ -92,6 +94,7 @@ public class SaveGameMenuController {
 
     @FXML
     protected void onSave3ButtonClick() throws IOException {
+        Main.getGame().serialize(3);
         Audio.playButtonSound();
         if(Audio.isPlayMusic()) {
             Audio.stopMainMenuMusic();
@@ -105,6 +108,7 @@ public class SaveGameMenuController {
 
     @FXML
     protected void onSave4ButtonClick() throws IOException {
+        Main.getGame().serialize(4);
         Audio.playButtonSound();
         if(Audio.isPlayMusic()) {
             Audio.stopMainMenuMusic();
@@ -117,8 +121,8 @@ public class SaveGameMenuController {
     }
 
     @FXML
-    protected void onSave5ButtonClick() throws IOException {
-
+    protected void onSave5ButtonClick() throws IOException, ClassNotFoundException {
+        Main.getGame().serialize(5);
         Audio.playButtonSound();
         if(Audio.isPlayMusic()) {
             Audio.stopMainMenuMusic();

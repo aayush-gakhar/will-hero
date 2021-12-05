@@ -1,6 +1,8 @@
 package game.willhero;
 
-public class Vector {
+import java.io.Serializable;
+
+public class Vector implements Serializable {
     private double x;
     private double y;
 
@@ -23,6 +25,10 @@ public class Vector {
 
     public void setY(double y) {
         this.y = y;
+    }
+
+    public String toString() {
+        return "(" + x + ", " + y + ")";
     }
 
     public double distance(Vector v) {

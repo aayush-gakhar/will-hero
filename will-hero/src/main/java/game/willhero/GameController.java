@@ -50,23 +50,19 @@ public class GameController {
     @FXML
     public ImageView btnOptions;
 
-    @FXML
-    private ImageView island1;
-
-    @FXML
-    private Hero hero1;
-
 
     public void initialize(){
         Main.setGameStarted(true);
         Game game = Main.getGame();
-        hero= game.getHero();
-//        hero = new Hero(61,-183);
+        hero = game.getHero();
+        System.out.println(hero.getPosition());
+//        hero.setImage();
         ((Group)anchorPane.getChildren().get(3)).getChildren().add(hero);
+        hero.setX(hero.getPosition().getX());
+        hero.setY(hero.getPosition().getY());
         moveClouds();
         initializeTimers();
         startTimers();
-        Main.setGame(new Game(hero));
     }
 
     public void moveClouds(){
@@ -93,6 +89,7 @@ public class GameController {
     @FXML
     public void onBackButtonClick() throws IOException {
         Audio.playButtonSound();
+        stopTimers();
         if(Audio.isPlayMusic()){
             Audio.stopGameMusic();
             Audio.playMainMenuMusic();
@@ -136,6 +133,7 @@ public class GameController {
     }
 
     public void initializeTimers(){
+        System.out.println(hero.getPosition().getX()+islands.getTranslateX());
         timer = new AnimationTimer() {
             long lastUpdate=System.nanoTime();
             @Override
@@ -154,7 +152,6 @@ public class GameController {
                 }
                 if(hero.getPosition().getX()+islands.getTranslateX()>=300){
 //                    islands.setTranslateX(300-hero.getPosition().getX());
-//                    islands.setTranslateX(islands.getTranslateX()-10);
                     islands.setTranslateX(islands.getTranslateX()-(hero.getPosition().getX()+islands.getTranslateX()-300)/10.0);
                 }
                 hero.accelerate(deltaTime);

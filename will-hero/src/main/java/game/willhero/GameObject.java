@@ -3,9 +3,10 @@ package game.willhero;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public abstract class GameObject extends ImageView {
+public abstract class GameObject extends ImageView implements Serializable {
     private Vector position;
     private Vector speed;
     private Vector acceleration;
@@ -19,20 +20,13 @@ public abstract class GameObject extends ImageView {
         this.setY(position.getY());
     }
 
-    public GameObject(Vector position, Vector speed, Vector acceleration,ImageView imageView) {
-        super(imageView.getImage());
+    public GameObject(Vector position, Vector speed, Vector acceleration) {
+        super(new Image(Objects.requireNonNull(Main.class.getResourceAsStream("assets/hero.png"))));
         this.position = position;
         this.speed = speed;
         this.acceleration = acceleration;
         this.setX(position.getX());
         this.setY(position.getY());
-    }
-
-    public GameObject(Vector position, Vector speed, Vector acceleration) {
-//        super(new Image(imagePath));
-        this.position = position;
-        this.speed = speed;
-        this.acceleration = acceleration;
     }
 
     GameObject(){

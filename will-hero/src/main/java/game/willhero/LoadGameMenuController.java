@@ -37,24 +37,6 @@ public class LoadGameMenuController {
     @FXML
     private ImageView btnMusic;
 
-    @FXML
-    private ImageView btnBack;
-
-    @FXML
-    private Text save1;
-
-    @FXML
-    private Text save2;
-
-    @FXML
-    private Text save3;
-
-    @FXML
-    private Text save4;
-
-    @FXML
-    private Text save5;
-
     public void initialize(){
         MainController.menuAnimations(hero, clouds);
     }
@@ -70,64 +52,40 @@ public class LoadGameMenuController {
     }
 
     @FXML
-    protected void onSave1ButtonClick() throws IOException {
-        Main.setGame(new Game());
-        Audio.playButtonSound();
-        if(Audio.isPlayMusic()) {
-            Audio.stopMainMenuMusic();
-            Audio.playGameMusic();
-        }
-        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("game.fxml")));
-        Scene scene = new Scene(loader.load());
-        scene.setOnKeyPressed(event -> ((GameController)loader.getController()).keyPressed(event));
-        Main.getPrimaryStage().setScene(scene);
+    protected void onSave1ButtonClick() throws IOException, ClassNotFoundException {
+        onSaveiButtonClick(1);
     }
 
     @FXML
-    protected void onSave2ButtonClick() throws IOException {
-        Main.setGame(new Game());
-        Audio.playButtonSound();
-        if(Audio.isPlayMusic()) {
-            Audio.stopMainMenuMusic();
-            Audio.playGameMusic();
-        }
-        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("game.fxml")));
-        Scene scene = new Scene(loader.load());
-        scene.setOnKeyPressed(event -> ((GameController)loader.getController()).keyPressed(event));
-        Main.getPrimaryStage().setScene(scene);
+    protected void onSave2ButtonClick() throws IOException, ClassNotFoundException {
+        onSaveiButtonClick(2);
     }
 
     @FXML
     protected void onSave3ButtonClick() throws IOException {
-        Main.setGame(new Game());
-        Audio.playButtonSound();
-        if(Audio.isPlayMusic()) {
-            Audio.stopMainMenuMusic();
-            Audio.playGameMusic();
-        }
-        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("game.fxml")));
-        Scene scene = new Scene(loader.load());
-        scene.setOnKeyPressed(event -> ((GameController)loader.getController()).keyPressed(event));
-        Main.getPrimaryStage().setScene(scene);
+        onSaveiButtonClick(3);
     }
 
     @FXML
     protected void onSave4ButtonClick() throws IOException {
-        Main.setGame(new Game());
-        Audio.playButtonSound();
-        if(Audio.isPlayMusic()) {
-            Audio.stopMainMenuMusic();
-            Audio.playGameMusic();
-        }
-        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("game.fxml")));
-        Scene scene = new Scene(loader.load());
-        scene.setOnKeyPressed(event -> ((GameController)loader.getController()).keyPressed(event));
-        Main.getPrimaryStage().setScene(scene);
+        onSaveiButtonClick(4);
     }
 
     @FXML
     protected void onSave5ButtonClick() throws IOException {
-        Main.setGame(new Game());
+        onSaveiButtonClick(5);
+    }
+
+    public void onSaveiButtonClick(int i) throws IOException {
+        try{
+            Main.setGame(new Game(Game.deserialize(i)));
+            if (Main.getGame()==null){
+                throw new Exception("Save file empty");
+            }
+        }catch (Exception e){
+            System.out.println(e);
+            Main.setGame(new Game());
+        }
         Audio.playButtonSound();
         if(Audio.isPlayMusic()) {
             Audio.stopMainMenuMusic();
