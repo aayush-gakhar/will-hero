@@ -113,4 +113,10 @@ public class MainController {
         Audio.playButtonSound();
         System.exit(0);
     }
+
+    @FXML
+    public void onwinbutton() throws IOException {
+        AnchorPane a = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("winGame.fxml")));
+        anchorPane.getChildren().setAll(a);
+    }
 }
