@@ -25,6 +25,16 @@ public class Main extends Application implements Serializable {
 
     private static Stage primaryStage;
 
+    private static GameController gameController;
+
+    public static GameController getGameController() {
+        return gameController;
+    }
+
+    public static void setGameController(GameController gameController) {
+        Main.gameController = gameController;
+    }
+
     public static Stage getPrimaryStage() {
         return primaryStage;
     }

@@ -12,6 +12,10 @@ public class Game implements Serializable {
     private long coins;
     private boolean revivedOnce;
     private boolean paused=false;
+    private boolean gameOver=false;
+    private boolean gameWon=false;
+
+    private static final long coinsForRevive = 100;
 
     public boolean isPaused() {
         return paused;
@@ -32,12 +36,43 @@ public class Game implements Serializable {
         return score;
     }
 
+    public void addScore(long score){
+        this.score+=score;
+    }
+
     public long getCoins() {
         return coins;
     }
 
     public boolean isRevivedOnce() {
         return revivedOnce;
+    }
+
+    public void over(){
+        gameOver=true;
+    }
+
+    public boolean isRevivable() {
+        return true;
+//        return !revivedOnce && coins >= coinsForRevive;
+    }
+
+    public void revive(){
+        if(isRevivable()){
+            coins-=coinsForRevive;
+            gameOver=false;
+            hero.setY(-400);
+            hero.setSpeed(new Vector(0,0));
+            revivedOnce=true;
+        }
+    }
+
+    public boolean isGameOver() {
+        return gameOver;
+    }
+
+    public boolean isGameWon() {
+        return gameWon;
     }
 
     public List<GameObject> getGameObjects() {
@@ -52,13 +87,14 @@ public class Game implements Serializable {
     }
 
     public Game(Game prevGame) {
-        System.out.println("loading game: "+prevGame.getHero().getPosition());
         hero = new Hero(prevGame.getHero().getPosition().getX(),prevGame.getHero().getPosition().getY());
         score = prevGame.getScore();
         this.coins = prevGame.getCoins();
         revivedOnce = prevGame.isRevivedOnce();
         paused=prevGame.isPaused();
         gameObjects= prevGame.getGameObjects();
+        gameOver=prevGame.isGameOver();
+        gameWon=prevGame.isGameWon();
     }
 
     public void serialize(int i) throws IOException {
@@ -68,8 +104,6 @@ public class Game implements Serializable {
             out.writeObject(this);
         }catch (Exception e){
             System.out.println(e);
-            File file = new File(".");
-            System.out.println(file.getAbsolutePath());
         }
         finally {
             if(out != null)
@@ -84,7 +118,6 @@ public class Game implements Serializable {
         try {
             in = new ObjectInputStream(new FileInputStream("saves/save" + i + ".txt"));
             game = (Game) in.readObject();
-            System.out.println("des: "+game.getHero().getPosition());
         }catch(Exception e){
             System.out.println("game not found");
         }finally {

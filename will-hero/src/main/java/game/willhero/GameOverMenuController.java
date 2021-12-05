@@ -13,7 +13,7 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 import java.util.Objects;
 
-public class PauseMenuController {
+public class GameOverMenuController {
 
     @FXML
     private AnchorPane anchorPane;
@@ -46,13 +46,18 @@ public class PauseMenuController {
     }
 
     @FXML
-    public void onSaveButtonClick() throws IOException {
+    public void onReviveButtonClick() throws IOException {
         Audio.playButtonSound();
         if(Audio.isPlayMusic()){
             Audio.stopGameMusic();
             Audio.playMainMenuMusic();
         }
-        Main.getGameController().onSaveMenuOpen();
+        if(Main.getGame().isRevivable()){
+            Main.getGame().revive();
+            Main.getGameController().onRevive();
+        }else {
+            System.out.println("You can't revive");
+        }
     }
 
     @FXML

@@ -4,11 +4,16 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<!--<?import game.willhero.Hero?>-->
 
 <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#keyPressed" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.willhero.GameController">
    <ImageView fx:id="background" fitHeight="768.0" fitWidth="1024.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@assets/background.png" />
    </ImageView>
+   <Group fx:id="trees" layoutX="60.0" layoutY="520.0" />
    <Group fx:id="clouds">
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="500.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@assets/cloud1.png" />
@@ -23,6 +28,21 @@
          <Image url="@assets/cloud0.png" />
       </ImageView>
    </Group>
+   <ImageView fitHeight="39.0" fitWidth="36.0" layoutX="845.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@assets/coin.png" />
+      </image>
+   </ImageView>
+   <Text fx:id="score" layoutX="438.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="156.00921630859375">
+      <font>
+         <Font size="36.0" />
+      </font>
+   </Text>
+   <Text fx:id="coins" layoutX="902.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="91.37172337956656">
+      <font>
+         <Font size="36.0" />
+      </font>
+   </Text>
    <Group layoutX="10.0" layoutY="10.0">
       <ImageView fx:id="btnMusic" fitHeight="55.0" fitWidth="55.0" onMouseClicked="#onMusicButtonClick" pickOnBounds="true" preserveRatio="true">
          <Image url="@assets/btnmusic0.png" />
@@ -33,13 +53,12 @@
       <ImageView fx:id="btnBack" fitHeight="55.0" fitWidth="55.0" layoutX="160.0" onMouseClicked="#onBackButtonClick" pickOnBounds="true" preserveRatio="true">
          <Image url="@assets/btnback.png" />
       </ImageView>
-      <ImageView fx:id="btnOptions" fitHeight="55.0" fitWidth="55.0" layoutX="240.0"
-                 onMouseClicked="#onPauseButtonClick" pickOnBounds="true" preserveRatio="true">
-         <Image url="@assets/btnoption.png"/>
+      <ImageView fx:id="btnOptions" fitHeight="55.0" fitWidth="55.0" layoutX="240.0" onMouseClicked="#onPauseButtonClick" pickOnBounds="true" preserveRatio="true">
+         <Image url="@assets/btnoption.png" />
       </ImageView>
    </Group>
    <Group fx:id="islands" layoutX="60.0" layoutY="520.0">
-      <ImageView fx:id="island1" fitHeight="120.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="120.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@assets/ground0.png" />
       </ImageView>
       <ImageView fitHeight="226.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true" x="850.0">
@@ -187,5 +206,8 @@
 <!--      <ImageView fitHeight="94.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" x="10585.0" y="-20.0">-->
 <!--         <Image url="@assets/ground3.png"/>-->
 <!--      </ImageView>-->
+   </Group>
+   <Group fx:id="characters" layoutX="60.0" layoutY="520.0">
+<!--      <Hero />-->
    </Group>
 </AnchorPane>

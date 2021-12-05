@@ -59,7 +59,7 @@
          </ImageView>
       </children>
    </Group>
-   <VBox layoutX="362.0" layoutY="257.0">
+   <VBox layoutX="362.0" layoutY="200.0">
       <children>
          <ImageView fitHeight="181.0" fitWidth="279.0" pickOnBounds="true" preserveRatio="true">
             <Image url="@assets/gamename.png" />
@@ -86,8 +86,7 @@
          </Group>
       </children>
    </VBox>
-   <ImageView fitHeight="142.0" fitWidth="142.0" layoutX="820.0" layoutY="385.0" pickOnBounds="true"
-              preserveRatio="true">
-      <Image url="@assets/orcBoss.png"/>
+   <ImageView fitHeight="142.0" fitWidth="142.0" layoutX="820.0" layoutY="385.0" pickOnBounds="true" preserveRatio="true">
+      <Image url="@assets/orcBoss.png" />
    </ImageView>
 </AnchorPane>
