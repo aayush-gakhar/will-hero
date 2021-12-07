@@ -85,6 +85,7 @@ public class GameController {
         moveClouds();
         initializeTimers();
         startTimers();
+        System.out.println(hero.getFitHeight()+" "+hero.getFitWidth());
     }
 
     public void moveClouds(){
@@ -202,13 +203,19 @@ public class GameController {
                     deltaTime=0.02;
                 }
                 for(GameObject gameObject: Main.getGame().getCharacters()){
-                    for (Node i : islands.getChildren()) {
-                        if (GameObject.isColliding(gameObject, (ImageView) i)) {
-                            gameObject.setSpeed(gameObject.getAcceleration().scale(-1));
-                            while (GameObject.isColliding(gameObject, (ImageView) i)) {
+                    for (Node island : islands.getChildren()) {
+                        if (GameObject.isColliding(gameObject, (ImageView) island)) {
+                            gameObject.getSpeed().setY(-gameObject.getAcceleration().getY());
+                            gameObject.getSpeed().setX(0);
+                            while (GameObject.isColliding(gameObject, (ImageView) island)) {
                                 gameObject.move(deltaTime);
                             }
                         }
+                    }
+                }
+                for(GameObject character: Main.getGame().getCharacters()){
+                    if(GameObject.isColliding(hero,character)){
+                        character.getSpeed().setX(200);
                     }
                 }
                 if(hero.getPosition().getX()+islands.getTranslateX()>=300){
@@ -218,18 +225,28 @@ public class GameController {
                 for (GameObject object:Main.getGame().getCharacters()) {
                     object.accelerate(deltaTime);
                     object.move(deltaTime);
-                }
+                    if(object.getPosition().getY()>185){
+                        if(object==hero){
+                            Main.getGame().over();
+                            System.out.println("Game Over");
+                            stopTimers();
+                            try {
+                                onGameOver();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }else {
+                            if(!((Orc)object).isDead()) {
+                                characters.getChildren().remove(object);
+                                object.die();
+                            }
 
-                if(hero.getPosition().getY()>185){
-                    Main.getGame().over();
-                    System.out.println("Game Over");
-                    stopTimers();
-                    try {
-                        onGameOver();
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                        }
                     }
                 }
+
+
+
                 lastUpdate=now;
             }
         };

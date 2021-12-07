@@ -13,6 +13,11 @@ public abstract class GameObject extends ImageView implements Serializable {
 
     public GameObject(Vector position, Vector speed, Vector acceleration, String imagePath) {
         super(new Image(Objects.requireNonNull(Main.class.getResourceAsStream(imagePath))));
+
+        Image image=new Image(Objects.requireNonNull(Main.class.getResourceAsStream(imagePath)));
+//        this.setFitHeight(image.getHeight());
+//        this
+//        image.
         this.position = position;
         this.speed = speed;
         this.acceleration = acceleration;
@@ -74,6 +79,10 @@ public abstract class GameObject extends ImageView implements Serializable {
     public void accelerate(double deltaTime) {
         this.speed.add(this.acceleration.scale(deltaTime));
 //        System.out.println(speed.getX()+" "+speed.getY());
+    }
+
+    public void die(){
+
     }
 
 }

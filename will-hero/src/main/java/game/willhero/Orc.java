@@ -4,8 +4,7 @@ public abstract class Orc extends GameObject{
 
     private long health;
     private long jumpHeight;
-    private long size;
-    private long coinsOnKill;
+    private long coinsOnKill=10;
     private boolean dead=false;
 
     public boolean isDead(){
@@ -20,10 +19,6 @@ public abstract class Orc extends GameObject{
         return this.jumpHeight;
     }
 
-    public long getSize(){
-        return this.size;
-    }
-
     public long getCoinsOnKill(){
         return this.coinsOnKill;
     }
@@ -36,14 +31,6 @@ public abstract class Orc extends GameObject{
         this.jumpHeight = jumpHeight;
     }
 
-    public void setSize(long size){
-        this.size = size;
-    }
-
-    public void setCoinsOnKill(long coinsOnKill){
-        this.coinsOnKill = coinsOnKill;
-    }
-
     public Orc(Vector position, Vector speed, Vector acceleration){
         super(position, speed, acceleration);
     }
@@ -51,5 +38,13 @@ public abstract class Orc extends GameObject{
     Orc(double x, double y, String imagePath) {
         super(new Vector(x,y),new Vector(0,0),new Vector(0,200),imagePath);
     }
+
+    public void die(){
+        this.dead = true;
+        Main.getGame().addCoins(this.coinsOnKill);
+//        this.
+    }
+
+
 
 }

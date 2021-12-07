@@ -9,7 +9,7 @@ public class Game implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
     private final Hero hero;
-    private long score;
+    private long score=0;
     private long coins=100;
     private boolean revivedOnce=false;
     private boolean paused=false;
@@ -43,6 +43,10 @@ public class Game implements Serializable {
 
     public long getCoins() {
         return coins;
+    }
+
+    public void addCoins(long coins){
+        this.coins+=coins;
     }
 
     public boolean isRevivedOnce() {
@@ -95,9 +99,6 @@ public class Game implements Serializable {
 
     public Game() {
         hero = new Hero(60,0);
-        score = 0;
-        this.coins = 0;
-        revivedOnce = false;
         setGameObjects();
     }
 

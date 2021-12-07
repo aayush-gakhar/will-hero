@@ -1,5 +1,6 @@
 package game.willhero;
 
+import javafx.geometry.Bounds;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
