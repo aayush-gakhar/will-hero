@@ -23,14 +23,10 @@ public class PauseMenuController {
 
     }
 
-
     @FXML
     protected void onHomeButtonClick() throws IOException {
         Audio.playButtonSound();
-        if(Audio.isPlayMusic()){
-            Audio.stopGameMusic();
-            Audio.playMainMenuMusic();
-        }
+        Audio.changeToMenu();
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("mainMenu.fxml")));
         Main.getPrimaryStage().setScene(new Scene(loader.load()));
     }
@@ -51,10 +47,4 @@ public class PauseMenuController {
         Main.getGameController().onSaveMenuOpen();
     }
 
-    @FXML
-    protected void onBackButtonClick() throws IOException {
-        Audio.playButtonSound();
-        AnchorPane a = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("mainMenu.fxml")));
-        anchorPane.getChildren().setAll(a);
-    }
 }

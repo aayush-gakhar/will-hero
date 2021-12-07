@@ -24,6 +24,7 @@ public class Audio {
 
     private static MediaPlayer mainMenuMusic;
     private static MediaPlayer gameMusic;
+    private static MediaPlayer current;
     private static AudioClip buttonSound;
     private static AudioClip heroMoveSound;
     private static AudioClip heroDeadSound;
@@ -39,6 +40,7 @@ public class Audio {
         mainMenuMusic.setStopTime(Duration.seconds(200));
         mainMenuMusic.setRate(60.0/56.0);
         mainMenuMusic.setVolume(0.1);
+        current= mainMenuMusic;
 
         gameMusic = new MediaPlayer(new Media(Objects.requireNonNull(Main.class.getResource("sounds/inGame.m4a")).toString()));
         gameMusic.setCycleCount(MediaPlayer.INDEFINITE);
@@ -142,6 +144,20 @@ public class Audio {
             if(menuOrGame)Audio.playMainMenuMusic();
             else Audio.playGameMusic();
         }
+    }
+
+    public static void changeToMenu(){
+        if(Audio.isPlayMusic()){
+            Audio.stopGameMusic();
+            Audio.playMainMenuMusic();
+        }current=mainMenuMusic;
+    }
+
+    public static void changeToGame(){
+        if(Audio.isPlayMusic()){
+            Audio.stopMainMenuMusic();
+            Audio.playGameMusic();
+        }current=gameMusic;
     }
 
 }

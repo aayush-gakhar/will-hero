@@ -70,52 +70,6 @@ public class WinGameController {
     }
 
     @FXML
-    protected void onSave1ButtonClick() throws IOException, ClassNotFoundException {
-        onSaveiButtonClick(1);
-    }
-
-    @FXML
-    protected void onSave2ButtonClick() throws IOException, ClassNotFoundException {
-        onSaveiButtonClick(2);
-    }
-
-    @FXML
-    protected void onSave3ButtonClick() throws IOException {
-        onSaveiButtonClick(3);
-    }
-
-    @FXML
-    protected void onSave4ButtonClick() throws IOException {
-        onSaveiButtonClick(4);
-    }
-
-    @FXML
-    protected void onSave5ButtonClick() throws IOException {
-        onSaveiButtonClick(5);
-    }
-
-    public void onSaveiButtonClick(int i) throws IOException {
-        try{
-            Main.setGame(new Game(Game.deserialize(i)));
-            if (Main.getGame()==null){
-                throw new Exception("Save file empty");
-            }
-        }catch (Exception e){
-            System.out.println(e);
-            Main.setGame(new Game());
-        }
-        Audio.playButtonSound();
-        if(Audio.isPlayMusic()) {
-            Audio.stopMainMenuMusic();
-            Audio.playGameMusic();
-        }
-        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("game.fxml")));
-        Scene scene = new Scene(loader.load());
-        scene.setOnKeyPressed(event -> ((GameController)loader.getController()).keyPressed(event));
-        Main.getPrimaryStage().setScene(scene);
-    }
-
-    @FXML
     protected void onBackButtonClick() throws IOException {
         Audio.playButtonSound();
         AnchorPane a = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("mainMenu.fxml")));

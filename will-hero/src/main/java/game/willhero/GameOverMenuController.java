@@ -27,10 +27,7 @@ public class GameOverMenuController {
     @FXML
     protected void onHomeButtonClick() throws IOException {
         Audio.playButtonSound();
-        if(Audio.isPlayMusic()){
-            Audio.stopGameMusic();
-            Audio.playMainMenuMusic();
-        }
+        Audio.changeToGame();
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("mainMenu.fxml")));
         Main.getPrimaryStage().setScene(new Scene(loader.load()));
     }
@@ -48,10 +45,6 @@ public class GameOverMenuController {
     @FXML
     public void onReviveButtonClick() throws IOException {
         Audio.playButtonSound();
-        if(Audio.isPlayMusic()){
-            Audio.stopGameMusic();
-            Audio.playMainMenuMusic();
-        }
         if(Main.getGame().isRevivable()){
             Main.getGame().revive();
             Main.getGameController().onRevive();

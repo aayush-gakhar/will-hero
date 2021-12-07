@@ -114,11 +114,8 @@ public class GameController {
     public void onBackButtonClick() throws IOException {
         System.out.println("Game ended");
         Audio.playButtonSound();
+        Audio.changeToMenu();
         stopTimers();
-        if(Audio.isPlayMusic()){
-            Audio.stopGameMusic();
-            Audio.playMainMenuMusic();
-        }
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("mainMenu.fxml")));
         Main.getPrimaryStage().setScene(new Scene(loader.load()));
         Main.setGameStarted(false);
@@ -208,7 +205,7 @@ public class GameController {
                     for (Node island : islands.getChildren()) {
                         if (GameObject.isColliding(gameObject, (ImageView) island)) {
                             gameObject.getSpeed().setY(-gameObject.getAcceleration().getY());
-                            gameObject.getSpeed().setX(0);
+                            gameObject.getSpeed().setX(gameObject.getSpeed().getX()*0.2);
                             while (GameObject.isColliding(gameObject, (ImageView) island)) {
                                 gameObject.move(deltaTime);
                             }

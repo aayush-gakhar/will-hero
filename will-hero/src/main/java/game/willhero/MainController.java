@@ -87,10 +87,7 @@ public class MainController {
     @FXML
     protected void onStartGameButtonClick() throws IOException {
         Audio.playButtonSound();
-        if(Audio.isPlayMusic()) {
-            Audio.stopMainMenuMusic();
-            Audio.playGameMusic();
-        }
+        Audio.changeToGame();
         Main.setGame(new Game());
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("game.fxml")));
         Scene scene = new Scene(loader.load(),1024,768);

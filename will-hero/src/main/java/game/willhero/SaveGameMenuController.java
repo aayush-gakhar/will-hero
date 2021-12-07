@@ -45,27 +45,14 @@ public class SaveGameMenuController {
     public void onSaveibuttonClick(int i) throws IOException, ClassNotFoundException{
         Main.getGame().serialize(i);
         Audio.playButtonSound();
-        if(Audio.isPlayMusic()) {
-            Audio.stopGameMusic();
-            Audio.playMainMenuMusic();
-        }
+        Audio.changeToMenu();
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("mainMenu.fxml")));
         Scene scene = new Scene(loader.load());
-//        scene.setOnKeyPressed(event -> ((GameController)loader.getController()).keyPressed(event));
         Main.getPrimaryStage().setScene(scene);
     }
 
     @FXML
     protected void onBackButtonClick() throws IOException {
-//        Audio.playButtonSound();
-//        if(Audio.isPlayMusic()) {
-//            Audio.stopMainMenuMusic();
-//            Audio.playGameMusic();
-//        }
-//        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("game.fxml")));
-//        Scene scene = new Scene(loader.load());
-//        scene.setOnKeyPressed(event -> ((GameController)loader.getController()).keyPressed(event));
-//        Main.getPrimaryStage().setScene(scene);
         Main.getGameController().onPauseButtonClick();
     }
 }

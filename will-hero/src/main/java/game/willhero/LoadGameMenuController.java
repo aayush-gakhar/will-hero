@@ -91,10 +91,7 @@ public class LoadGameMenuController {
             Main.setGame(new Game());
         }
         Audio.playButtonSound();
-        if(Audio.isPlayMusic()) {
-            Audio.stopMainMenuMusic();
-            Audio.playGameMusic();
-        }
+        Audio.changeToGame();
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("game.fxml")));
         Scene scene = new Scene(loader.load());
         scene.setOnKeyPressed(event -> ((GameController)loader.getController()).keyPressed(event));
