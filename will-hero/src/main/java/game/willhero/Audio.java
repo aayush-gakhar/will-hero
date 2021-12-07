@@ -105,6 +105,21 @@ public class Audio {
         if(playSound)gameOverSound.play();
     }
 
+    public static void setupButtons(ImageView btnSound, ImageView btnMusic, boolean menuOrGame) {
+        if (isPlaySound()) {
+            btnSound.setImage(new Image(Objects.requireNonNull(Main.class.getResourceAsStream("assets/btnsound0.png"))));
+        }else {
+            btnSound.setImage(new Image(Objects.requireNonNull(Main.class.getResourceAsStream("assets/btnsound1.png"))));
+        }
+        if(Audio.isPlayMusic()){
+            btnMusic.setImage(new Image(Objects.requireNonNull(Main.class.getResourceAsStream("assets/btnmusic0.png"))));
+            if(menuOrGame)Audio.playMainMenuMusic();
+            else Audio.playGameMusic();
+        }else {
+            btnMusic.setImage(new Image(Objects.requireNonNull(Main.class.getResourceAsStream("assets/btnmusic1.png"))));
+        }
+    }
+
     public static void onSoundButtonClick(ImageView btnSound) {
         if (Audio.isPlaySound()) {
             btnSound.setImage(new Image(Objects.requireNonNull(Main.class.getResourceAsStream("assets/btnsound1.png"))));
@@ -116,14 +131,16 @@ public class Audio {
         Audio.playButtonSound();
     }
 
-    public static void onMusicButtonClick(ImageView btnMusic) {
+    public static void onMusicButtonClick(ImageView btnMusic, boolean menuOrGame) {
         Audio.playButtonSound();
         if(Audio.isPlayMusic()){
             btnMusic.setImage(new Image(Objects.requireNonNull(Main.class.getResourceAsStream("assets/btnmusic1.png"))));
             Audio.stopMainMenuMusic();
+            Audio.stopGameMusic();
         }else {
             btnMusic.setImage(new Image(Objects.requireNonNull(Main.class.getResourceAsStream("assets/btnmusic0.png"))));
-            Audio.playMainMenuMusic();
+            if(menuOrGame)Audio.playMainMenuMusic();
+            else Audio.playGameMusic();
         }
     }
 

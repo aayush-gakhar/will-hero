@@ -38,6 +38,7 @@ public class LoadGameMenuController {
     private ImageView btnMusic;
 
     public void initialize(){
+        Audio.setupButtons(btnSound, btnMusic,true);
         MainController.menuAnimations(hero, clouds);
     }
 
@@ -48,7 +49,7 @@ public class LoadGameMenuController {
 
     @FXML
     protected void onMusicButtonClick() {
-        Audio.onMusicButtonClick(btnMusic);
+        Audio.onMusicButtonClick(btnMusic,true);
     }
 
     @FXML
@@ -78,12 +79,15 @@ public class LoadGameMenuController {
 
     public void onSaveiButtonClick(int i) throws IOException {
         try{
-            Main.setGame(new Game(Game.deserialize(i)));
-            if (Main.getGame()==null){
+            Game game=Game.deserialize(i);
+            if (game==null){
                 throw new Exception("Save file empty");
             }
+            Main.setGame(new Game(game));
+            System.out.println("Loaded game from save file");
+
         }catch (Exception e){
-            System.out.println(e);
+            System.out.println("exception: "+e);
             Main.setGame(new Game());
         }
         Audio.playButtonSound();

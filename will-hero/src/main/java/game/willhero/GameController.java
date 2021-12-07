@@ -70,6 +70,7 @@ public class GameController {
 
 
     public void initialize(){
+        Audio.setupButtons(btnSound, btnMusic,false);
         Main.setGameController(this);
         Main.setGameStarted(true);
         Main.getGame().setPaused(false);
@@ -106,7 +107,7 @@ public class GameController {
 
     @FXML
     protected void onMusicButtonClick() {
-        Audio.onMusicButtonClick(btnMusic);
+        Audio.onMusicButtonClick(btnMusic,false);
     }
 
     @FXML

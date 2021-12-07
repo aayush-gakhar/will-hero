@@ -41,6 +41,7 @@ public class WinGameController {
     private ImageView light;
 
     public void initialize(){
+        Audio.setupButtons(btnSound,btnMusic,true);
         Timeline timeline = new Timeline();
         timeline.setCycleCount(Timeline.INDEFINITE);
         KeyValue yValue  = new KeyValue(light.rotateProperty(), 360, Interpolator.LINEAR);
@@ -65,7 +66,7 @@ public class WinGameController {
 
     @FXML
     protected void onMusicButtonClick() {
-        Audio.onMusicButtonClick(btnMusic);
+        Audio.onMusicButtonClick(btnMusic,true);
     }
 
     @FXML

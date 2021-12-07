@@ -51,6 +51,7 @@ public class MainController {
     public ImageView btnExit;
 
     public void initialize(){
+        Audio.setupButtons(btnSound, btnMusic,true);
         menuAnimations(hero, clouds);
     }
 
@@ -80,7 +81,7 @@ public class MainController {
 
     @FXML
     protected void onMusicButtonClick() {
-        Audio.onMusicButtonClick(btnMusic);
+        Audio.onMusicButtonClick(btnMusic,true);
     }
 
     @FXML

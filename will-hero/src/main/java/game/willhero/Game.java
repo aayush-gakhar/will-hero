@@ -79,7 +79,7 @@ public class Game implements Serializable {
     public void setGameObjects(List<GameObject> characters) {
         this.characters.add(hero);
         for(GameObject gameObject:characters){
-            if(!((Orc)gameObject).isDead()) {
+            if(!(gameObject instanceof Hero) && !((Orc)gameObject).isDead()) {
                 this.characters.add(new GreenOrc(gameObject.getPosition().getX()));
             }
         }
