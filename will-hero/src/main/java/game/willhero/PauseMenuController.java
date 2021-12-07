@@ -48,10 +48,6 @@ public class PauseMenuController {
     @FXML
     public void onSaveButtonClick() throws IOException {
         Audio.playButtonSound();
-        if(Audio.isPlayMusic()){
-            Audio.stopGameMusic();
-            Audio.playMainMenuMusic();
-        }
         Main.getGameController().onSaveMenuOpen();
     }
 

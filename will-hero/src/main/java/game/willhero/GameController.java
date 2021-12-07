@@ -137,6 +137,7 @@ public class GameController {
         }else {
             System.out.println("Game resumed");
             anchorPane.getChildren().remove(pauseMenu);
+            anchorPane.getChildren().remove(saveGameMenu);
             startTimers();
             Main.getGame().setPaused(false);
         }
