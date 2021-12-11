@@ -59,7 +59,7 @@ public class GameController {
     private ImageView btnBack;
 
     @FXML
-    public ImageView btnOptions;
+    private ImageView btnOptions;
 
     @FXML
     private Text score;
@@ -108,12 +108,12 @@ public class GameController {
     }
 
     @FXML
-    protected void onSoundButtonClick() {
+    public void onSoundButtonClick() {
         Audio.onSoundButtonClick(btnSound);
     }
 
     @FXML
-    protected void onMusicButtonClick() {
+    public void onMusicButtonClick() {
         Audio.onMusicButtonClick(btnMusic,false);
     }
 
@@ -291,8 +291,9 @@ public class GameController {
                 }
 
                 //win Game
-                if(Main.getGame().getScore()>=100){
+                if(Main.getGame().getScore()>=120){
                     stopTimers();
+                    Audio.changeToMenu();
                     Main.getGame().win();
                     FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("winGame.fxml")));
                     Scene scene = null;

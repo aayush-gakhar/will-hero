@@ -9,47 +9,45 @@
 
 <AnchorPane fx:id="anchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.willhero.SaveGameMenuController">
    <VBox prefHeight="360.0" prefWidth="349.0">
-      <children>
-         <Text fill="#00b91f" strokeType="OUTSIDE" strokeWidth="0.0" text="Save Game" textAlignment="CENTER">
-            <font>
-               <Font size="72.0" />
-            </font>
-         </Text>
-         <Text fx:id="save1" onMouseClicked="#onSave1ButtonClick" strokeType="OUTSIDE" strokeWidth="0.0" text="Save 1">
-            <font>
-               <Font size="36.0" />
-            </font>
-         </Text>
-         <Separator prefWidth="200.0" />
-         <Text fx:id="save2" onMouseClicked="#onSave2ButtonClick" strokeType="OUTSIDE" strokeWidth="0.0" text="Save 2">
-            <font>
-               <Font size="36.0" />
-            </font>
-         </Text>
-         <Separator prefWidth="200.0" />
-         <Text fx:id="save3" onMouseClicked="#onSave3ButtonClick" strokeType="OUTSIDE" strokeWidth="0.0" text="Save 3">
-            <font>
-               <Font size="36.0" />
-            </font>
-         </Text>
-         <Separator prefWidth="200.0" />
-         <Text fx:id="save4" onMouseClicked="#onSave4ButtonClick" strokeType="OUTSIDE" strokeWidth="0.0" text="Save 4">
-            <font>
-               <Font size="36.0" />
-            </font>
-         </Text>
-         <Separator prefWidth="200.0" />
-         <Text fx:id="save5" onMouseClicked="#onSave5ButtonClick" strokeType="OUTSIDE" strokeWidth="0.0" text="Save 5">
-            <font>
-               <Font size="36.0" />
-            </font>
-         </Text>
-         <Separator prefWidth="200.0" />
-         <Button mnemonicParsing="false" onMouseClicked="#onBackButtonClick" text="Cancel">
-            <font>
-               <Font size="24.0" />
-            </font>
-         </Button>
-      </children>
+      <Text fill="#00b91f" strokeType="OUTSIDE" strokeWidth="0.0" text="Save Game" textAlignment="CENTER">
+         <font>
+            <Font size="72.0"/>
+         </font>
+      </Text>
+      <Text onMouseClicked="#onSave1ButtonClick" strokeType="OUTSIDE" strokeWidth="0.0" text="Save 1">
+         <font>
+            <Font size="36.0"/>
+         </font>
+      </Text>
+      <Separator prefWidth="200.0"/>
+      <Text onMouseClicked="#onSave2ButtonClick" strokeType="OUTSIDE" strokeWidth="0.0" text="Save 2">
+         <font>
+            <Font size="36.0"/>
+         </font>
+      </Text>
+      <Separator prefWidth="200.0"/>
+      <Text onMouseClicked="#onSave3ButtonClick" strokeType="OUTSIDE" strokeWidth="0.0" text="Save 3">
+         <font>
+            <Font size="36.0"/>
+         </font>
+      </Text>
+      <Separator prefWidth="200.0"/>
+      <Text onMouseClicked="#onSave4ButtonClick" strokeType="OUTSIDE" strokeWidth="0.0" text="Save 4">
+         <font>
+            <Font size="36.0"/>
+         </font>
+      </Text>
+      <Separator prefWidth="200.0"/>
+      <Text onMouseClicked="#onSave5ButtonClick" strokeType="OUTSIDE" strokeWidth="0.0" text="Save 5">
+         <font>
+            <Font size="36.0"/>
+         </font>
+      </Text>
+      <Separator prefWidth="200.0"/>
+      <Button mnemonicParsing="false" onMouseClicked="#onBackButtonClick" text="Cancel">
+         <font>
+            <Font size="24.0"/>
+         </font>
+      </Button>
    </VBox>
 </AnchorPane>

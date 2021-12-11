@@ -4,14 +4,11 @@ import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
-import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
@@ -22,9 +19,6 @@ public class MainController {
 
     @FXML
     private AnchorPane anchorPane;
-
-    @FXML
-    public ImageView background;
 
     @FXML
     private ImageView hero;
@@ -42,13 +36,13 @@ public class MainController {
     private ImageView btnMusic;
 
     @FXML
-    public ImageView btnStartGame;
+    private ImageView btnStartGame;
 
     @FXML
-    public ImageView btnLoadGame;
+    private ImageView btnLoadGame;
 
     @FXML
-    public ImageView btnExit;
+    private ImageView btnExit;
 
     public void initialize(){
         Audio.setupButtons(btnSound, btnMusic,true);
@@ -75,17 +69,17 @@ public class MainController {
     }
 
     @FXML
-    protected void onSoundButtonClick() {
+    public void onSoundButtonClick() {
         Audio.onSoundButtonClick(btnSound);
     }
 
     @FXML
-    protected void onMusicButtonClick() {
+    public void onMusicButtonClick() {
         Audio.onMusicButtonClick(btnMusic,true);
     }
 
     @FXML
-    protected void onStartGameButtonClick() throws IOException {
+    public void onStartGameButtonClick() throws IOException {
         Audio.playButtonSound();
         Audio.changeToGame();
         Main.setGame(new Game());
@@ -100,14 +94,14 @@ public class MainController {
     }
 
     @FXML
-    protected void onLoadGameButtonClick() throws IOException {
+    public void onLoadGameButtonClick() throws IOException {
         Audio.playButtonSound();
         AnchorPane a = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("loadGameMenu.fxml")));
         anchorPane.getChildren().setAll(a);
     }
 
     @FXML
-    protected void onExitButtonClick() {
+    public void onExitButtonClick() {
         Audio.playButtonSound();
         System.exit(0);
     }

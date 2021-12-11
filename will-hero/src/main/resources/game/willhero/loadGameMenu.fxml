@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="anchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.willhero.LoadGameMenuController">
-   <ImageView fx:id="background" fitHeight="768.0" fitWidth="1024.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fitHeight="768.0" fitWidth="1024.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@assets/background.png" />
    </ImageView>
    <Group fx:id="clouds">
@@ -34,74 +34,65 @@
       <ImageView fx:id="btnSound" fitHeight="55.0" fitWidth="55.0" layoutX="70.0" onMouseClicked="#onSoundButtonClick" pickOnBounds="true" preserveRatio="true">
          <Image url="@assets/btnsound0.png" />
       </ImageView>
-      <ImageView fx:id="btnBack" fitHeight="55.0" fitWidth="55.0" layoutX="160.0" onMouseClicked="#onBackButtonClick" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@assets/btnback.png" />
-         </image>
+      <ImageView fitHeight="55.0" fitWidth="55.0" layoutX="160.0" onMouseClicked="#onBackButtonClick"
+                 pickOnBounds="true" preserveRatio="true">
+         <Image url="@assets/btnback.png"/>
       </ImageView>
    </Group>
    <ImageView fx:id="hero" fitHeight="49.0" fitWidth="65.0" layoutX="121.0" layoutY="337.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@assets/hero.png" />
    </ImageView>
-   <Group fx:id="islands" layoutX="60.0" layoutY="520.0">
-      <children>
-         <ImageView fitHeight="120.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@assets/ground0.png" />
-            </image>
-         </ImageView>
-         <ImageView fitHeight="226.0" fitWidth="178.0" layoutX="751.0" layoutY="-100.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@assets/groundmenu0.png" />
-            </image>
-         </ImageView>
-         <ImageView fitHeight="222.0" fitWidth="202.0" layoutX="296.0" layoutY="-59.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@assets/groundmenu2.png" />
-            </image>
-         </ImageView>
-         <ImageView fitHeight="210.0" fitWidth="187.0" layoutX="497.0" layoutY="-54.0" pickOnBounds="true">
-            <Image url="@assets/groundmenu.png" />
-         </ImageView>
-      </children>
+   <Group layoutX="60.0" layoutY="520.0">
+      <ImageView fitHeight="120.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@assets/ground0.png"/>
+      </ImageView>
+      <ImageView fitHeight="226.0" fitWidth="178.0" layoutX="751.0" layoutY="-100.0" pickOnBounds="true"
+                 preserveRatio="true">
+         <Image url="@assets/groundmenu0.png"/>
+      </ImageView>
+      <ImageView fitHeight="222.0" fitWidth="202.0" layoutX="296.0" layoutY="-59.0" pickOnBounds="true"
+                 preserveRatio="true">
+         <Image url="@assets/groundmenu2.png"/>
+      </ImageView>
+      <ImageView fitHeight="210.0" fitWidth="187.0" layoutX="497.0" layoutY="-54.0" pickOnBounds="true">
+         <Image url="@assets/groundmenu.png"/>
+      </ImageView>
    </Group>
    <VBox layoutX="325.0" layoutY="197.0" prefHeight="360.0" prefWidth="349.0">
-      <children>
-         <Text fill="#00b91f" strokeType="OUTSIDE" strokeWidth="0.0" text="Load Game" textAlignment="CENTER">
-            <font>
-               <Font size="72.0" />
-            </font>
-         </Text>
-         <Text fx:id="save1" onMouseClicked="#onSave1ButtonClick" strokeType="OUTSIDE" strokeWidth="0.0" text="Save 1">
-            <font>
-               <Font size="36.0" />
-            </font>
-         </Text>
-         <Separator prefWidth="200.0" />
-         <Text fx:id="save2" onMouseClicked="#onSave2ButtonClick" strokeType="OUTSIDE" strokeWidth="0.0" text="Save 2">
-            <font>
-               <Font size="36.0" />
-            </font>
-         </Text>
-         <Separator prefWidth="200.0" />
-         <Text fx:id="save3" onMouseClicked="#onSave3ButtonClick" strokeType="OUTSIDE" strokeWidth="0.0" text="Save 3">
-            <font>
-               <Font size="36.0" />
-            </font>
-         </Text>
-         <Separator prefWidth="200.0" />
-         <Text fx:id="save4" onMouseClicked="#onSave4ButtonClick" strokeType="OUTSIDE" strokeWidth="0.0" text="Save 4">
-            <font>
-               <Font size="36.0" />
-            </font>
-         </Text>
-         <Separator prefWidth="200.0" />
-         <Text fx:id="save5" onMouseClicked="#onSave5ButtonClick" strokeType="OUTSIDE" strokeWidth="0.0" text="Save 5">
-            <font>
-               <Font size="36.0" />
-            </font>
-         </Text>
-      </children>
+      <Text fill="#00b91f" strokeType="OUTSIDE" strokeWidth="0.0" text="Load Game" textAlignment="CENTER">
+         <font>
+            <Font size="72.0"/>
+         </font>
+      </Text>
+      <Text onMouseClicked="#onSave1ButtonClick" strokeType="OUTSIDE" strokeWidth="0.0" text="Save 1">
+         <font>
+            <Font size="36.0"/>
+         </font>
+      </Text>
+      <Separator prefWidth="200.0"/>
+      <Text onMouseClicked="#onSave2ButtonClick" strokeType="OUTSIDE" strokeWidth="0.0" text="Save 2">
+         <font>
+            <Font size="36.0"/>
+         </font>
+      </Text>
+      <Separator prefWidth="200.0"/>
+      <Text onMouseClicked="#onSave3ButtonClick" strokeType="OUTSIDE" strokeWidth="0.0" text="Save 3">
+         <font>
+            <Font size="36.0"/>
+         </font>
+      </Text>
+      <Separator prefWidth="200.0"/>
+      <Text onMouseClicked="#onSave4ButtonClick" strokeType="OUTSIDE" strokeWidth="0.0" text="Save 4">
+         <font>
+            <Font size="36.0"/>
+         </font>
+      </Text>
+      <Separator prefWidth="200.0"/>
+      <Text onMouseClicked="#onSave5ButtonClick" strokeType="OUTSIDE" strokeWidth="0.0" text="Save 5">
+         <font>
+            <Font size="36.0"/>
+         </font>
+      </Text>
    </VBox>
    <ImageView fitHeight="142.0" fitWidth="142.0" layoutX="820.0" layoutY="385.0" pickOnBounds="true"
               preserveRatio="true">

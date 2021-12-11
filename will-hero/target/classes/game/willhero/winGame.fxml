@@ -32,41 +32,33 @@
       <ImageView fx:id="btnSound" fitHeight="55.0" fitWidth="55.0" layoutX="70.0" onMouseClicked="#onSoundButtonClick" pickOnBounds="true" preserveRatio="true">
          <Image url="@assets/btnsound0.png" />
       </ImageView>
-      <ImageView fx:id="btnBack" fitHeight="55.0" fitWidth="55.0" layoutX="160.0" onMouseClicked="#onBackButtonClick" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@assets/btnback.png" />
-         </image>
+      <ImageView fitHeight="55.0" fitWidth="55.0" layoutX="160.0" onMouseClicked="#onBackButtonClick"
+                 pickOnBounds="true" preserveRatio="true">
+         <Image url="@assets/btnback.png"/>
       </ImageView>
    </Group>
-   <ImageView fx:id="light" fitHeight="200.0" fitWidth="200.0" layoutX="419.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
-      <image>
-         <Image url="@assets/light.png" />
-      </image>
+   <ImageView fx:id="light" fitHeight="200.0" fitWidth="200.0" layoutX="419.0" layoutY="240.0" pickOnBounds="true"
+              preserveRatio="true">
+      <Image url="@assets/light.png"/>
    </ImageView>
    <ImageView fx:id="hero" fitHeight="49.0" fitWidth="65.0" layoutX="505.0" layoutY="310.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@assets/hero.png" />
    </ImageView>
-   <Group fx:id="islands" layoutX="60.0" layoutY="520.0">
-      <children>
-         <ImageView fitHeight="120.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@assets/ground0.png" />
-            </image>
-         </ImageView>
-         <ImageView fitHeight="226.0" fitWidth="178.0" layoutX="751.0" layoutY="-100.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@assets/groundmenu0.png" />
-            </image>
-         </ImageView>
-         <ImageView fitHeight="222.0" fitWidth="202.0" layoutX="296.0" layoutY="-59.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@assets/groundmenu2.png" />
-            </image>
-         </ImageView>
-         <ImageView fitHeight="210.0" fitWidth="187.0" layoutX="497.0" layoutY="-54.0" pickOnBounds="true">
-            <Image url="@assets/groundmenu.png" />
-         </ImageView>
-      </children>
+   <Group layoutX="60.0" layoutY="520.0">
+      <ImageView fitHeight="120.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@assets/ground0.png"/>
+      </ImageView>
+      <ImageView fitHeight="226.0" fitWidth="178.0" layoutX="751.0" layoutY="-100.0" pickOnBounds="true"
+                 preserveRatio="true">
+         <Image url="@assets/groundmenu0.png"/>
+      </ImageView>
+      <ImageView fitHeight="222.0" fitWidth="202.0" layoutX="296.0" layoutY="-59.0" pickOnBounds="true"
+                 preserveRatio="true">
+         <Image url="@assets/groundmenu2.png"/>
+      </ImageView>
+      <ImageView fitHeight="210.0" fitWidth="187.0" layoutX="497.0" layoutY="-54.0" pickOnBounds="true">
+         <Image url="@assets/groundmenu.png"/>
+      </ImageView>
    </Group>
    <Text fill="#0fab1c" layoutX="360.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You Won!!">
       <font>

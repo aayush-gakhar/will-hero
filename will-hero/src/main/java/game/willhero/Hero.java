@@ -1,18 +1,12 @@
 package game.willhero;
 
-import javafx.geometry.Bounds;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class Hero extends GameObject{
 
     private Helmet helmet;
-    private List<Weapon> weapons=new ArrayList<>();
+    private final List<Weapon> weapons=new ArrayList<>();
     private Weapon currentWeapon;
     private long moves;
 
@@ -45,15 +39,15 @@ public class Hero extends GameObject{
     }
 
 
-    Hero(){
+    public Hero(){
         super(new Vector(60,0),new Vector(0,0),new Vector(0,500),"assets/hero.png");
     }
 
-    Hero(double x, double y) {
+    public Hero(double x, double y) {
         super(new Vector(x,y),new Vector(0,0),new Vector(0,500),"assets/hero.png");
     }
 
-    Hero(Vector position) {
+    public Hero(Vector position) {
         super(position,new Vector(0,0),new Vector(0,500),"assets/hero.png");
     }
 

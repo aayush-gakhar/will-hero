@@ -15,6 +15,8 @@ public class Game implements Serializable {
     private boolean paused=false;
     private boolean gameOver=false;
     private boolean gameWon=false;
+    private final List<GameObject> characters =new ArrayList<>();
+    private final List<GameObject> chests =new ArrayList<>();
 
     private static final long coinsForRevive = 100;
 
@@ -25,10 +27,6 @@ public class Game implements Serializable {
     public void setPaused(boolean paused) {
         this.paused = paused;
     }
-
-
-    private final List<GameObject> characters =new ArrayList<>();
-    private final List<GameObject> chests =new ArrayList<>();
 
     public Hero getHero() {
         return hero;
@@ -77,7 +75,6 @@ public class Game implements Serializable {
     }
 
     public void setGameObjects() {
-//        characters.add(hero);
         characters.add(new RedOrc(500));
         characters.add(new GreenOrc(1200));
         characters.add(new GreenOrc(1600));
@@ -97,7 +94,14 @@ public class Game implements Serializable {
         characters.add(new GreenOrc(11300));
         characters.add(new RedOrc(11900));
 
-        chests.add(new WeaponChest(130,false,new Sword()));
+        chests.add(new WeaponChest(300,false,new Sword()));
+        chests.add(new CoinChest(1000,false,50));
+        chests.add(new CoinChest(2000,false,50));
+        chests.add(new CoinChest(3500,false,50));
+        chests.add(new CoinChest(4500,false,50));
+        chests.add(new CoinChest(6000,false,50));
+        chests.add(new CoinChest(7500,false,50));
+        chests.add(new CoinChest(9000,false,50));
     }
 
     public void setGameObjects(List<GameObject> prevCharacters, List<GameObject> chests) {
@@ -141,10 +145,10 @@ public class Game implements Serializable {
     }
 
     public Game(Game prevGame) {
-        hero = new Hero(prevGame.getHero().getPosition().getX(),prevGame.getHero().getPosition().getY());
-        score = prevGame.getScore();
+        this.hero = new Hero(prevGame.getHero().getPosition().getX(),prevGame.getHero().getPosition().getY());
+        this.score = prevGame.getScore();
         this.coins = prevGame.getCoins();
-        revivedOnce = prevGame.isRevivedOnce();
+        this.revivedOnce = prevGame.isRevivedOnce();
         setGameObjects(prevGame.getCharacters(),prevGame.getChests());
     }
 
@@ -163,7 +167,7 @@ public class Game implements Serializable {
 
     }
 
-    public static Game deserialize(int i) throws FileNotFoundException,IOException,ClassNotFoundException {
+    public static Game deserialize(int i) throws IOException,ClassNotFoundException {
         ObjectInputStream in = null;
         Game game = null;
         try {

@@ -4,7 +4,7 @@ public abstract class Orc extends GameObject{
 
     private long health;
     private long jumpHeight;
-    private long coinsOnKill=10;
+    private final long coinsOnKill=10;
     private boolean dead=false;
 
     public boolean isDead(){
@@ -35,7 +35,7 @@ public abstract class Orc extends GameObject{
         super(position, speed, acceleration);
     }
 
-    Orc(double x, double y, String imagePath) {
+    public Orc(double x, double y, String imagePath) {
         super(new Vector(x,y),new Vector(0,0),new Vector(0,200),imagePath);
     }
 

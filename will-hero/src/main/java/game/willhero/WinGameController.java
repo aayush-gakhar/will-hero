@@ -7,11 +7,8 @@ import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -23,13 +20,10 @@ public class WinGameController {
     private AnchorPane anchorPane;
 
     @FXML
-    public ImageView background;
-
-    @FXML
     private ImageView hero;
 
     @FXML
-    public Group clouds;
+    private Group clouds;
 
     @FXML
     private ImageView btnSound;
@@ -60,17 +54,17 @@ public class WinGameController {
     }
 
     @FXML
-    protected void onSoundButtonClick() {
+    public void onSoundButtonClick() {
         Audio.onSoundButtonClick(btnSound);
     }
 
     @FXML
-    protected void onMusicButtonClick() {
+    public void onMusicButtonClick() {
         Audio.onMusicButtonClick(btnMusic,true);
     }
 
     @FXML
-    protected void onBackButtonClick() throws IOException {
+    public void onBackButtonClick() throws IOException {
         Audio.playButtonSound();
         AnchorPane a = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("mainMenu.fxml")));
         anchorPane.getChildren().setAll(a);

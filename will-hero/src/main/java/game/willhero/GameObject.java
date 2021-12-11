@@ -51,10 +51,6 @@ public abstract class GameObject extends ImageView implements Serializable {
         this.setImage(new Image(Objects.requireNonNull(Main.class.getResourceAsStream(imagePath))));
     }
 
-    GameObject(){
-
-    }
-
     public Vector getPosition() {
         return position;
     }

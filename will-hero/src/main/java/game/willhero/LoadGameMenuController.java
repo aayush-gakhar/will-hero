@@ -1,18 +1,11 @@
 package game.willhero;
 
-import javafx.animation.Interpolator;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Text;
-import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -23,13 +16,10 @@ public class LoadGameMenuController {
     private AnchorPane anchorPane;
 
     @FXML
-    public ImageView background;
-
-    @FXML
     private ImageView hero;
 
     @FXML
-    public Group clouds;
+    private Group clouds;
 
     @FXML
     private ImageView btnSound;
@@ -43,37 +33,37 @@ public class LoadGameMenuController {
     }
 
     @FXML
-    protected void onSoundButtonClick() {
+    public void onSoundButtonClick() {
         Audio.onSoundButtonClick(btnSound);
     }
 
     @FXML
-    protected void onMusicButtonClick() {
+    public void onMusicButtonClick() {
         Audio.onMusicButtonClick(btnMusic,true);
     }
 
     @FXML
-    protected void onSave1ButtonClick() throws IOException, ClassNotFoundException {
+    public void onSave1ButtonClick() throws IOException, ClassNotFoundException {
         onSaveiButtonClick(1);
     }
 
     @FXML
-    protected void onSave2ButtonClick() throws IOException, ClassNotFoundException {
+    public void onSave2ButtonClick() throws IOException, ClassNotFoundException {
         onSaveiButtonClick(2);
     }
 
     @FXML
-    protected void onSave3ButtonClick() throws IOException {
+    public void onSave3ButtonClick() throws IOException {
         onSaveiButtonClick(3);
     }
 
     @FXML
-    protected void onSave4ButtonClick() throws IOException {
+    public void onSave4ButtonClick() throws IOException {
         onSaveiButtonClick(4);
     }
 
     @FXML
-    protected void onSave5ButtonClick() throws IOException {
+    public void onSave5ButtonClick() throws IOException {
         onSaveiButtonClick(5);
     }
 
@@ -101,7 +91,7 @@ public class LoadGameMenuController {
     }
 
     @FXML
-    protected void onBackButtonClick() throws IOException {
+    public void onBackButtonClick() throws IOException {
         Audio.playButtonSound();
         AnchorPane a = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("mainMenu.fxml")));
         anchorPane.getChildren().setAll(a);

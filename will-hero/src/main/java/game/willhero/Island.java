@@ -1,7 +1,5 @@
 package game.willhero;
 
-import javafx.scene.image.ImageView;
-
 import java.util.ArrayList;
 
 public class Island extends GameObject {

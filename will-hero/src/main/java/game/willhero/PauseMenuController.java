@@ -1,14 +1,9 @@
 package game.willhero;
 
-import javafx.animation.Interpolator;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -24,7 +19,7 @@ public class PauseMenuController {
     }
 
     @FXML
-    protected void onHomeButtonClick() throws IOException {
+    public void onHomeButtonClick() throws IOException {
         Audio.playButtonSound();
         Audio.changeToMenu();
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("mainMenu.fxml")));
@@ -32,7 +27,7 @@ public class PauseMenuController {
     }
 
     @FXML
-    protected void onRestartButtonClick() throws IOException {
+    public void onRestartButtonClick() throws IOException {
         Main.setGame(new Game());
         Audio.playButtonSound();
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("game.fxml")));
