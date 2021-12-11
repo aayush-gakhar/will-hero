@@ -64,10 +64,6 @@ public class GameController {
         return anchorPane;
     }
 
-    public AnchorPane getSaveGameMenu() {
-        return saveGameMenu;
-    }
-
 
     public void initialize(){
         Audio.setupButtons(btnSound, btnMusic,false);
@@ -203,11 +199,24 @@ public class GameController {
                 }
                 for(GameObject gameObject: Main.getGame().getCharacters()){
                     for (Node island : islands.getChildren()) {
-                        if (GameObject.isColliding(gameObject, (ImageView) island)) {
-                            gameObject.getSpeed().setY(-gameObject.getAcceleration().getY());
-                            gameObject.getSpeed().setX(gameObject.getSpeed().getX()*0.2);
-                            while (GameObject.isColliding(gameObject, (ImageView) island)) {
-                                gameObject.move(deltaTime);
+                        if(gameObject==hero){
+                            if (GameObject.isColliding(gameObject, (ImageView) island)) {
+                                gameObject.getSpeed().setY(-gameObject.getAcceleration().getY());
+                                while (GameObject.isColliding(gameObject, (ImageView) island)) {
+                                    gameObject.move(deltaTime);
+                                }
+                            }
+                        }else {
+                            if (GameObject.isColliding(gameObject, (ImageView) island)) {
+                                if(gameObject.getPosition().getY()+60>((ImageView) island).getY()){
+                                    gameObject.getSpeed().setX(0);
+                                    continue;
+                                }
+                                gameObject.getSpeed().setY(-gameObject.getAcceleration().getY());
+                                gameObject.getSpeed().setX(gameObject.getSpeed().getX() * 0.2);
+//                                while (GameObject.isColliding(gameObject, (ImageView) island)) {
+//                                    gameObject.move(deltaTime);
+//                                }
                             }
                         }
                     }

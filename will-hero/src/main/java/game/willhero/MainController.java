@@ -59,7 +59,7 @@ public class MainController {
         Timeline timeline = new Timeline();
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.setAutoReverse(true);
-        KeyValue yValue  = new KeyValue(hero.yProperty(), 130, Interpolator.EASE_IN);
+        KeyValue yValue  = new KeyValue(hero.yProperty(), 120, Interpolator.EASE_IN);
         KeyFrame keyFrame  = new KeyFrame(Duration.millis(500), yValue);
         timeline.getKeyFrames().addAll(keyFrame);
         timeline.play();

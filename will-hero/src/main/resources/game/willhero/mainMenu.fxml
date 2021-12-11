@@ -35,7 +35,7 @@
          <Image url="@assets/btnsound0.png" />
       </ImageView>
    </Group>
-   <ImageView fx:id="hero" fitHeight="77.0" fitWidth="75.0" layoutX="121.0" layoutY="337.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fx:id="hero" fitHeight="65.0" fitWidth="49.0" layoutX="121.0" layoutY="337.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@assets/hero.png" />
    </ImageView>
    <Group fx:id="islands" layoutX="60.0" layoutY="520.0">
@@ -90,5 +90,5 @@
    <ImageView fitHeight="142.0" fitWidth="142.0" layoutX="820.0" layoutY="385.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@assets/orcBoss.png" />
    </ImageView>
-   <Button layoutX="895.0" layoutY="38.0" mnemonicParsing="false" text="winGame" onMouseClicked="#onwinbutton"/>
+   <Button layoutX="895.0" layoutY="38.0" mnemonicParsing="false" onMouseClicked="#onwinbutton" text="winGame" />
 </AnchorPane>
