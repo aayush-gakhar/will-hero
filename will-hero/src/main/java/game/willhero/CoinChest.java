@@ -11,7 +11,18 @@ public class CoinChest extends Chest {
         this.coins = coins;
     }
 
-    public CoinChest(Vector position, Vector speed, Vector acceleration){
-        super(position, speed, acceleration);
+    public CoinChest(double x,boolean opened,long coins){
+        super(x,opened);
+        this.coins= coins;
+    }
+
+    @Override
+    public void open(){
+        if(this.isOpened()){
+           return;
+        }
+        this.setOpened(true);
+        super.setImage("assets/chestOpen.png");
+        Main.getGame().addCoins(this.coins);
     }
 }

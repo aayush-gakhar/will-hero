@@ -7,7 +7,7 @@ public class Sword extends Weapon {
         return this.length;
     }
 
-    public Sword(Vector position, Vector speed, Vector acceleration){
-        super(position, speed, acceleration);
+    public Sword(){
+        super("assets/weaponSword.png");
     }
 }

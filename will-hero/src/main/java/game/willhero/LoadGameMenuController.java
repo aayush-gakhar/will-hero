@@ -81,6 +81,7 @@ public class LoadGameMenuController {
         try{
             Game game=Game.deserialize(i);
             if (game==null){
+                System.out.println("No game found");
                 throw new Exception("Save file empty");
             }
             Main.setGame(new Game(game));
@@ -88,6 +89,7 @@ public class LoadGameMenuController {
 
         }catch (Exception e){
             System.out.println("exception: "+e);
+            e.printStackTrace();
             Main.setGame(new Game());
         }
         Audio.playButtonSound();

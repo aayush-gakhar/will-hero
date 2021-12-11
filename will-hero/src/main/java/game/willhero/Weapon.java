@@ -30,7 +30,7 @@ public abstract class Weapon extends GameObject {
         this.projectile = projectile;
     }
 
-    public Weapon(Vector position, Vector speed, Vector acceleration){
-        super(position, speed, acceleration);
+    public Weapon(String imagePath){
+        super(new Vector(0,0), new Vector(0,0), new Vector(0,0),imagePath);
     }
 }

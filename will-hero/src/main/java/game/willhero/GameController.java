@@ -7,6 +7,7 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
@@ -43,6 +44,12 @@ public class GameController {
     private Group characters;
 
     @FXML
+    private Group chests;
+
+    @FXML
+    private Group heroGroup;
+
+    @FXML
     private ImageView btnSound;
 
     @FXML
@@ -71,11 +78,15 @@ public class GameController {
         Main.setGameStarted(true);
         Main.getGame().setPaused(false);
         hero = Main.getGame().getHero();
+        heroGroup.getChildren().add(hero);
         score.setText(""+Main.getGame().getScore());
         coins.setText(""+Main.getGame().getCoins());
         System.out.println("Game started");
         for(GameObject object: Main.getGame().getCharacters()) {
             characters.getChildren().add(object);
+        }
+        for(GameObject object: Main.getGame().getChests()) {
+            chests.getChildren().add(object);
         }
         hero.setX(hero.getPosition().getX());
         hero.setY(hero.getPosition().getY());
@@ -119,6 +130,7 @@ public class GameController {
 
     @FXML
     public void onPauseButtonClick() throws IOException {
+        if(Main.getGame().isGameOver())return;
         if(!Main.getGame().isPaused()){
             System.out.println("Game paused");
             stopTimers();
@@ -166,17 +178,15 @@ public class GameController {
 
     @FXML
     public void keyPressed(KeyEvent event) {
-        switch (event.getCode()) {
-            case SPACE -> {
-                if(Main.isGameStarted() && !Main.getGame().isPaused() && !Main.getGame().isGameOver()){
-                    Timeline timeline = new Timeline();
-                    KeyValue keyValue = new KeyValue(hero.xProperty(), hero.getX()+100, Interpolator.EASE_BOTH);
-                    KeyFrame keyFrame = new KeyFrame(Duration.millis(10), keyValue);
-                    timeline.getKeyFrames().add(keyFrame);
-                    timeline.play();
-                    Main.getGame().addScore(1);
-                    Audio.playHeroMoveSound();
-                }
+        if (event.getCode() == KeyCode.SPACE) {
+            if (Main.isGameStarted() && !Main.getGame().isPaused() && !Main.getGame().isGameOver()) {
+                Timeline timeline = new Timeline();
+                KeyValue keyValue = new KeyValue(hero.xProperty(), hero.getX() + 100, Interpolator.EASE_BOTH);
+                KeyFrame keyFrame = new KeyFrame(Duration.millis(10), keyValue);
+                timeline.getKeyFrames().add(keyFrame);
+                timeline.play();
+                Main.getGame().addScore(1);
+                Audio.playHeroMoveSound();
             }
         }
     }
@@ -191,32 +201,43 @@ public class GameController {
                     lastUpdate= now;
                     return;
                 }
-                score.setText(""+Main.getGame().getScore());
-                coins.setText(""+Main.getGame().getCoins());
                 double deltaTime=(now-lastUpdate)/1000000000.0;
                 if(deltaTime>0.02){
                     deltaTime=0.02;
                 }
+
+                //update ui
+                score.setText(""+Main.getGame().getScore());
+                coins.setText(""+Main.getGame().getCoins());
+
+                //collisions
+                for (Node island : islands.getChildren()) {
+                    if (GameObject.isColliding(hero, (ImageView) island)) {
+                        hero.getSpeed().setY(-hero.getAcceleration().getY());
+                        while (GameObject.isColliding(hero, (ImageView) island)) {
+                            hero.move(deltaTime);
+                        }
+                    }
+                }
+                for(GameObject gameObject: Main.getGame().getChests()) {
+                    for (Node island : islands.getChildren()) {
+                        if (GameObject.isColliding(gameObject, (ImageView) island)) {
+                            gameObject.getSpeed().setY(0);
+                            gameObject.getAcceleration().setY(0);
+                        }
+                    }
+                }
                 for(GameObject gameObject: Main.getGame().getCharacters()){
                     for (Node island : islands.getChildren()) {
-                        if(gameObject==hero){
-                            if (GameObject.isColliding(gameObject, (ImageView) island)) {
-                                gameObject.getSpeed().setY(-gameObject.getAcceleration().getY());
-                                while (GameObject.isColliding(gameObject, (ImageView) island)) {
-                                    gameObject.move(deltaTime);
-                                }
+                        if (GameObject.isColliding(gameObject, (ImageView) island)) {
+                            if(gameObject.getPosition().getY()+50>((ImageView) island).getY()){
+                                gameObject.getSpeed().setX(0);
+                                continue;
                             }
-                        }else {
-                            if (GameObject.isColliding(gameObject, (ImageView) island)) {
-                                if(gameObject.getPosition().getY()+60>((ImageView) island).getY()){
-                                    gameObject.getSpeed().setX(0);
-                                    continue;
-                                }
-                                gameObject.getSpeed().setY(-gameObject.getAcceleration().getY());
-                                gameObject.getSpeed().setX(gameObject.getSpeed().getX() * 0.2);
-//                                while (GameObject.isColliding(gameObject, (ImageView) island)) {
-//                                    gameObject.move(deltaTime);
-//                                }
+                            gameObject.getSpeed().setY(-gameObject.getAcceleration().getY());
+                            gameObject.getSpeed().setX(gameObject.getSpeed().getX() * 0.2);
+                            while (GameObject.isColliding(gameObject, (ImageView) island)) {
+                                gameObject.move(deltaTime);
                             }
                         }
                     }
@@ -224,35 +245,64 @@ public class GameController {
                 for(GameObject character: Main.getGame().getCharacters()){
                     if(GameObject.isColliding(hero,character)){
                         character.getSpeed().setX(200);
+//                        System.out.println(GameObject.collisionDirection(hero,character));
                     }
                 }
+                for (GameObject gameObject: Main.getGame().getChests()){
+                    if(GameObject.isColliding(hero,gameObject)){
+                        ((Chest)gameObject).open();
+                    }
+                }
+
+                //move frame
                 if(hero.getPosition().getX()+islands.getTranslateX()>=300){
                     islands.setTranslateX(islands.getTranslateX()-(hero.getPosition().getX()+islands.getTranslateX()-300)/10.0);
-                    characters.setTranslateX(islands.getTranslateX()-(hero.getPosition().getX()+islands.getTranslateX()-300)/10.0);
+                    characters.setTranslateX(islands.getTranslateX());
+                    chests.setTranslateX(islands.getTranslateX());
+                    heroGroup.setTranslateX(islands.getTranslateX());
+                }
+
+                //move objects
+                hero.accelerate(deltaTime);
+                hero.move(deltaTime);
+                if(hero.getPosition().getY()>705){
+                    Main.getGame().over();
+                    System.out.println("Game Over");
+                    stopTimers();
+                    try {
+                        onGameOver();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
                 for (GameObject object:Main.getGame().getCharacters()) {
                     object.accelerate(deltaTime);
                     object.move(deltaTime);
                     if(object.getPosition().getY()>185){
-                        if(object==hero){
-                            Main.getGame().over();
-                            System.out.println("Game Over");
-                            stopTimers();
-                            try {
-                                onGameOver();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                        }else {
-                            if(!((Orc)object).isDead()) {
-                                characters.getChildren().remove(object);
-                                object.die();
-                            }
-
+                        if(!((Orc)object).isDead()) {
+                            characters.getChildren().remove(object);
+                            ((Orc)object).die();
                         }
                     }
                 }
+                for (GameObject object:Main.getGame().getChests()) {
+                    object.accelerate(deltaTime);
+                    object.move(deltaTime);
+                }
 
+                //win Game
+                if(Main.getGame().getScore()>=100){
+                    stopTimers();
+                    Main.getGame().win();
+                    FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("winGame.fxml")));
+                    Scene scene = null;
+                    try {
+                        scene = new Scene(loader.load(),1024,768);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    Main.getPrimaryStage().setScene(scene);
+                }
 
 
                 lastUpdate=now;

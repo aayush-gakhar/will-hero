@@ -47,6 +47,10 @@ public abstract class GameObject extends ImageView implements Serializable {
         this.setY(position.getY());
     }
 
+    public void setImage(String imagePath) {
+        this.setImage(new Image(Objects.requireNonNull(Main.class.getResourceAsStream(imagePath))));
+    }
+
     GameObject(){
 
     }
@@ -79,6 +83,30 @@ public abstract class GameObject extends ImageView implements Serializable {
         return a!=b && a.getLayoutBounds().intersects(b.getLayoutBounds());
     }
 
+    public static double getWidth(ImageView imageView) {
+        return imageView.getImage().getWidth();
+    }
+
+    public static double getHeight(ImageView imageView) {
+        return imageView.getImage().getHeight();
+    }
+
+    public static int collisionDirection(ImageView a, ImageView b) {
+        if(!isColliding(a,b)) return 0;
+        int o=10;
+        if(a.getX()+getWidth(a)<b.getX()+o){
+
+            return 1;
+        }
+        else if(a.getX()+o>b.getX()+getWidth(b)){
+            return 3;
+        }else {
+            if(a.getY()+getHeight(a)<b.getY()){
+                return 2;
+            }else return 4;
+        }
+    }
+
     public void move(double deltaTime) {
         this.position.setX(this.getX());
         this.position.setY(this.getY());
@@ -92,10 +120,6 @@ public abstract class GameObject extends ImageView implements Serializable {
     public void accelerate(double deltaTime) {
         this.speed.add(this.acceleration.scale(deltaTime));
 //        System.out.println(speed.getX()+" "+speed.getY());
-    }
-
-    public void die(){
-
     }
 
 }

@@ -6,4 +6,8 @@ public class GreenOrc extends Orc {
         super(x,-200,"assets/orcGreen.png");
     }
 
+    GreenOrc(double x,double y) {
+        super(x,y,"assets/orcGreen.png");
+    }
+
 }

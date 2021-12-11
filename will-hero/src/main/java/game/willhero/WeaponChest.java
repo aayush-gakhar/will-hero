@@ -11,7 +11,18 @@ public class WeaponChest extends Chest {
         this.weapon = weapon;
     }
 
-    public WeaponChest(Vector position, Vector speed, Vector acceleration){
-        super(position, speed, acceleration);
+    public WeaponChest(double x,boolean opened,Weapon weapon){
+        super(x,opened);
+        this.weapon = weapon;
+    }
+
+    @Override
+    public void open(){
+        if(this.isOpened()){
+            return;
+        }
+        this.setOpened(true);
+        super.setImage("assets/chestOpen.png");
+        Main.getGame().getHero().getWeapons().add(this.weapon);
     }
 }

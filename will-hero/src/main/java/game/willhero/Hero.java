@@ -6,12 +6,13 @@ import javafx.scene.image.ImageView;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Hero extends GameObject{
 
     private Helmet helmet;
-    private ArrayList<Weapon> weapons;
+    private List<Weapon> weapons=new ArrayList<>();
     private Weapon currentWeapon;
     private long moves;
 
@@ -19,7 +20,7 @@ public class Hero extends GameObject{
         return this.helmet;
     }
 
-    public ArrayList<Weapon> getWeapons(){
+    public List<Weapon> getWeapons(){
         return this.weapons;
     }
 
@@ -45,7 +46,7 @@ public class Hero extends GameObject{
 
 
     Hero(){
-        super(new Vector(60,-300),new Vector(0,0),new Vector(0,500),"assets/hero.png");
+        super(new Vector(60,0),new Vector(0,0),new Vector(0,500),"assets/hero.png");
     }
 
     Hero(double x, double y) {

@@ -11,7 +11,10 @@ public abstract class Chest extends GameObject {
         this.opened = opened;
     }
 
-    public Chest(Vector position, Vector speed, Vector acceleration){
-        super(position, speed, acceleration);
+    public abstract void open();
+
+    public Chest(double x,boolean opened){
+        super(new Vector(x,-200), new Vector(0,0), new Vector(0,200),opened?"assets/ChestOpen.png":"assets/ChestClosed.png");
+        this.opened = opened;
     }
 }
