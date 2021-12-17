@@ -95,14 +95,14 @@ public class Game implements Serializable {
         characters.add(new RedOrc(11900));
 
         chests.add(new WeaponChest(300,false,true));
-        chests.add(new WeaponChest(800,false,false));
-        chests.add(new CoinChest(1000,false,50));
-        chests.add(new CoinChest(2000,false,50));
-        chests.add(new CoinChest(3500,false,50));
+        chests.add(new WeaponChest(900,false,false));
+        chests.add(new CoinChest(1500,false,50));
+        chests.add(new CoinChest(2200,false,50));
+        chests.add(new CoinChest(3630,false,50));
         chests.add(new CoinChest(4500,false,50));
-        chests.add(new CoinChest(6000,false,50));
-        chests.add(new CoinChest(7500,false,50));
-        chests.add(new CoinChest(9000,false,50));
+        chests.add(new CoinChest(6270,false,50));
+        chests.add(new CoinChest(7610,false,50));
+        chests.add(new CoinChest(9100,false,50));
     }
 
     public void setGameObjects(List<GameObject> prevCharacters, List<GameObject> chests) {
