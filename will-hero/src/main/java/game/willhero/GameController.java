@@ -289,6 +289,13 @@ public class GameController {
                 }
                 for(GameObject character: Main.getGame().getCharacters()){
                     if(GameObject.isColliding(hero,character)){
+                        if(character.getPosition().getY()+60<hero.getPosition().getY()){
+                            try {
+                                onGameOver();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
                         character.getSpeed().setX(200);
 //                        System.out.println(GameObject.collisionDirection(hero,character));
                     }
