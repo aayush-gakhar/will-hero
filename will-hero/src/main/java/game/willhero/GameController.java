@@ -46,6 +46,9 @@ public class GameController {
     private Group chests;
 
     @FXML
+    public Group obstacles;
+
+    @FXML
     private Group heroGroup;
 
     @FXML
@@ -86,11 +89,15 @@ public class GameController {
         swordLevel.setText(""+Main.getGame().getHero().getHelmet().getWeapon1Level());
         rocketLevel.setText(""+Main.getGame().getHero().getHelmet().getWeapon2Level());
         System.out.println("Game started");
+
         for(GameObject gameObject: Main.getGame().getCharacters()) {
             characters.getChildren().add(gameObject);
         }
         for(GameObject gameObject: Main.getGame().getChests()) {
             chests.getChildren().add(gameObject);
+        }
+        for(GameObject gameObject: Main.getGame().getObstacles()) {
+            obstacles.getChildren().add(gameObject);
         }
         hero.setX(hero.getPosition().getX());
         hero.setY(hero.getPosition().getY());
@@ -171,6 +178,7 @@ public class GameController {
     }
 
     public void onGameOver()throws IOException {
+        Main.getGame().over();
         System.out.println("Game over");
         stopTimers();
         gameOverMenu = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("gameOverMenu.fxml")));
@@ -256,6 +264,14 @@ public class GameController {
                         }
                     }
                 }
+                for(GameObject gameObject: Main.getGame().getObstacles()) {
+                    for (Node island : islands.getChildren()) {
+                        if (GameObject.isColliding(gameObject, (ImageView) island)) {
+                            gameObject.getSpeed().setY(0);
+                            gameObject.getAcceleration().setY(0);
+                        }
+                    }
+                }
                 for(GameObject gameObject: Main.getGame().getCharacters()){
                     for (Node island : islands.getChildren()) {
                         if (GameObject.isColliding(gameObject, (ImageView) island)) {
@@ -280,6 +296,12 @@ public class GameController {
                 for (GameObject gameObject: Main.getGame().getChests()){
                     if(GameObject.isColliding(hero,gameObject)){
                         ((Chest)gameObject).open();
+                    }
+                }
+                for (GameObject gameObject: Main.getGame().getObstacles()){
+                    if(GameObject.isColliding(hero,gameObject)){
+                        if(!((TNT)gameObject).isTimerStarted())
+                            ((TNT)gameObject).startTimer();
                     }
                 }
 
@@ -332,6 +354,7 @@ public class GameController {
                     islands.setTranslateX(islands.getTranslateX()-(hero.getPosition().getX()+islands.getTranslateX()-300)/10.0);
                     characters.setTranslateX(islands.getTranslateX());
                     chests.setTranslateX(islands.getTranslateX());
+                    obstacles.setTranslateX(islands.getTranslateX());
                     heroGroup.setTranslateX(islands.getTranslateX());
                 }
 
@@ -339,9 +362,6 @@ public class GameController {
                 hero.update(deltaTime);
 
                 if(hero.getPosition().getY()>705){
-                    Main.getGame().over();
-                    System.out.println("Game Over");
-                    stopTimers();
                     try {
                         onGameOver();
                     } catch (IOException e) {
@@ -359,8 +379,10 @@ public class GameController {
                     }
                 }
                 for (GameObject gameObject:Main.getGame().getChests()) {
-                    gameObject.accelerate(deltaTime);
-                    gameObject.move(deltaTime);
+                    gameObject.update(deltaTime);
+                }
+                for (GameObject gameObject:Main.getGame().getObstacles()) {
+                    gameObject.update(deltaTime);
                 }
 
                 //win Game

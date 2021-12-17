@@ -214,6 +214,7 @@
       </ImageView>
    </Group>
    <Group fx:id="chests" layoutX="60.0" layoutY="520.0" />
+   <Group fx:id="obstacles" layoutX="60.0" layoutY="520.0" />
    <Group fx:id="characters" layoutX="60.0" layoutY="520.0">
    </Group>
    <Group fx:id="heroGroup" layoutX="60.0" layoutY="520.0" />

@@ -17,11 +17,16 @@ public class Game implements Serializable {
     private boolean gameWon=false;
     private final List<GameObject> characters =new ArrayList<>();
     private final List<GameObject> chests =new ArrayList<>();
+    private final List<GameObject> obstacles =new ArrayList<>();
 
     private static final long coinsForRevive = 100;
 
     public boolean isPaused() {
         return paused;
+    }
+
+    public List<GameObject> getObstacles() {
+        return obstacles;
     }
 
     public void setPaused(boolean paused) {
@@ -103,6 +108,8 @@ public class Game implements Serializable {
         chests.add(new CoinChest(6270,false,50));
         chests.add(new CoinChest(7610,false,50));
         chests.add(new CoinChest(9100,false,50));
+
+        obstacles.add(new TNT(100,false));
     }
 
     public void setGameObjects(List<GameObject> prevCharacters, List<GameObject> chests) {
