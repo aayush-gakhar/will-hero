@@ -108,6 +108,8 @@ public class Game implements Serializable {
         chests.add(new CoinChest(6270,false,50));
         chests.add(new CoinChest(7610,false,50));
         chests.add(new CoinChest(9100,false,50));
+
+        obstacles.add(new TNT(100,false));
     }
 
     public void setGameObjects(List<GameObject> prevCharacters, List<GameObject> chests) {
