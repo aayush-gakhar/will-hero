@@ -319,6 +319,11 @@ public class GameController {
                                 }
                             }
                         }
+                        for (Node island : islands.getChildren()) {
+                            if (GameObject.isColliding(rocket, (ImageView) island)) {
+                                rocket.explode();
+                            }
+                        }
                     }
                 }
 
