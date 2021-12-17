@@ -291,7 +291,8 @@ public class GameController {
                     if(GameObject.isColliding(hero,character)){
                         if(hero.getPosition().getY()>character.getPosition().getY()+character.getHeight()-16 &&
                                 hero.getPosition().getY()<character.getPosition().getY()+character.getHeight()-10 &&
-                                hero.getPosition().getX()+hero.getWidth()>character.getPosition().getX()+character.getWidth()/2){
+                                hero.getPosition().getX()+hero.getWidth()>character.getPosition().getX()+character.getWidth()/4 &&
+                                hero.getPosition().getX()<character.getPosition().getX()+3*character.getWidth()/4){
                             try {
                                 System.out.println("below orc");
                                 onGameOver();
