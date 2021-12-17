@@ -87,6 +87,14 @@ public abstract class GameObject extends ImageView implements Serializable {
         return imageView.getImage().getHeight();
     }
 
+    public double getWidth() {
+        return getImage().getWidth();
+    }
+
+    public double getHeight() {
+        return getImage().getHeight();
+    }
+
     public static int collisionDirection(ImageView a, ImageView b) {
         if(!isColliding(a,b)) return 0;
         int o=10;
@@ -116,6 +124,11 @@ public abstract class GameObject extends ImageView implements Serializable {
     public void accelerate(double deltaTime) {
         this.speed.add(this.acceleration.scale(deltaTime));
 //        System.out.println(speed.getX()+" "+speed.getY());
+    }
+
+    public void update(double deltaTime) {
+        accelerate(deltaTime);
+        move(deltaTime);
     }
 
 }

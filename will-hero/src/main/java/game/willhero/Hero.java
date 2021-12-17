@@ -1,13 +1,11 @@
 package game.willhero;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Hero extends GameObject{
 
     private Helmet helmet;
-    private final List<Weapon> weapons=new ArrayList<>();
-    private Weapon currentWeapon;
+
     private long moves;
 
     public Helmet getHelmet(){
@@ -15,11 +13,7 @@ public class Hero extends GameObject{
     }
 
     public List<Weapon> getWeapons(){
-        return this.weapons;
-    }
-
-    public Weapon getCurrentWeapon(){
-        return this.currentWeapon;
+        return this.helmet.getWeapons();
     }
 
     public long getMoves(){
@@ -30,8 +24,16 @@ public class Hero extends GameObject{
         this.helmet = helmet;
     }
 
+    public Weapon getCurrentWeapon(){
+        return this.helmet.getCurrentWeapon();
+    }
+
+//    public void upgradeWeapon(Weapon weapon){
+//        this.helmet.upgradeWeapon(weapon);
+//    }
+
     public void setCurrentWeapon(Weapon currentWeapon){
-        this.currentWeapon = currentWeapon;
+        this.helmet.setCurrentWeapon(currentWeapon);
     }
 
     public void setMoves(long moves){
@@ -39,16 +41,19 @@ public class Hero extends GameObject{
     }
 
 
-    public Hero(){
+    public Hero(Helmet helmet){
         super(new Vector(60,0),new Vector(0,0),new Vector(0,500),"assets/hero.png");
+        this.helmet=helmet;
     }
 
-    public Hero(double x, double y) {
+    public Hero(double x, double y, Helmet helmet) {
         super(new Vector(x,y),new Vector(0,0),new Vector(0,500),"assets/hero.png");
+        this.helmet=helmet;
     }
 
-    public Hero(Vector position) {
+    public Hero(Vector position, Helmet helmet) {
         super(position,new Vector(0,0),new Vector(0,500),"assets/hero.png");
+        this.helmet=helmet;
     }
 
 }

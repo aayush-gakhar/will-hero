@@ -1,13 +1,13 @@
 package game.willhero;
 
 public class Sword extends Weapon {
-    private long length;
+    private static final long length=40;
 
     public long getLength(){
-        return this.length;
+        return length;
     }
 
-    public Sword(){
-        super("assets/weaponSword.png");
+    public Sword(int level){
+        super("assets/weaponSword.png",false,100,level);
     }
 }

@@ -2,16 +2,20 @@ package game.willhero;
 
 public abstract class Weapon extends GameObject {
 
-    private int damage;
+    private long damage;
     private int level;
     private boolean projectile;
 
-    public int getDamage(){
-        return this.damage;
+    public long getDamage(){
+        return this.damage*this.level;
     }
 
     public int getLevel(){
         return this.level;
+    }
+
+    public void upgrade(){
+        this.level++;
     }
 
     public boolean isProjectile(){
@@ -26,11 +30,14 @@ public abstract class Weapon extends GameObject {
         this.level = level;
     }
 
-    public void setProjectile(boolean projectile){
-        this.projectile = projectile;
+    public Weapon(String imagePath, boolean projectile, long damage, int level){
+        super(new Vector(0,0), new Vector(0,0), new Vector(0,0),imagePath);
+        this.projectile=projectile;
+        this.damage=damage;
+        this.level=level;
     }
 
-    public Weapon(String imagePath){
-        super(new Vector(0,0), new Vector(0,0), new Vector(0,0),imagePath);
+    public void update(double deltaTime){
+        super.update(deltaTime);
     }
 }

@@ -94,7 +94,8 @@ public class Game implements Serializable {
         characters.add(new GreenOrc(11300));
         characters.add(new RedOrc(11900));
 
-        chests.add(new WeaponChest(300,false,new Sword()));
+        chests.add(new WeaponChest(300,false,true));
+        chests.add(new WeaponChest(800,false,false));
         chests.add(new CoinChest(1000,false,50));
         chests.add(new CoinChest(2000,false,50));
         chests.add(new CoinChest(3500,false,50));
@@ -116,7 +117,7 @@ public class Game implements Serializable {
         }
         for (GameObject chest: chests) {
             if (chest instanceof WeaponChest) {
-                this.chests.add(new WeaponChest(chest.getPosition().getX(), ((Chest) chest).isOpened(), ((WeaponChest) chest).getWeapon()));
+                this.chests.add(new WeaponChest(chest.getPosition().getX(), ((Chest) chest).isOpened(), ((WeaponChest) chest).isSwordOrRocket()));
             }else if (chest instanceof CoinChest) {
                 this.chests.add(new CoinChest(chest.getPosition().getX(), ((Chest) chest).isOpened(), ((CoinChest) chest).getCoins()));
             }
@@ -140,12 +141,12 @@ public class Game implements Serializable {
     }
 
     public Game() {
-        hero = new Hero(60,0);
+        hero = new Hero(60,0, new HyenaHelmet());
         setGameObjects();
     }
 
     public Game(Game prevGame) {
-        this.hero = new Hero(prevGame.getHero().getPosition().getX(),prevGame.getHero().getPosition().getY());
+        this.hero = new Hero(prevGame.getHero().getPosition().getX(),prevGame.getHero().getPosition().getY(), new HyenaHelmet(prevGame.getHero().getHelmet()));
         this.score = prevGame.getScore();
         this.coins = prevGame.getCoins();
         this.revivedOnce = prevGame.isRevivedOnce();

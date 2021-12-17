@@ -30,6 +30,7 @@ public class Audio {
     private static AudioClip heroDeadSound;
     private static AudioClip heroFallSound;
     private static AudioClip gameOverSound;
+    private static AudioClip rocketSound;
 
 
 
@@ -57,6 +58,8 @@ public class Audio {
         heroFallSound = new AudioClip(new Media(Objects.requireNonNull(Main.class.getResource("sounds/charFall.m4a")).toString()).getSource());
 
         gameOverSound = new AudioClip(new Media(Objects.requireNonNull(Main.class.getResource("sounds/lose.m4a")).toString()).getSource());
+
+        rocketSound = new AudioClip(new Media(Objects.requireNonNull(Main.class.getResource("sounds/explodeRocket.m4a")).toString()).getSource());
     }
 
     public static void playMainMenuMusic() {
@@ -105,6 +108,10 @@ public class Audio {
 
     public static void playGameOverSound() {
         if(playSound)gameOverSound.play();
+    }
+
+    public static void playRocketSound() {
+        if(playSound)rocketSound.play();
     }
 
     public static void setupButtons(ImageView btnSound, ImageView btnMusic, boolean menuOrGame) {

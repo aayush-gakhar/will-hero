@@ -1,13 +1,56 @@
 package game.willhero;
 
 public class Rocket extends Weapon{
-    private long range;
+    private double timeRange=1;
+    private boolean isFired=false;
+    private boolean exploded=false;
 
-    public long getRange(){
-        return this.range;
+    public double getRange(){
+        return timeRange;
     }
 
-    public Rocket(Vector position, Vector speed, Vector acceleration){
-        super("assets/weaponRocket.png");
+    public void update(double elapsedTime){
+        if(isFired){
+            if(!exploded){
+                super.update(elapsedTime);
+                timeRange-=elapsedTime;
+                System.out.println(timeRange);
+                if(timeRange<=0){
+                    explode();
+                }
+            }
+        }
+    }
+
+    public Rocket(int level){
+        super("assets/weaponRocket.png",true,200,level);
+    }
+
+    public Rocket(int level, double x, double y){
+        super("assets/weaponRocket.png",true,200,level);
+        setX(x);
+        setY(y);
+        setPosition(new Vector(x,y));
+        setSpeed(new Vector(1000,0));
+        isFired=true;
+    }
+
+    public boolean isFired(){
+        return isFired;
+    }
+
+    public boolean isExploded(){
+        return exploded;
+    }
+
+    public void explode(){
+        exploded=true;
+        setOpacity(0);
+        Audio.playRocketSound();
+    }
+
+    public void vanish(){
+        exploded=true;
+        setOpacity(0);
     }
 }
