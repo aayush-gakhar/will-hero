@@ -10,7 +10,7 @@ public class Game implements Serializable {
     private static final long serialVersionUID = 1L;
     private final Hero hero;
     private long score=0;
-    private long coins=0;
+    private long coins=100;
     private boolean revivedOnce=false;
     private boolean paused=false;
     private boolean gameOver=false;
