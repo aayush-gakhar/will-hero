@@ -1,9 +1,10 @@
 package game.willhero;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Helmet {
+public abstract class Helmet implements Serializable {
     private final List<Weapon> Weapons=new ArrayList<>();
     private Weapon currentWeapon;
 
