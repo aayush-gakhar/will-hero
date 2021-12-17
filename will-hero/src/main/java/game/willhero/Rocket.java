@@ -1,7 +1,7 @@
 package game.willhero;
 
 public class Rocket extends Weapon{
-    private double timeRange=1;
+    private double timeRange=0.7;
     private boolean isFired=false;
     private boolean exploded=false;
 
