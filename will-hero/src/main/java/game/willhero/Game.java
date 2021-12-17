@@ -10,7 +10,7 @@ public class Game implements Serializable {
     private static final long serialVersionUID = 1L;
     private final Hero hero;
     private long score=0;
-    private long coins=100;
+    private long coins=0;
     private boolean revivedOnce=false;
     private boolean paused=false;
     private boolean gameOver=false;
@@ -82,10 +82,10 @@ public class Game implements Serializable {
     public void setGameObjects() {
         characters.add(new RedOrc(500));
         characters.add(new GreenOrc(1200));
-        characters.add(new GreenOrc(1600));
+        characters.add(new GreenOrc(1650));
         characters.add(new GreenOrc(1950));
         characters.add(new RedOrc(2700));
-        characters.add(new GreenOrc(3300));
+        characters.add(new GreenOrc(3100));
         characters.add(new RedOrc(4100));
         characters.add(new GreenOrc(4600));
         characters.add(new GreenOrc(5500));
@@ -103,13 +103,19 @@ public class Game implements Serializable {
         chests.add(new WeaponChest(900,false,false));
         chests.add(new CoinChest(1500,false,50));
         chests.add(new CoinChest(2200,false,50));
-        chests.add(new CoinChest(3630,false,50));
-        chests.add(new CoinChest(4500,false,50));
-        chests.add(new CoinChest(6270,false,50));
+        chests.add(new WeaponChest(3630,false,false));
+        chests.add(new CoinChest(4450,false,50));
+        chests.add(new WeaponChest(6270,false,true));
         chests.add(new CoinChest(7610,false,50));
         chests.add(new CoinChest(9100,false,50));
 
-        obstacles.add(new TNT(100,false));
+        obstacles.add(new TNT(1300,false));
+        obstacles.add(new TNT(2500,false));
+        obstacles.add(new TNT(3300,false));
+        obstacles.add(new TNT(5120,false));
+        obstacles.add(new TNT(7000,false));
+        obstacles.add(new TNT(8500,false));
+        obstacles.add(new TNT(10200,false));
     }
 
     public void setGameObjects(List<GameObject> prevCharacters, List<GameObject> chests) {

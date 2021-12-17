@@ -9,7 +9,7 @@ import javafx.util.Duration;
 import java.io.IOException;
 
 public class TNT extends GameObject{
-    private long radius=300;
+    private long radius=200;
     private long damage;
     private double time=2;
     private boolean exploded;
