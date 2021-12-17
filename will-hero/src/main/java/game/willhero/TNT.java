@@ -57,6 +57,7 @@ public class TNT extends GameObject{
         System.out.println(distance(Main.getGame().getHero()));
         if(distance(Main.getGame().getHero())<=radius){
             try {
+                System.out.println("TNT hit");
                 Main.getGameController().onGameOver();
             } catch (IOException e) {
                 e.printStackTrace();

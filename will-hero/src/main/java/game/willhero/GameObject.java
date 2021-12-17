@@ -112,7 +112,7 @@ public abstract class GameObject extends ImageView implements Serializable {
     }
 
     public double distance(GameObject gameObject) {
-        return Math.abs(this.getX()-gameObject.getX());
+        return Math.abs(this.getX()-gameObject.getX())+Math.abs(this.getY()-gameObject.getY());
     }
 
     public void move(double deltaTime) {

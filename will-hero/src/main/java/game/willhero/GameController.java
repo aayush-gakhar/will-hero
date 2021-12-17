@@ -289,8 +289,11 @@ public class GameController {
                 }
                 for(GameObject character: Main.getGame().getCharacters()){
                     if(GameObject.isColliding(hero,character)){
-                        if(character.getPosition().getY()+60<hero.getPosition().getY()){
+                        if(hero.getPosition().getY()>character.getPosition().getY()+character.getHeight()-16 &&
+                                hero.getPosition().getY()<character.getPosition().getY()+character.getHeight()-10 &&
+                                hero.getPosition().getX()+hero.getWidth()>character.getPosition().getX()+character.getWidth()/2){
                             try {
+                                System.out.println("below orc");
                                 onGameOver();
                             } catch (IOException e) {
                                 e.printStackTrace();
@@ -370,6 +373,7 @@ public class GameController {
 
                 if(hero.getPosition().getY()>705){
                     try {
+                        System.out.println("fall down");
                         onGameOver();
                     } catch (IOException e) {
                         e.printStackTrace();

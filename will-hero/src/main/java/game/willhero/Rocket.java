@@ -14,7 +14,6 @@ public class Rocket extends Weapon{
             if(!exploded){
                 super.update(elapsedTime);
                 timeRange-=elapsedTime;
-                System.out.println(timeRange);
                 if(timeRange<=0){
                     explode();
                 }
