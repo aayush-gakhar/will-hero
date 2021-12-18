@@ -273,6 +273,17 @@ public class GameController {
                     }
                 }
                 for(GameObject gameObject: Main.getGame().getCharacters()){
+                    boolean flag=false;
+                    for (GameObject gameObject1: Main.getGame().getCharacters()) {
+                        if(gameObject1==gameObject){
+                            flag=true;
+                        }else if(flag){
+                            if(GameObject.isColliding(gameObject,gameObject1)){
+                                gameObject1.getSpeed().setX(gameObject.getSpeed().getX());
+                                gameObject.getSpeed().setX(0);
+                            }
+                        }
+                    }
                     for (Node island : islands.getChildren()) {
                         if (GameObject.isColliding(gameObject, (ImageView) island)) {
                             if(gameObject.getPosition().getY()+50>((ImageView) island).getY()){
@@ -361,6 +372,12 @@ public class GameController {
                         for (Node island : islands.getChildren()) {
                             if (GameObject.isColliding(rocket, (ImageView) island)) {
                                 rocket.explode();
+                            }
+                        }
+                        for (GameObject gameObject : Main.getGame().getObstacles()) {
+                            if (GameObject.isColliding(rocket, gameObject)) {
+                                rocket.explode();
+                                ((TNT) gameObject).explode();
                             }
                         }
                     }
