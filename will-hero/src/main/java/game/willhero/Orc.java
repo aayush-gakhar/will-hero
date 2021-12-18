@@ -2,8 +2,8 @@ package game.willhero;
 
 public abstract class Orc extends GameObject{
 
-    private long health;
-    private long jumpHeight;
+    private long health=200;
+    private long jumpHeight=200;
     private final long coinsOnKill=10;
     private boolean dead=false;
 
@@ -13,6 +13,13 @@ public abstract class Orc extends GameObject{
 
     public long getHealth(){
         return this.health;
+    }
+
+    public void takeDamage(long damage){
+        this.health -= damage;
+//        if(this.health <= 0){
+//            this.die();
+//        }
     }
 
     public long getJumpHeight(){

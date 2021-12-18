@@ -15,7 +15,7 @@ public class Rocket extends Weapon{
                 super.update(elapsedTime);
                 timeRange-=elapsedTime;
                 if(timeRange<=0){
-                    explode();
+                    vanish();
                 }
             }
         }

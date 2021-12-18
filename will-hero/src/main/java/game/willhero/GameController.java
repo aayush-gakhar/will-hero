@@ -27,8 +27,7 @@ public class GameController {
     private AnchorPane saveGameMenu;
     private boolean firstFrame=true;
     private final List<Rocket> launchedRockets=new ArrayList<>();
-
-
+    private Boss boss;
 
     @FXML
     private AnchorPane anchorPane;
@@ -93,6 +92,7 @@ public class GameController {
         for(GameObject gameObject: Main.getGame().getCharacters()) {
             characters.getChildren().add(gameObject);
         }
+        boss = Main.getGame().getBoss();
         for(GameObject gameObject: Main.getGame().getChests()) {
             chests.getChildren().add(gameObject);
         }
@@ -165,6 +165,9 @@ public class GameController {
             heroGroup.getChildren().remove(hero.getCurrentWeapon());
             hero.setCurrentWeapon(hero.getHelmet().getWeapon1());
             System.out.println("Sword selected");
+        }else {
+            heroGroup.getChildren().remove(hero.getCurrentWeapon());
+            hero.setCurrentWeapon(null);
         }
     }
 
@@ -174,6 +177,9 @@ public class GameController {
             heroGroup.getChildren().remove(hero.getCurrentWeapon());
             hero.setCurrentWeapon(hero.getHelmet().getWeapon2());
             System.out.println("Rocket selected");
+        }else {
+            heroGroup.getChildren().remove(hero.getCurrentWeapon());
+            hero.setCurrentWeapon(null);
         }
     }
 
@@ -304,7 +310,7 @@ public class GameController {
                                 gameObject.getSpeed().setX(0);
                                 continue;
                             }
-                            gameObject.getSpeed().setY(-gameObject.getAcceleration().getY());
+                            gameObject.getSpeed().setY(-((Orc)gameObject).getJumpHeight());
                             gameObject.getSpeed().setX(gameObject.getSpeed().getX() * 0.2);
                             while (GameObject.isColliding(gameObject, (ImageView) island)) {
                                 gameObject.move(deltaTime);
@@ -313,10 +319,12 @@ public class GameController {
                     }
                     for (GameObject gameObject1: Main.getGame().getObstacles()) {
                         if(GameObject.isColliding(gameObject,gameObject1)){
-                            characters.getChildren().remove(gameObject);
-                            dead.add(gameObject);
-                            ((Orc)gameObject).die();
-                            ((TNT)gameObject1).destroy();
+                            if(!((TNT)gameObject1).isExploded()){
+                                characters.getChildren().remove(gameObject);
+                                dead.add(gameObject);
+                                ((Orc) gameObject).die();
+                                ((TNT) gameObject1).destroy();
+                            }
                         }
                     }
                 }Main.getGame().getCharacters().removeAll(dead);
@@ -390,6 +398,7 @@ public class GameController {
                         Main.getGame().getCharacters().removeAll(dead);
                     }
                 }
+                List<Rocket> deadrockets = new ArrayList<>();
                 for (Rocket rocket:launchedRockets){
                     if(!rocket.isExploded()){
                         rocket.update(deltaTime);
@@ -398,9 +407,12 @@ public class GameController {
                             if (GameObject.isColliding(rocket, gameObject)) {
                                 if (gameObject instanceof Orc) {
                                     if (!((Orc) gameObject).isDead()) {
-                                        characters.getChildren().remove(gameObject);
-                                        dead.add(gameObject);
-                                        ((Orc) gameObject).die();
+                                        ((Orc) gameObject).takeDamage(rocket.getDamage());
+                                        if(((Orc) gameObject).getHealth()<=0) {
+                                            characters.getChildren().remove(gameObject);
+                                            dead.add(gameObject);
+                                            ((Orc) gameObject).die();
+                                        }
                                         rocket.explode();
                                     }
                                 }
@@ -414,12 +426,16 @@ public class GameController {
                         }
                         for (GameObject gameObject : Main.getGame().getObstacles()) {
                             if (GameObject.isColliding(rocket, gameObject)) {
-                                rocket.explode();
-                                ((TNT) gameObject).destroy();
+                                if(!((TNT) gameObject).isExploded()){
+                                    rocket.explode();
+                                    ((TNT) gameObject).destroy();
+                                }
                             }
                         }
+                    }else {
+                        deadrockets.add(rocket);
                     }
-                }
+                }launchedRockets.removeAll(deadrockets);
 
                 //move frame
                 if(hero.getPosition().getX()+islands.getTranslateX()>=300){
@@ -462,7 +478,7 @@ public class GameController {
                 }
 
                 //win Game
-                if(Main.getGame().getScore()>=120){
+                if(Main.getGame().getScore()>=125){
                     stopTimers();
                     Audio.changeToMenu();
                     Main.getGame().win();
@@ -474,6 +490,22 @@ public class GameController {
                         e.printStackTrace();
                     }
                     Main.getPrimaryStage().setScene(scene);
+                    Main.setGameStarted(false);
+                }
+                //win game
+                if(boss.isDead()){
+                    System.out.println("win");
+                    stopTimers();
+                    Main.getGame().win();
+                    Audio.changeToMenu();
+                    FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("winGame.fxml")));
+                    try {
+                        Main.getPrimaryStage().setScene(new Scene(loader.load(),1024,768));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    Main.setGameStarted(false);
+
                 }
 
 

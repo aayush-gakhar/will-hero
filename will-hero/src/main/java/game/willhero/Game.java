@@ -18,6 +18,7 @@ public class Game implements Serializable {
     private final List<GameObject> characters =new ArrayList<>();
     private final List<GameObject> chests =new ArrayList<>();
     private final List<GameObject> obstacles =new ArrayList<>();
+    private Boss boss;
 
     private static final long coinsForRevive = 100;
 
@@ -35,6 +36,10 @@ public class Game implements Serializable {
 
     public Hero getHero() {
         return hero;
+    }
+
+    public Boss getBoss() {
+        return boss;
     }
 
     public long getScore() {
@@ -96,8 +101,10 @@ public class Game implements Serializable {
         characters.add(new GreenOrc(9000));
         characters.add(new GreenOrc(9900));
         characters.add(new RedOrc(10500));
-        characters.add(new GreenOrc(11300));
-        characters.add(new RedOrc(11900));
+        characters.add(new GreenOrc(11000));
+        boss=new Boss(11900);
+        characters.add(boss);
+
 
         chests.add(new WeaponChest(300,false,true));
         chests.add(new WeaponChest(900,false,false));
@@ -118,7 +125,7 @@ public class Game implements Serializable {
         obstacles.add(new TNT(10200,false));
     }
 
-    public void setGameObjects(List<GameObject> prevCharacters, List<GameObject> chests) {
+    public void setGameObjects(List<GameObject> prevCharacters, List<GameObject> prevChests, List<GameObject> prevObstacles) {
         for(GameObject orc:prevCharacters){
             if(!((Orc)orc).isDead()) {
                 if(orc instanceof GreenOrc) {
@@ -128,11 +135,17 @@ public class Game implements Serializable {
                 }
             }
         }
-        for (GameObject chest: chests) {
+        this.characters.add(boss);
+        for (GameObject chest: prevChests) {
             if (chest instanceof WeaponChest) {
                 this.chests.add(new WeaponChest(chest.getPosition().getX(), ((Chest) chest).isOpened(), ((WeaponChest) chest).isSwordOrRocket()));
             }else if (chest instanceof CoinChest) {
                 this.chests.add(new CoinChest(chest.getPosition().getX(), ((Chest) chest).isOpened(), ((CoinChest) chest).getCoins()));
+            }
+        }
+        for (GameObject obstacle: prevObstacles) {
+            if(!((TNT)obstacle).isExploded()){
+                this.obstacles.add(new TNT(obstacle.getPosition().getX(), ((TNT) obstacle).isExploded()));
             }
         }
     }
@@ -155,15 +168,17 @@ public class Game implements Serializable {
 
     public Game() {
         hero = new Hero(60,0, new HyenaHelmet());
+        boss=new Boss(11500);
         setGameObjects();
     }
 
     public Game(Game prevGame) {
         this.hero = new Hero(prevGame.getHero().getPosition().getX(),prevGame.getHero().getPosition().getY(), new HyenaHelmet(prevGame.getHero().getHelmet()));
+        boss=new Boss(prevGame.getBoss().getPosition().getX(),prevGame.getBoss().getPosition().getY());
         this.score = prevGame.getScore();
         this.coins = prevGame.getCoins();
         this.revivedOnce = prevGame.isRevivedOnce();
-        setGameObjects(prevGame.getCharacters(),prevGame.getChests());
+        setGameObjects(prevGame.getCharacters(),prevGame.getChests(),prevGame.getObstacles());
     }
 
     public void serialize(int i) throws IOException {
