@@ -95,20 +95,32 @@ public abstract class GameObject extends ImageView implements Serializable {
         return getImage().getHeight();
     }
 
-    public static int collisionDirection(ImageView a, ImageView b) {
-        if(!isColliding(a,b)) return 0;
-        int o=10;
-        if(a.getX()+getWidth(a)<b.getX()+o){
-
-            return 1;
-        }
-        else if(a.getX()+o>b.getX()+getWidth(b)){
-            return 3;
-        }else {
-            if(a.getY()+getHeight(a)<b.getY()){
+    public int collisionDirection(GameObject o) {
+//        hero.getPosition().getY()>character.getPosition().getY()+character.getHeight()-16 &&
+//                hero.getPosition().getY()<character.getPosition().getY()+character.getHeight()-10 &&
+//                hero.getPosition().getX()+hero.getWidth()>character.getPosition().getX()+character.getWidth()/4 &&
+//                hero.getPosition().getX()<character.getPosition().getX()+3*character.getWidth()/4;
+        if(!isColliding(this,o)) return 0;
+        //        2
+        //    1   o   3
+        //        4
+        double m=o.getWidth()/4;
+        if(getPosition().getX()+getWidth()>o.getPosition().getX()+o.getWidth()/4 &&
+                getPosition().getX()<o.getPosition().getX()+3*o.getWidth()/4){
+            if(getPosition().getY()>o.getPosition().getY()+o.getHeight()/4){
+                return 4;
+            }else if(getPosition().getY()+getHeight()<o.getPosition().getY()+m) {
                 return 2;
-            }else return 4;
+            }
+
+        }else{
+            if(getPosition().getX()+getWidth()<o.getPosition().getX()+m){
+                return 1;
+            }else if(getPosition().getX()>o.getPosition().getX()+o.getWidth()-m){
+                return 3;
+            }
         }
+        return 0;
     }
 
     public double distance(GameObject gameObject) {

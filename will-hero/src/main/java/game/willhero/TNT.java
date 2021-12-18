@@ -73,4 +73,30 @@ public class TNT extends GameObject{
         timeline.play();
 //        setOpacity(0);
     }
+
+    public void destroy(){
+        if(exploded){
+            return;
+        }
+        exploded = true;
+//        System.out.println(distance(Main.getGame().getHero()));
+//        if(distance(Main.getGame().getHero())<=radius){
+//            try {
+//                System.out.println("TNT hit");
+//                Main.getGameController().onGameOver();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+        setImage("assets/explosion.png");
+        setScaleX(15);
+        setScaleY(15);
+
+        Timeline timeline = new Timeline();
+        KeyValue kv = new KeyValue(opacityProperty(),0, Interpolator.EASE_OUT);
+        KeyFrame cloudKeyFrame  = new KeyFrame(Duration.millis(1000), kv);
+        timeline.getKeyFrames().addAll(cloudKeyFrame);
+        timeline.play();
+//        setOpacity(0);
+    }
 }
