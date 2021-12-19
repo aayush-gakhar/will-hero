@@ -16,6 +16,6 @@
    </ImageView>
    <ImageView fitHeight="66.0" fitWidth="66.0" onMouseClicked="#onSaveButtonClick" layoutX="85.0" pickOnBounds="true"
               preserveRatio="true">
-      <Image url="@assets/btnload.png"/>
+      <Image url="@assets/save.png"/>
    </ImageView>
 </AnchorPane>
