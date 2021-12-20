@@ -42,7 +42,7 @@ public class Hero extends GameObject{
 
 
     public Hero(Helmet helmet){
-        super(new Vector(60,0),new Vector(0,0),new Vector(0,500),"assets/hero.png");
+        super(new Vector(60,-500),new Vector(0,0),new Vector(0,500),"assets/hero.png");
         this.helmet=helmet;
     }
 

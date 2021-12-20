@@ -104,7 +104,6 @@ public class GameController {
         moveClouds();
         initializeTimers();
         startTimers();
-        System.out.println(hero.getFitHeight()+" "+hero.getFitWidth());
     }
 
     public void moveClouds(){
@@ -258,9 +257,11 @@ public class GameController {
                 //hero-islands
                 for (Node island : islands.getChildren()) {
                     if (GameObject.isColliding(hero, (ImageView) island)) {
-                        hero.getSpeed().setY(-hero.getAcceleration().getY());
-                        while (GameObject.isColliding(hero, (ImageView) island)) {
-                            hero.move(deltaTime);
+                        if(hero.getY()<((ImageView) island).getY()){
+                            hero.getSpeed().setY(-hero.getAcceleration().getY());
+                            while (GameObject.isColliding(hero, (ImageView) island)) {
+                                hero.move(deltaTime);
+                            }
                         }
                     }
                 }
@@ -346,13 +347,6 @@ public class GameController {
                                 double y=hero.getSpeed().getY();
                                 hero.getSpeed().setY(character.getSpeed().getY());
                                 character.getSpeed().setY(y);
-//                                gameObject.getSpeed().setX(gameObject1.getSpeed().getX());
-//                                gameObject1.getSpeed().setX(x);
-//                                hero.getSpeed().setY(hero.getSpeed().getY()*-1);
-//                                character.getSpeed().setY(character.getSpeed().getY()*-1);
-//                                while (GameObject.isColliding(hero, character)) {
-//                                    hero.move(deltaTime);
-//                                }
                             }
 //                            else {
 //                                character.getSpeed().setX(200);

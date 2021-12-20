@@ -8,6 +8,7 @@ public class Game implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
+    private static Game instance;
     private final Hero hero;
     private long score=0;
     private long coins=100;
@@ -24,6 +25,13 @@ public class Game implements Serializable {
 
     public boolean isPaused() {
         return paused;
+    }
+
+    public static Game getInstance() {
+        if (instance == null) {
+            instance = new Game();
+        }
+        return instance;
     }
 
     public List<GameObject> getObstacles() {
@@ -167,14 +175,16 @@ public class Game implements Serializable {
     }
 
     public Game() {
-        hero = new Hero(60,0, new HyenaHelmet());
+        instance = this;
+        hero = new Hero(60,-200, new HyenaHelmet());
         boss=new Boss(11500);
         setGameObjects();
     }
 
     public Game(Game prevGame) {
+        instance = this;
         this.hero = new Hero(prevGame.getHero().getPosition().getX(),prevGame.getHero().getPosition().getY(), new HyenaHelmet(prevGame.getHero().getHelmet()));
-        boss=new Boss(prevGame.getBoss().getPosition().getX(),prevGame.getBoss().getPosition().getY());
+        this.boss=new Boss(prevGame.getBoss().getPosition().getX(),prevGame.getBoss().getPosition().getY());
         this.score = prevGame.getScore();
         this.coins = prevGame.getCoins();
         this.revivedOnce = prevGame.isRevivedOnce();

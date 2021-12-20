@@ -122,6 +122,8 @@ public class Audio {
         }
         if(Audio.isPlayMusic()){
             btnMusic.setImage(new Image(Objects.requireNonNull(Main.class.getResourceAsStream("assets/btnmusic0.png"))));
+            stopMainMenuMusic();
+            stopGameMusic();
             if(menuOrGame)Audio.playMainMenuMusic();
             else Audio.playGameMusic();
         }else {
@@ -154,15 +156,15 @@ public class Audio {
     }
 
     public static void changeToMenu(){
+        Audio.stopGameMusic();
         if(Audio.isPlayMusic()){
-            Audio.stopGameMusic();
             Audio.playMainMenuMusic();
         }current=mainMenuMusic;
     }
 
     public static void changeToGame(){
+        Audio.stopMainMenuMusic();
         if(Audio.isPlayMusic()){
-            Audio.stopMainMenuMusic();
             Audio.playGameMusic();
         }current=gameMusic;
     }
