@@ -12,6 +12,9 @@ import java.util.Objects;
 public class Main extends Application implements Serializable {
 
     private static boolean gameStarted = false;
+    private static Game game;
+    private static Stage primaryStage;
+    private static GameController gameController;
 
     public static Game getGame() {
         return game;
@@ -20,12 +23,6 @@ public class Main extends Application implements Serializable {
     public static void setGame(Game game) {
         Main.game = game;
     }
-
-    private static Game game;
-
-    private static Stage primaryStage;
-
-    private static GameController gameController;
 
     public static GameController getGameController() {
         return gameController;

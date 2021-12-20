@@ -167,14 +167,14 @@ public class Game implements Serializable {
     }
 
     public Game() {
-        hero = new Hero(60,0, new HyenaHelmet());
+        hero = new Hero(60,-200, new HyenaHelmet());
         boss=new Boss(11500);
         setGameObjects();
     }
 
     public Game(Game prevGame) {
         this.hero = new Hero(prevGame.getHero().getPosition().getX(),prevGame.getHero().getPosition().getY(), new HyenaHelmet(prevGame.getHero().getHelmet()));
-        boss=new Boss(prevGame.getBoss().getPosition().getX(),prevGame.getBoss().getPosition().getY());
+        this.boss=new Boss(prevGame.getBoss().getPosition().getX(),prevGame.getBoss().getPosition().getY());
         this.score = prevGame.getScore();
         this.coins = prevGame.getCoins();
         this.revivedOnce = prevGame.isRevivedOnce();
