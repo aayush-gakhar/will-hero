@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane fx:id="anchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.willhero.MainController">
-   <ImageView fx:id="background" fitHeight="768.0" fitWidth="1024.0" onMouseClicked="#onwinbutton" pickOnBounds="true" preserveRatio="true">
+   <ImageView fx:id="background" fitHeight="768.0" fitWidth="1024.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@assets/background.png" />
    </ImageView>
    <Group fx:id="clouds">

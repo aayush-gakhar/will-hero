@@ -104,7 +104,6 @@ public class GameController {
         moveClouds();
         initializeTimers();
         startTimers();
-        System.out.println(hero.getFitHeight()+" "+hero.getFitWidth());
     }
 
     public void moveClouds(){
