@@ -156,15 +156,15 @@ public class Audio {
     }
 
     public static void changeToMenu(){
-        Audio.stopGameMusic();
         if(Audio.isPlayMusic()){
+            Audio.stopGameMusic();
             Audio.playMainMenuMusic();
         }current=mainMenuMusic;
     }
 
     public static void changeToGame(){
-        Audio.stopMainMenuMusic();
         if(Audio.isPlayMusic()){
+            Audio.stopMainMenuMusic();
             Audio.playGameMusic();
         }current=gameMusic;
     }
