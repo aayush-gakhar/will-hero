@@ -109,8 +109,7 @@ public class Game implements Serializable {
         characters.add(new GreenOrc(9000));
         characters.add(new GreenOrc(9900));
         characters.add(new RedOrc(10500));
-        characters.add(new GreenOrc(11000));
-        boss=new Boss(11900);
+        boss=new Boss(10950);
         characters.add(boss);
 
 
@@ -177,7 +176,6 @@ public class Game implements Serializable {
     public Game() {
         instance = this;
         hero = new Hero(60,-200, new HyenaHelmet());
-        boss=new Boss(11500);
         setGameObjects();
     }
 
