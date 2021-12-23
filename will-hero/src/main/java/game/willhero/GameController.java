@@ -324,7 +324,7 @@ public class GameController {
                                 characters.getChildren().remove(gameObject);
                                 dead.add(gameObject);
                                 ((Orc) gameObject).die();
-                                ((TNT) gameObject1).destroy();
+                                ((TNT) gameObject1).explode();
                             }
                         }
                     }
@@ -332,7 +332,7 @@ public class GameController {
                 //hero-orc
                 for(GameObject character: Main.getGame().getCharacters()){
                     if(GameObject.isColliding(hero,character)){
-                        if(hero.getPosition().getX() + hero.getWidth() > character.getPosition().getX() + character.getWidth() / 4 &&
+                        if(hero.getPosition().getX() + hero.getWidth() > character.getPosition().getX() + 10 &&
                                 hero.getPosition().getX() < character.getPosition().getX() + 3 * character.getWidth() / 4){
                             if (hero.getPosition().getY() > character.getPosition().getY() + character.getHeight() - 16 &&
                                     hero.getPosition().getY() < character.getPosition().getY() + character.getHeight() - 10) {
@@ -360,7 +360,6 @@ public class GameController {
                                 character.move(deltaTime);
                             }
                         }
-
 //                        System.out.println(GameObject.collisionDirection(hero,character));
                     }
                 }

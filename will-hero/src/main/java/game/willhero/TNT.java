@@ -53,7 +53,7 @@ public class TNT extends GameObject{
             return;
         }
         exploded = true;
-        System.out.println(distance(Main.getGame().getHero()));
+//        System.out.println(distance(Main.getGame().getHero()));
         if(distance(Main.getGame().getHero())<=radius){
             try {
                 System.out.println("TNT hit");
