@@ -15,6 +15,7 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
@@ -28,6 +29,7 @@ public class GameController {
     private boolean firstFrame=true;
     private final List<Rocket> launchedRockets=new ArrayList<>();
     private Boss boss;
+    private Factory factory=new Factory();
 
     @FXML
     private AnchorPane anchorPane;
@@ -227,7 +229,7 @@ public class GameController {
                 Game.getInstance().addScore(1);
                 Audio.playHeroMoveSound();
                 if(hero.getCurrentWeapon()!=null && hero.getCurrentWeapon().getLevel()>0 && hero.getCurrentWeapon().isProjectile()) {
-                    Rocket rocket=new Rocket( hero.getCurrentWeapon().getLevel(),hero.getX() + hero.getWidth() / 2, hero.getY() + hero.getHeight() / 2);
+                    Rocket rocket=Factory.createRocket(hero.getCurrentWeapon().getLevel(),hero.getX() + hero.getWidth() / 2, hero.getY() + hero.getHeight() / 2);
                     heroGroup.getChildren().add(rocket);
                     launchedRockets.add(rocket);
                 }
@@ -297,7 +299,10 @@ public class GameController {
                 }
                 //orc-orc, orc-islands
                 dead = new ArrayList<>();
-                for(GameObject gameObject: Game.getInstance().getCharacters()){
+//                for(GameObject gameObject: Game.getInstance().getCharacters()){
+                Iterator<GameObject> iterator = Game.getInstance().getCharacters().iterator();
+                for (;iterator.hasNext();){
+                    GameObject gameObject=iterator.next();
                     boolean flag=false;
                     for (GameObject gameObject1: Game.getInstance().getCharacters()) {
                         if(gameObject1==gameObject){
@@ -327,7 +332,8 @@ public class GameController {
                         if(GameObject.isColliding(gameObject,tnt)){
                             if(!((TNT)tnt).isExploded()){
                                 characters.getChildren().remove(gameObject);
-                                dead.add(gameObject);
+//                                dead.add(gameObject);
+                                iterator.remove();
                                 ((Orc) gameObject).die();
                                 dead.addAll(((TNT) tnt).explode());
 
@@ -381,19 +387,23 @@ public class GameController {
                         hero.getCurrentWeapon().setY(hero.getY() + hero.getHeight() / 2);
                     }
                     if(!hero.getCurrentWeapon().isProjectile()){
-                        dead = new ArrayList<>();
-                        for (GameObject gameObject : Game.getInstance().getCharacters()) {
+//                        dead = new ArrayList<>();
+//                        for (GameObject gameObject : Game.getInstance().getCharacters()) {
+                        iterator = Game.getInstance().getCharacters().iterator();
+                        for (;iterator.hasNext();){
+                            GameObject gameObject=iterator.next();
                             if (GameObject.isColliding(hero.getCurrentWeapon(), gameObject)) {
                                 if (gameObject instanceof Orc) {
                                     if (!((Orc) gameObject).isDead()) {
                                         characters.getChildren().remove(gameObject);
-                                        dead.add(gameObject);
+//                                        dead.add(gameObject);
+                                        iterator.remove();
                                         ((Orc) gameObject).die();
                                     }
                                 }
                             }
                         }
-                        Game.getInstance().getCharacters().removeAll(dead);
+//                        Game.getInstance().getCharacters().removeAll(dead);
                     }
                 }
                 List<Rocket> deadrockets = new ArrayList<>();
@@ -401,15 +411,19 @@ public class GameController {
                 for (Rocket rocket:launchedRockets){
                     if(!rocket.isExploded()){
                         rocket.update(deltaTime);
-                        dead = new ArrayList<>();
-                        for (GameObject gameObject : Game.getInstance().getCharacters()) {
+//                        dead = new ArrayList<>();
+//                        for (GameObject gameObject : Game.getInstance().getCharacters()) {
+                        iterator = Game.getInstance().getCharacters().iterator();
+                        for (;iterator.hasNext();){
+                            GameObject gameObject=iterator.next();
                             if (GameObject.isColliding(rocket, gameObject)) {
                                 if (gameObject instanceof Orc) {
                                     if (!((Orc) gameObject).isDead()) {
                                         ((Orc) gameObject).takeDamage(rocket.getDamage());
                                         if(((Orc) gameObject).getHealth()<=0) {
                                             characters.getChildren().remove(gameObject);
-                                            dead.add(gameObject);
+//                                            dead.add(gameObject);
+                                            iterator.remove();
                                             ((Orc) gameObject).die();
                                         }
                                         rocket.explode();
@@ -417,7 +431,7 @@ public class GameController {
                                 }
                             }
                         }
-                        Game.getInstance().getCharacters().removeAll(dead);
+//                        Game.getInstance().getCharacters().removeAll(dead);
                         for (Node island : islands.getChildren()) {
                             if (GameObject.isColliding(rocket, (ImageView) island)) {
                                 rocket.explode();
@@ -456,19 +470,23 @@ public class GameController {
                         e.printStackTrace();
                     }
                 }
-                dead = new ArrayList<>();
-                for (GameObject gameObject : Game.getInstance().getCharacters()) {
+//                dead = new ArrayList<>();
+                iterator = Game.getInstance().getCharacters().iterator();
+                for (;iterator.hasNext();){
+                    GameObject gameObject=iterator.next();
+//                for (GameObject gameObject : Game.getInstance().getCharacters()) {
                     gameObject.accelerate(deltaTime);
                     gameObject.move(deltaTime);
                     if (gameObject.getPosition().getY() > 185) {
                         if (!((Orc) gameObject).isDead()) {
                             characters.getChildren().remove(gameObject);
-                            dead.add(gameObject);
+//                            dead.add(gameObject);
                             ((Orc) gameObject).die();
+                            iterator.remove();
                         }
                     }
                 }
-                Game.getInstance().getCharacters().removeAll(dead);
+//                Game.getInstance().getCharacters().removeAll(dead);
                 for (GameObject gameObject:Game.getInstance().getChests()) {
                     gameObject.update(deltaTime);
                 }
