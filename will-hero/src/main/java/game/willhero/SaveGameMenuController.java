@@ -38,7 +38,7 @@ public class SaveGameMenuController {
     }
 
     public void onSaveibuttonClick(int i) throws IOException, ClassNotFoundException{
-        Main.getGame().serialize(i);
+        Game.getInstance().serialize(i);
         Audio.playButtonSound();
         Audio.changeToMenu();
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("mainMenu.fxml")));

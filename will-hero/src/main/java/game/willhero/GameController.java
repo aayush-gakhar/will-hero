@@ -72,31 +72,35 @@ public class GameController {
         return anchorPane;
     }
 
+    public Group getCharacters(){
+        return characters;
+    }
+
 
     public void initialize(){
         Audio.setupButtons(btnSound, btnMusic,false);
         Main.setGameController(this);
         Main.setGameStarted(true);
-        Main.getGame().setPaused(false);
-        hero = Main.getGame().getHero();
+        Game.getInstance().setPaused(false);
+        hero = Game.getInstance().getHero();
         heroGroup.getChildren().add(hero);
         if(hero.getCurrentWeapon()!=null && hero.getCurrentWeapon().getLevel()>0){
             heroGroup.getChildren().add(hero.getCurrentWeapon());
         }
-        score.setText(""+Main.getGame().getScore());
-        coins.setText(""+Main.getGame().getCoins());
-        swordLevel.setText(""+Main.getGame().getHero().getHelmet().getWeapon1Level());
-        rocketLevel.setText(""+Main.getGame().getHero().getHelmet().getWeapon2Level());
+        score.setText(""+Game.getInstance().getScore());
+        coins.setText(""+Game.getInstance().getCoins());
+        swordLevel.setText(""+Game.getInstance().getHero().getHelmet().getWeapon1Level());
+        rocketLevel.setText(""+Game.getInstance().getHero().getHelmet().getWeapon2Level());
         System.out.println("Game started");
 
-        for(GameObject gameObject: Main.getGame().getCharacters()) {
+        for(GameObject gameObject: Game.getInstance().getCharacters()) {
             characters.getChildren().add(gameObject);
         }
-        boss = Main.getGame().getBoss();
-        for(GameObject gameObject: Main.getGame().getChests()) {
+        boss = Game.getInstance().getBoss();
+        for(GameObject gameObject: Game.getInstance().getChests()) {
             chests.getChildren().add(gameObject);
         }
-        for(GameObject gameObject: Main.getGame().getObstacles()) {
+        for(GameObject gameObject: Game.getInstance().getObstacles()) {
             obstacles.getChildren().add(gameObject);
         }
         hero.setX(hero.getPosition().getX());
@@ -140,21 +144,21 @@ public class GameController {
 
     @FXML
     public void onPauseButtonClick() throws IOException {
-        if(Main.getGame().isGameOver())return;
-        if(!Main.getGame().isPaused()){
+        if(Game.getInstance().isGameOver())return;
+        if(!Game.getInstance().isPaused()){
             System.out.println("Game paused");
             stopTimers();
             pauseMenu = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("pauseMenu.fxml")));
             anchorPane.getChildren().add(pauseMenu);
             pauseMenu.setLayoutX(anchorPane.getWidth()/2 - 118);
             pauseMenu.setLayoutY(anchorPane.getHeight()/2 - 100);
-            Main.getGame().setPaused(true);
+            Game.getInstance().setPaused(true);
         }else {
             System.out.println("Game resumed");
             anchorPane.getChildren().remove(pauseMenu);
             anchorPane.getChildren().remove(saveGameMenu);
             startTimers();
-            Main.getGame().setPaused(false);
+            Game.getInstance().setPaused(false);
         }
     }
 
@@ -183,7 +187,7 @@ public class GameController {
     }
 
     public void onGameOver()throws IOException {
-        Main.getGame().over();
+        Game.getInstance().over();
         System.out.println("Game over");
         stopTimers();
         gameOverMenu = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("gameOverMenu.fxml")));
@@ -193,7 +197,7 @@ public class GameController {
 //            System.out.println("Game resumed");
 //            anchorPane.getChildren().remove(pauseMenu);
 //            startTimers();
-//            Main.getGame().setPaused(false);
+//            Game.getInstance().setPaused(false);
     }
 
     public void onSaveMenuOpen()throws IOException {
@@ -214,13 +218,13 @@ public class GameController {
     @FXML
     public void keyPressed(KeyEvent event) {
         if (event.getCode() == KeyCode.SPACE) {
-            if (Main.isGameStarted() && !Main.getGame().isPaused() && !Main.getGame().isGameOver()) {
+            if (Main.isGameStarted() && !Game.getInstance().isPaused() && !Game.getInstance().isGameOver()) {
                 Timeline timeline = new Timeline();
                 KeyValue keyValue = new KeyValue(hero.xProperty(), hero.getX() + 100, Interpolator.EASE_BOTH);
                 KeyFrame keyFrame = new KeyFrame(Duration.millis(10), keyValue);
                 timeline.getKeyFrames().add(keyFrame);
                 timeline.play();
-                Main.getGame().addScore(1);
+                Game.getInstance().addScore(1);
                 Audio.playHeroMoveSound();
                 if(hero.getCurrentWeapon()!=null && hero.getCurrentWeapon().getLevel()>0 && hero.getCurrentWeapon().isProjectile()) {
                     Rocket rocket=new Rocket( hero.getCurrentWeapon().getLevel(),hero.getX() + hero.getWidth() / 2, hero.getY() + hero.getHeight() / 2);
@@ -242,15 +246,16 @@ public class GameController {
                     return;
                 }
                 double deltaTime=(now-lastUpdate)/1000000000.0;
-                if(deltaTime>0.02){
-                    deltaTime=0.02;
-                }
+                deltaTime+=(deltaTime*Game.getInstance().getScore()/200);
+//                if(deltaTime>0.02){
+//                    deltaTime=0.02;
+//                }
 
                 //update ui
-                score.setText(""+Main.getGame().getScore());
-                coins.setText(""+Main.getGame().getCoins());
-                swordLevel.setText(""+Main.getGame().getHero().getHelmet().getWeapon1Level());
-                rocketLevel.setText(""+Main.getGame().getHero().getHelmet().getWeapon2Level());
+                score.setText(""+Game.getInstance().getScore());
+                coins.setText(""+Game.getInstance().getCoins());
+                swordLevel.setText(""+Game.getInstance().getHero().getHelmet().getWeapon1Level());
+                rocketLevel.setText(""+Game.getInstance().getHero().getHelmet().getWeapon2Level());
 
                 List<GameObject> dead;
                 //collisions
@@ -266,7 +271,7 @@ public class GameController {
                     }
                 }
                 //chest-islands, chest-hero
-                for(GameObject gameObject: Main.getGame().getChests()) {
+                for(GameObject gameObject: Game.getInstance().getChests()) {
                     for (Node island : islands.getChildren()) {
                         if (GameObject.isColliding(gameObject, (ImageView) island)) {
                             gameObject.getSpeed().setY(0);
@@ -278,7 +283,7 @@ public class GameController {
                     }
                 }
                 //TNT-islands, TNT-hero
-                for(GameObject gameObject: Main.getGame().getObstacles()) {
+                for(GameObject gameObject: Game.getInstance().getObstacles()) {
                     for (Node island : islands.getChildren()) {
                         if (GameObject.isColliding(gameObject, (ImageView) island)) {
                             gameObject.getSpeed().setY(0);
@@ -292,9 +297,9 @@ public class GameController {
                 }
                 //orc-orc, orc-islands
                 dead = new ArrayList<>();
-                for(GameObject gameObject: Main.getGame().getCharacters()){
+                for(GameObject gameObject: Game.getInstance().getCharacters()){
                     boolean flag=false;
-                    for (GameObject gameObject1: Main.getGame().getCharacters()) {
+                    for (GameObject gameObject1: Game.getInstance().getCharacters()) {
                         if(gameObject1==gameObject){
                             flag=true;
                         }else if(flag){
@@ -307,7 +312,7 @@ public class GameController {
                     }
                     for (Node island : islands.getChildren()) {
                         if (GameObject.isColliding(gameObject, (ImageView) island)) {
-                            if(gameObject.getPosition().getY()+50>((ImageView) island).getY()){
+                            if(gameObject.getPosition().getY()>((ImageView) island).getY()){
                                 gameObject.getSpeed().setX(0);
                                 continue;
                             }
@@ -318,23 +323,24 @@ public class GameController {
                             }
                         }
                     }
-                    for (GameObject gameObject1: Main.getGame().getObstacles()) {
-                        if(GameObject.isColliding(gameObject,gameObject1)){
-                            if(!((TNT)gameObject1).isExploded()){
+                    for (GameObject tnt: Game.getInstance().getObstacles()) {
+                        if(GameObject.isColliding(gameObject,tnt)){
+                            if(!((TNT)tnt).isExploded()){
                                 characters.getChildren().remove(gameObject);
                                 dead.add(gameObject);
                                 ((Orc) gameObject).die();
-                                ((TNT) gameObject1).explode();
+                                dead.addAll(((TNT) tnt).explode());
+
                             }
                         }
                     }
-                }Main.getGame().getCharacters().removeAll(dead);
+                }Game.getInstance().getCharacters().removeAll(dead);
                 //hero-orc
-                for(GameObject character: Main.getGame().getCharacters()){
+                for(GameObject character: Game.getInstance().getCharacters()){
                     if(GameObject.isColliding(hero,character)){
                         if(hero.getPosition().getX() + hero.getWidth() > character.getPosition().getX() + 10 &&
-                                hero.getPosition().getX() < character.getPosition().getX() + 3 * character.getWidth() / 4){
-                            if (hero.getPosition().getY() > character.getPosition().getY() + character.getHeight() - 16 &&
+                                hero.getPosition().getX() < character.getPosition().getX() + character.getWidth() -10){
+                            if (hero.getPosition().getY() > character.getPosition().getY() + character.getHeight() - 20 &&
                                     hero.getPosition().getY() < character.getPosition().getY() + character.getHeight() - 10) {
                                 try {
                                     System.out.println("below orc");
@@ -360,7 +366,6 @@ public class GameController {
                                 character.move(deltaTime);
                             }
                         }
-//                        System.out.println(GameObject.collisionDirection(hero,character));
                     }
                 }
 
@@ -377,7 +382,7 @@ public class GameController {
                     }
                     if(!hero.getCurrentWeapon().isProjectile()){
                         dead = new ArrayList<>();
-                        for (GameObject gameObject : Main.getGame().getCharacters()) {
+                        for (GameObject gameObject : Game.getInstance().getCharacters()) {
                             if (GameObject.isColliding(hero.getCurrentWeapon(), gameObject)) {
                                 if (gameObject instanceof Orc) {
                                     if (!((Orc) gameObject).isDead()) {
@@ -388,15 +393,16 @@ public class GameController {
                                 }
                             }
                         }
-                        Main.getGame().getCharacters().removeAll(dead);
+                        Game.getInstance().getCharacters().removeAll(dead);
                     }
                 }
                 List<Rocket> deadrockets = new ArrayList<>();
+                
                 for (Rocket rocket:launchedRockets){
                     if(!rocket.isExploded()){
                         rocket.update(deltaTime);
                         dead = new ArrayList<>();
-                        for (GameObject gameObject : Main.getGame().getCharacters()) {
+                        for (GameObject gameObject : Game.getInstance().getCharacters()) {
                             if (GameObject.isColliding(rocket, gameObject)) {
                                 if (gameObject instanceof Orc) {
                                     if (!((Orc) gameObject).isDead()) {
@@ -411,13 +417,13 @@ public class GameController {
                                 }
                             }
                         }
-                        Main.getGame().getCharacters().removeAll(dead);
+                        Game.getInstance().getCharacters().removeAll(dead);
                         for (Node island : islands.getChildren()) {
                             if (GameObject.isColliding(rocket, (ImageView) island)) {
                                 rocket.explode();
                             }
                         }
-                        for (GameObject gameObject : Main.getGame().getObstacles()) {
+                        for (GameObject gameObject : Game.getInstance().getObstacles()) {
                             if (GameObject.isColliding(rocket, gameObject)) {
                                 if(!((TNT) gameObject).isExploded()){
                                     rocket.explode();
@@ -451,7 +457,7 @@ public class GameController {
                     }
                 }
                 dead = new ArrayList<>();
-                for (GameObject gameObject : Main.getGame().getCharacters()) {
+                for (GameObject gameObject : Game.getInstance().getCharacters()) {
                     gameObject.accelerate(deltaTime);
                     gameObject.move(deltaTime);
                     if (gameObject.getPosition().getY() > 185) {
@@ -462,19 +468,19 @@ public class GameController {
                         }
                     }
                 }
-                Main.getGame().getCharacters().removeAll(dead);
-                for (GameObject gameObject:Main.getGame().getChests()) {
+                Game.getInstance().getCharacters().removeAll(dead);
+                for (GameObject gameObject:Game.getInstance().getChests()) {
                     gameObject.update(deltaTime);
                 }
-                for (GameObject gameObject:Main.getGame().getObstacles()) {
+                for (GameObject gameObject:Game.getInstance().getObstacles()) {
                     gameObject.update(deltaTime);
                 }
 
                 //win Game
-                if(Main.getGame().getScore()>=125){
+                if(Game.getInstance().getScore()>=125){
                     stopTimers();
                     Audio.changeToMenu();
-                    Main.getGame().win();
+                    Game.getInstance().win();
                     FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("winGame.fxml")));
                     Scene scene = null;
                     try {
@@ -489,7 +495,7 @@ public class GameController {
                 if(boss.isDead()){
                     System.out.println("win");
                     stopTimers();
-                    Main.getGame().win();
+                    Game.getInstance().win();
                     Audio.changeToMenu();
                     FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("winGame.fxml")));
                     try {

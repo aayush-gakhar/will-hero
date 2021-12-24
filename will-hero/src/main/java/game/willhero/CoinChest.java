@@ -23,6 +23,6 @@ public class CoinChest extends Chest {
         }
         this.setOpened(true);
         super.setImage("assets/chestOpen.png");
-        Main.getGame().addCoins(this.coins);
+        Game.getInstance().addCoins(this.coins);
     }
 }

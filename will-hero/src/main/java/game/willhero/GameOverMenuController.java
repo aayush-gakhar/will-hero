@@ -40,8 +40,8 @@ public class GameOverMenuController {
     @FXML
     public void onReviveButtonClick() throws IOException {
         Audio.playButtonSound();
-        if(Main.getGame().isRevivable()){
-            Main.getGame().revive();
+        if(Game.getInstance().isRevivable()){
+            Game.getInstance().revive();
             Main.getGameController().onRevive();
         }else {
             System.out.println("You can't revive");

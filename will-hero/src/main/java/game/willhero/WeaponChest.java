@@ -26,8 +26,8 @@ public class WeaponChest extends Chest {
         this.setOpened(true);
         super.setImage("assets/chestOpen.png");
         if(swordOrRocket)
-            Main.getGame().getHero().getHelmet().upgradeWeapon1();
+            Game.getInstance().getHero().getHelmet().upgradeWeapon1();
         else
-            Main.getGame().getHero().getHelmet().upgradeWeapon2();
+            Game.getInstance().getHero().getHelmet().upgradeWeapon2();
     }
 }
