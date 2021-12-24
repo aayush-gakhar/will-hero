@@ -48,7 +48,7 @@ public abstract class Orc extends GameObject{
 
     public void die(){
         this.dead = true;
-        Main.getGame().addCoins(this.coinsOnKill);
+        Game.getInstance().addCoins(this.coinsOnKill);
 //        this.
     }
 

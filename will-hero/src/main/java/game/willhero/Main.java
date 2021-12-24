@@ -16,9 +16,9 @@ public class Main extends Application implements Serializable {
     private static Stage primaryStage;
     private static GameController gameController;
 
-    public static Game getGame() {
-        return Game.getInstance();
-    }
+//    public static Game getGame() {
+//        return Game.getInstance();
+//    }
 
     public static void setGame(Game game) {
         Main.game = game;

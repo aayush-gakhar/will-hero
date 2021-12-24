@@ -7,6 +7,8 @@ import javafx.animation.Timeline;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TNT extends GameObject{
     private final long radius=200;
@@ -48,18 +50,30 @@ public class TNT extends GameObject{
 
     }
 
-    public void explode(){
+    public List<GameObject> explode(){
         if(exploded){
-            return;
+            return new ArrayList<>();
         }
         exploded = true;
 //        System.out.println(distance(Main.getGame().getHero()));
-        if(distance(Main.getGame().getHero())<=radius){
+        if(distance(Game.getInstance().getHero())<=radius){
             try {
                 System.out.println("TNT hit");
                 Main.getGameController().onGameOver();
             } catch (IOException e) {
                 e.printStackTrace();
+            }
+        }
+        List<GameObject> dead = new ArrayList<>();
+        for (GameObject gameObject : Game.getInstance().getCharacters()) {
+            if (distance(gameObject)<=radius) {
+                if (gameObject instanceof Orc) {
+                    if (!((Orc) gameObject).isDead()) {
+                        Main.getGameController().getCharacters().getChildren().remove(gameObject);
+                        dead.add(gameObject);
+                        ((Orc) gameObject).die();
+                    }
+                }
             }
         }
         setImage("assets/explosion.png");
@@ -72,6 +86,7 @@ public class TNT extends GameObject{
         timeline.getKeyFrames().addAll(cloudKeyFrame);
         timeline.play();
 //        setOpacity(0);
+        return dead;
     }
 
     public void destroy(){
