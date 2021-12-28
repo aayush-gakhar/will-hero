@@ -16,9 +16,9 @@ public class Game implements Serializable {
     private boolean paused=false;
     private boolean gameOver=false;
     private boolean gameWon=false;
-    private final List<GameObject> characters =new ArrayList<>();
-    private final List<GameObject> chests =new ArrayList<>();
-    private final List<GameObject> obstacles =new ArrayList<>();
+    private final List<Orc> characters =new ArrayList<>();
+    private final List<Chest> chests =new ArrayList<>();
+    private final List<TNT> obstacles =new ArrayList<>();
     private Boss boss;
 
     private static final long coinsForRevive = 100;
@@ -34,7 +34,7 @@ public class Game implements Serializable {
         return instance;
     }
 
-    public List<GameObject> getObstacles() {
+    public List<TNT> getObstacles() {
         return obstacles;
     }
 
@@ -133,7 +133,7 @@ public class Game implements Serializable {
         obstacles.add(new TNT(10200,false));
     }
 
-    public void setGameObjects(List<GameObject> prevCharacters, List<GameObject> prevChests, List<GameObject> prevObstacles) {
+    public void setGameObjects(List<Orc> prevCharacters, List<Chest> prevChests, List<TNT> prevObstacles) {
         for(GameObject orc:prevCharacters){
             if(!((Orc)orc).isDead()) {
                 if(orc instanceof GreenOrc) {
@@ -166,11 +166,11 @@ public class Game implements Serializable {
         return gameWon;
     }
 
-    public List<GameObject> getCharacters() {
+    public List<Orc> getCharacters() {
         return characters;
     }
 
-    public List<GameObject> getChests() {
+    public List<Chest> getChests() {
         return chests;
     }
 
