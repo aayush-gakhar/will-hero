@@ -247,7 +247,7 @@ public class GameController {
                     return;
                 }
                 double deltaTime=(now-lastUpdate)/1000000000.0;
-                deltaTime+=(deltaTime*Game.getInstance().getScore()/200);
+                deltaTime+=(deltaTime*Game.getInstance().getScore()/300);
 //                if(deltaTime>0.02){
 //                    deltaTime=0.02;
 //                }

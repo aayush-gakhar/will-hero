@@ -134,8 +134,8 @@ public class Game implements Serializable {
     }
 
     public void setGameObjects(List<Orc> prevCharacters, List<Chest> prevChests, List<TNT> prevObstacles) {
-        for(GameObject orc:prevCharacters){
-            if(!((Orc)orc).isDead()) {
+        for(Orc orc:prevCharacters){
+            if(!orc.isDead()) {
                 if(orc instanceof GreenOrc) {
                     this.characters.add(new GreenOrc(orc.getPosition().getX(), orc.getPosition().getY()));
                 }else if(orc instanceof RedOrc){
@@ -144,16 +144,16 @@ public class Game implements Serializable {
             }
         }
         this.characters.add(boss);
-        for (GameObject chest: prevChests) {
+        for (Chest chest: prevChests) {
             if (chest instanceof WeaponChest) {
-                this.chests.add(new WeaponChest(chest.getPosition().getX(), ((Chest) chest).isOpened(), ((WeaponChest) chest).isSwordOrRocket()));
+                this.chests.add(new WeaponChest(chest.getPosition().getX(), chest.isOpened(), ((WeaponChest) chest).isSwordOrRocket()));
             }else if (chest instanceof CoinChest) {
-                this.chests.add(new CoinChest(chest.getPosition().getX(), ((Chest) chest).isOpened(), ((CoinChest) chest).getCoins()));
+                this.chests.add(new CoinChest(chest.getPosition().getX(), chest.isOpened(), ((CoinChest) chest).getCoins()));
             }
         }
-        for (GameObject obstacle: prevObstacles) {
-            if(!((TNT)obstacle).isExploded()){
-                this.obstacles.add(new TNT(obstacle.getPosition().getX(), ((TNT) obstacle).isExploded()));
+        for (TNT obstacle: prevObstacles) {
+            if(!obstacle.isExploded()){
+                this.obstacles.add(new TNT(obstacle.getPosition().getX(), obstacle.isExploded()));
             }
         }
     }
