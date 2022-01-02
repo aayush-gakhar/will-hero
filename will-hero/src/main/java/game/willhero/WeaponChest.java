@@ -1,16 +1,16 @@
 package game.willhero;
 
 public class WeaponChest extends Chest {
-//    private Weapon weapon;
-    private boolean swordOrRocket;
+    private final Weapon weapon;
+    private final boolean swordOrRocket;
 
-//    public Weapon getWeapon(){
-//        return this.weapon;
-//    }
+    public Weapon getWeapon(){
+        return this.weapon;
+    }
 
     public WeaponChest(double x,boolean opened,boolean swordOrRocket){
         super(x,opened);
-//        this.weapon = weapon;
+        this.weapon = swordOrRocket ? new Sword(1) : new Rocket(1);
         this.swordOrRocket=swordOrRocket;
     }
 
