@@ -95,7 +95,6 @@ public class Game implements Serializable {
     public void setGameObjects() {
         characters.add(new RedOrc(500));
         characters.add(new GreenOrc(1200));
-        characters.add(new RedOrc(1190));
         characters.add(new GreenOrc(1650));
         characters.add(new GreenOrc(1950));
         characters.add(new RedOrc(2700));
