@@ -14,6 +14,8 @@ public class Audio extends Thread{
     private static boolean playMusic = true;
     private static boolean playSound = true;
 
+    private static Thread musicThread;
+
 
     public static boolean isPlayMusic() {
         return playMusic;
@@ -34,6 +36,7 @@ public class Audio extends Thread{
     private static AudioClip rocketSound;
 
     public void run(){
+        musicThread=this;
         initializeMedia();
     }
 
