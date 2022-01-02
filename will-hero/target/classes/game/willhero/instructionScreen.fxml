@@ -84,7 +84,7 @@
                <Font size="20.0" />
             </font>
          </Text>
-         <Text layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5. If the hero dies in the game, you can use 100 coins to resurrect the hero in the game. But note that in a game, you can resurrect the hero only once." wrappingWidth="959.3768310546875">
+         <Text layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5. If the hero dies in the game, you can use 100 coins to resurrect the hero in the game. But note that in a game, you can resurrect the hero only once." wrappingWidth="959.3768310546875">
             <font>
                <Font size="20.0" />
             </font>
