@@ -11,7 +11,7 @@ public class Game implements Serializable {
     private static Game instance;
     private final Hero hero;
     private long score=0;
-    private long coins=100;
+    private long coins=0;
     private boolean revivedOnce=false;
     private boolean paused=false;
     private boolean gameOver=false;

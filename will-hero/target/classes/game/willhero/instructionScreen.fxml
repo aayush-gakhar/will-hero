@@ -66,47 +66,47 @@
          </Text>
          <Text layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. There is a hero in the game which will continue to jump on it’s position and by pressing the “SPACE” key the hero will move forward." wrappingWidth="959.3768310546875">
             <font>
-               <Font size="24.0" />
+               <Font size="20.0" />
             </font>
          </Text>
          <Text layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2. Everytime hero moves forward, he should land on an island." wrappingWidth="959.3768310546875">
             <font>
-               <Font size="24.0" />
+               <Font size="20.0" />
             </font>
          </Text>
          <Text layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3. Hero can collide with orcs and he can kill the orcs by either making them fall into the abyss, by making them collide with a TNT or by killing them with some weapon." wrappingWidth="959.3768310546875">
             <font>
-               <Font size="24.0" />
+               <Font size="20.0" />
             </font>
          </Text>
          <Text layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4. Hero will die if the hero fails to land on an island and falls into the abyss, if the hero comes under the orc, if the hero is in the range of TNT when the TNT bursts or if the hero is killed by Boss." wrappingWidth="959.3768310546875">
             <font>
-               <Font size="24.0" />
+               <Font size="20.0" />
             </font>
          </Text>
          <Text layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5. If the hero dies in the game, you can use 100 coins to resurrect the hero in the game. But note that in a game, you can resurrect the hero only once." wrappingWidth="959.3768310546875">
             <font>
-               <Font size="24.0" />
+               <Font size="20.0" />
             </font>
          </Text>
          <Text layoutY="380.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6. Hero must defeat the boss either by weapons or making the boss fall into the abyss to win the game." wrappingWidth="959.3768310546875">
             <font>
-               <Font size="24.0" />
+               <Font size="20.0" />
             </font>
          </Text>
-         <Text layoutY="450.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7. You can save a game, or load a previously saved game. " wrappingWidth="959.3768310546875">
+         <Text layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7. You can save a game, or load a previously saved game. " wrappingWidth="959.3768310546875">
             <font>
-               <Font size="24.0" />
+               <Font size="20.0" />
             </font>
          </Text>
-         <Text layoutY="500.0" strokeType="OUTSIDE" strokeWidth="0.0" text="8. Hero can get weapons from the weapon chest. There are two kinds of weapons: Sword and TNT. There are also level upgradation of weapons which will make them even more powerful. Hero can use these to kill orcs." wrappingWidth="959.3768310546875">
+         <Text layoutY="475.0" strokeType="OUTSIDE" strokeWidth="0.0" text="8. Hero can get weapons from the weapon chest. There are two kinds of weapons: Sword and TNT. There are also level upgradation of weapons which will make them even more powerful. Hero can use these to kill orcs." wrappingWidth="959.3768310546875">
             <font>
-               <Font size="24.0" />
+               <Font size="20.0" />
             </font>
          </Text>
-         <Text layoutY="600.0" strokeType="OUTSIDE" strokeWidth="0.0" text="9. There are coins in the game, which you can collect from killing the orcs and by coin chests." wrappingWidth="959.3768310546875">
+         <Text layoutY="550.0" strokeType="OUTSIDE" strokeWidth="0.0" text="9. There are coins in the game, which you can collect from killing the orcs and by coin chests." wrappingWidth="959.3768310546875">
             <font>
-               <Font size="24.0" />
+               <Font size="20.0" />
             </font>
          </Text>
       </children>
