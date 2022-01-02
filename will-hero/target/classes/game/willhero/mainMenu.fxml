@@ -81,4 +81,5 @@
    <ImageView fitHeight="142.0" fitWidth="142.0" layoutX="820.0" layoutY="385.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@assets/orcMenu.png" />
    </ImageView>
+   <Button layoutX="460.0" layoutY="500.0" mnemonicParsing="false" text="Instructions" onMouseClicked="#onInstructionButton"/>
 </AnchorPane>

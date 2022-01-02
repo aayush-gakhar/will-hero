@@ -263,7 +263,7 @@ public class GameController {
                 //hero-islands
                 for (Node island : islands.getChildren()) {
                     if (GameObject.isColliding(hero, (ImageView) island)) {
-                        if(hero.getY()<((ImageView) island).getY()){
+                        if(hero.getY()<((ImageView) island).getY()+((ImageView) island).getImage().getHeight()/2){
                             hero.getSpeed().setY(-hero.getAcceleration().getY());
                             while (GameObject.isColliding(hero, (ImageView) island)) {
                                 hero.move(deltaTime);
@@ -316,7 +316,7 @@ public class GameController {
                     }
                     for (Node island : islands.getChildren()) {
                         if (GameObject.isColliding(gameObject, (ImageView) island)) {
-                            if(gameObject.getPosition().getY()>((ImageView) island).getY()){
+                            if(gameObject.getPosition().getY()>((ImageView) island).getY() || gameObject.getPosition().getX()+gameObject.getWidth()-10<((ImageView) island).getX()){
                                 gameObject.getSpeed().setX(0);
                                 continue;
                             }
@@ -325,6 +325,7 @@ public class GameController {
                             while (GameObject.isColliding(gameObject, (ImageView) island)) {
                                 gameObject.move(deltaTime);
                             }
+                            break;
                         }
                     }
                     for (TNT tnt: Game.getInstance().getObstacles()) {
@@ -335,7 +336,6 @@ public class GameController {
                                 iterator.remove();
                                 gameObject.die();
                                 dead.addAll(tnt.explode());
-
                             }
                         }
                     }
