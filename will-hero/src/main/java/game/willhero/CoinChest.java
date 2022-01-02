@@ -1,15 +1,15 @@
 package game.willhero;
 
 public class CoinChest extends Chest {
-    private long coins;
+    private final long coins;
 
     public long getCoins(){
         return this.coins;
     }
 
-    public void setCoins(long coins){
-        this.coins = coins;
-    }
+//    public void setCoins(long coins){
+//        this.coins = coins;
+//    }
 
     public CoinChest(double x,boolean opened,long coins){
         super(x,opened);

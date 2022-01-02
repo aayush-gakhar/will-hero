@@ -50,10 +50,11 @@ public class TNT extends GameObject{
 
     }
 
-    public List<GameObject> explode(){
+    public List<Orc> explode(){
         if(exploded){
             return new ArrayList<>();
         }
+        Audio.playRocketSound();
         exploded = true;
 //        System.out.println(distance(Main.getGame().getHero()));
         if(distance(Game.getInstance().getHero())<=radius){
@@ -64,16 +65,15 @@ public class TNT extends GameObject{
                 e.printStackTrace();
             }
         }
-        List<GameObject> dead = new ArrayList<>();
-        for (GameObject gameObject : Game.getInstance().getCharacters()) {
+        List<Orc> dead = new ArrayList<>();
+        for (Orc gameObject : Game.getInstance().getCharacters()) {
             if (distance(gameObject)<=radius) {
-                if (gameObject instanceof Orc) {
-                    if (!((Orc) gameObject).isDead()) {
-                        Main.getGameController().getCharacters().getChildren().remove(gameObject);
-                        dead.add(gameObject);
-                        ((Orc) gameObject).die();
-                    }
+                if (!((Orc) gameObject).isDead()) {
+                    Main.getGameController().getCharacters().getChildren().remove(gameObject);
+                    dead.add(gameObject);
+                    ((Orc) gameObject).die();
                 }
+
             }
         }
         setImage("assets/explosion.png");
@@ -93,6 +93,7 @@ public class TNT extends GameObject{
         if(exploded){
             return;
         }
+        Audio.playRocketSound();
         exploded = true;
 //        System.out.println(distance(Main.getGame().getHero()));
 //        if(distance(Main.getGame().getHero())<=radius){

@@ -4,7 +4,7 @@ public abstract class Weapon extends GameObject {
 
     private long damage;
     private int level;
-    private boolean projectile;
+    private final boolean projectile;
 
     public long getDamage(){
         return this.damage*this.level;

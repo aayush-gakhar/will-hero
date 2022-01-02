@@ -39,8 +39,9 @@ public class Main extends Application implements Serializable {
 
     @Override
     public void start(Stage stage) throws IOException {
-        Audio.initializeMedia();
-        Audio.playMainMenuMusic();
+        Thread audio = new Audio();
+        audio.start();
+
         primaryStage=stage;
         stage.setTitle("Will Hero");
         stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("assets/icon-256.png"))));

@@ -76,7 +76,7 @@ public abstract class GameObject extends ImageView implements Serializable {
     }
 
     public static boolean isColliding(ImageView a,ImageView b) {
-        return a!=b && a.getLayoutBounds().intersects(b.getLayoutBounds());
+        return a!=null && b!=null && a!=b && a.getLayoutBounds().intersects(b.getLayoutBounds());
     }
 
     public static double getWidth(ImageView imageView) {

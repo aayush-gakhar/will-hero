@@ -16,9 +16,9 @@ public class Game implements Serializable {
     private boolean paused=false;
     private boolean gameOver=false;
     private boolean gameWon=false;
-    private final List<GameObject> characters =new ArrayList<>();
-    private final List<GameObject> chests =new ArrayList<>();
-    private final List<GameObject> obstacles =new ArrayList<>();
+    private final List<Orc> characters =new ArrayList<>();
+    private final List<Chest> chests =new ArrayList<>();
+    private final List<TNT> obstacles =new ArrayList<>();
     private Boss boss;
 
     private static final long coinsForRevive = 100;
@@ -34,7 +34,7 @@ public class Game implements Serializable {
         return instance;
     }
 
-    public List<GameObject> getObstacles() {
+    public List<TNT> getObstacles() {
         return obstacles;
     }
 
@@ -132,9 +132,9 @@ public class Game implements Serializable {
         obstacles.add(new TNT(10200,false));
     }
 
-    public void setGameObjects(List<GameObject> prevCharacters, List<GameObject> prevChests, List<GameObject> prevObstacles) {
-        for(GameObject orc:prevCharacters){
-            if(!((Orc)orc).isDead()) {
+    public void setGameObjects(List<Orc> prevCharacters, List<Chest> prevChests, List<TNT> prevObstacles) {
+        for(Orc orc:prevCharacters){
+            if(!orc.isDead()) {
                 if(orc instanceof GreenOrc) {
                     this.characters.add(new GreenOrc(orc.getPosition().getX(), orc.getPosition().getY()));
                 }else if(orc instanceof RedOrc){
@@ -143,16 +143,16 @@ public class Game implements Serializable {
             }
         }
         this.characters.add(boss);
-        for (GameObject chest: prevChests) {
+        for (Chest chest: prevChests) {
             if (chest instanceof WeaponChest) {
-                this.chests.add(new WeaponChest(chest.getPosition().getX(), ((Chest) chest).isOpened(), ((WeaponChest) chest).isSwordOrRocket()));
+                this.chests.add(new WeaponChest(chest.getPosition().getX(), chest.isOpened(), ((WeaponChest) chest).isSwordOrRocket()));
             }else if (chest instanceof CoinChest) {
-                this.chests.add(new CoinChest(chest.getPosition().getX(), ((Chest) chest).isOpened(), ((CoinChest) chest).getCoins()));
+                this.chests.add(new CoinChest(chest.getPosition().getX(), chest.isOpened(), ((CoinChest) chest).getCoins()));
             }
         }
-        for (GameObject obstacle: prevObstacles) {
-            if(!((TNT)obstacle).isExploded()){
-                this.obstacles.add(new TNT(obstacle.getPosition().getX(), ((TNT) obstacle).isExploded()));
+        for (TNT obstacle: prevObstacles) {
+            if(!obstacle.isExploded()){
+                this.obstacles.add(new TNT(obstacle.getPosition().getX(), obstacle.isExploded()));
             }
         }
     }
@@ -165,11 +165,11 @@ public class Game implements Serializable {
         return gameWon;
     }
 
-    public List<GameObject> getCharacters() {
+    public List<Orc> getCharacters() {
         return characters;
     }
 
-    public List<GameObject> getChests() {
+    public List<Chest> getChests() {
         return chests;
     }
 

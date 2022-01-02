@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="anchorPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.willhero.InstructionScreenController">
+   <ImageView fx:id="background" fitHeight="768.0" fitWidth="1024.0" pickOnBounds="true" preserveRatio="true">
+      <Image url="@assets/background.png" />
+   </ImageView>
+   <Group fx:id="clouds" opacity="0.39">
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="500.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@assets/cloud1.png" />
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="750.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@assets/cloud0.png" />
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="80.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@assets/cloud2.png" />
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="200.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@assets/cloud0.png" />
+      </ImageView>
+   </Group>
+   <Group layoutX="10.0" layoutY="10.0">
+      <ImageView fx:id="btnMusic" fitHeight="55.0" fitWidth="55.0" onMouseClicked="#onMusicButtonClick" pickOnBounds="true" preserveRatio="true">
+         <Image url="@assets/btnmusic0.png" />
+      </ImageView>
+      <ImageView fx:id="btnSound" fitHeight="55.0" fitWidth="55.0" layoutX="70.0" onMouseClicked="#onSoundButtonClick" pickOnBounds="true" preserveRatio="true">
+         <Image url="@assets/btnsound0.png" />
+      </ImageView>
+      <ImageView fitHeight="55.0" fitWidth="55.0" layoutX="160.0" onMouseClicked="#onBackButtonClick" pickOnBounds="true" preserveRatio="true">
+         <Image url="@assets/btnback.png" />
+      </ImageView>
+   </Group>
+<!--   <ImageView fx:id="light" fitHeight="200.0" fitWidth="200.0" layoutX="419.0" layoutY="240.0" pickOnBounds="true"-->
+<!--              preserveRatio="true">-->
+<!--      <Image url="@assets/light.png"/>-->
+<!--   </ImageView>-->
+<!--   <ImageView fx:id="hero" fitHeight="49.0" fitWidth="65.0" layoutX="505.0" layoutY="310.0" pickOnBounds="true" preserveRatio="true">-->
+<!--      <Image url="@assets/hero.png" />-->
+<!--   </ImageView>-->
+   <Group layoutX="60.0" layoutY="520.0" opacity="0.14">
+      <ImageView fitHeight="120.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@assets/ground0.png" />
+      </ImageView>
+      <ImageView fitHeight="226.0" fitWidth="178.0" layoutX="751.0" layoutY="-100.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@assets/groundmenu0.png" />
+      </ImageView>
+      <ImageView fitHeight="222.0" fitWidth="202.0" layoutX="296.0" layoutY="-59.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@assets/groundmenu2.png" />
+      </ImageView>
+      <ImageView fitHeight="210.0" fitWidth="187.0" layoutX="497.0" layoutY="-54.0" pickOnBounds="true">
+         <Image url="@assets/groundmenu.png" />
+      </ImageView>
+   </Group>
+   <Group layoutX="30.0" layoutY="110.0">
+      <children>
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="How To Play" wrappingWidth="250.33824157714844">
+            <font>
+               <Font size="36.0" />
+            </font>
+         </Text>
+         <Text layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. There is a hero in the game which will continue to jump on it’s position and by pressing the “SPACE” key the hero will move forward." wrappingWidth="959.3768310546875">
+            <font>
+               <Font size="24.0" />
+            </font>
+         </Text>
+         <Text layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2. Everytime hero moves forward, he should land on an island." wrappingWidth="959.3768310546875">
+            <font>
+               <Font size="24.0" />
+            </font>
+         </Text>
+         <Text layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3. Hero can collide with orcs and he can kill the orcs by either making them fall into the abyss, by making them collide with a TNT or by killing them with some weapon." wrappingWidth="959.3768310546875">
+            <font>
+               <Font size="24.0" />
+            </font>
+         </Text>
+         <Text layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4. Hero will die if the hero fails to land on an island and falls into the abyss, if the hero comes under the orc, if the hero is in the range of TNT when the TNT bursts or if the hero is killed by Boss." wrappingWidth="959.3768310546875">
+            <font>
+               <Font size="24.0" />
+            </font>
+         </Text>
+         <Text layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5. If the hero dies in the game, you can use 100 coins to resurrect the hero in the game. But note that in a game, you can resurrect the hero only once." wrappingWidth="959.3768310546875">
+            <font>
+               <Font size="24.0" />
+            </font>
+         </Text>
+         <Text layoutY="380.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6. Hero must defeat the boss either by weapons or making the boss fall into the abyss to win the game." wrappingWidth="959.3768310546875">
+            <font>
+               <Font size="24.0" />
+            </font>
+         </Text>
+         <Text layoutY="450.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7. You can save a game, or load a previously saved game. " wrappingWidth="959.3768310546875">
+            <font>
+               <Font size="24.0" />
+            </font>
+         </Text>
+         <Text layoutY="500.0" strokeType="OUTSIDE" strokeWidth="0.0" text="8. Hero can get weapons from the weapon chest. There are two kinds of weapons: Sword and TNT. There are also level upgradation of weapons which will make them even more powerful. Hero can use these to kill orcs." wrappingWidth="959.3768310546875">
+            <font>
+               <Font size="24.0" />
+            </font>
+         </Text>
+         <Text layoutY="600.0" strokeType="OUTSIDE" strokeWidth="0.0" text="9. There are coins in the game, which you can collect from killing the orcs and by coin chests." wrappingWidth="959.3768310546875">
+            <font>
+               <Font size="24.0" />
+            </font>
+         </Text>
+      </children>
+   </Group>
+</AnchorPane>
