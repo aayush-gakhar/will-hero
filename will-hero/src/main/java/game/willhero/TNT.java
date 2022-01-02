@@ -54,6 +54,7 @@ public class TNT extends GameObject{
         if(exploded){
             return new ArrayList<>();
         }
+        Audio.playRocketSound();
         exploded = true;
 //        System.out.println(distance(Main.getGame().getHero()));
         if(distance(Game.getInstance().getHero())<=radius){
@@ -92,6 +93,7 @@ public class TNT extends GameObject{
         if(exploded){
             return;
         }
+        Audio.playRocketSound();
         exploded = true;
 //        System.out.println(distance(Main.getGame().getHero()));
 //        if(distance(Main.getGame().getHero())<=radius){

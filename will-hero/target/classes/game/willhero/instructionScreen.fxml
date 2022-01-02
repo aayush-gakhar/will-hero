@@ -11,7 +11,7 @@
    <ImageView fx:id="background" fitHeight="768.0" fitWidth="1024.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@assets/background.png" />
    </ImageView>
-   <Group fx:id="clouds" opacity="0.46">
+   <Group fx:id="clouds" opacity="0.39">
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="500.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@assets/cloud1.png" />
       </ImageView>
@@ -43,7 +43,7 @@
 <!--   <ImageView fx:id="hero" fitHeight="49.0" fitWidth="65.0" layoutX="505.0" layoutY="310.0" pickOnBounds="true" preserveRatio="true">-->
 <!--      <Image url="@assets/hero.png" />-->
 <!--   </ImageView>-->
-   <Group layoutX="60.0" layoutY="520.0" opacity="0.21">
+   <Group layoutX="60.0" layoutY="520.0" opacity="0.14">
       <ImageView fitHeight="120.0" fitWidth="178.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@assets/ground0.png" />
       </ImageView>

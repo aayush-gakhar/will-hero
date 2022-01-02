@@ -9,10 +9,12 @@ import javafx.util.Duration;
 
 import java.util.Objects;
 
-public class Audio {
+public class Audio extends Thread{
 
     private static boolean playMusic = true;
     private static boolean playSound = true;
+
+    private static Thread musicThread;
 
     public static boolean isPlayMusic() {
         return playMusic;
@@ -32,7 +34,10 @@ public class Audio {
     private static AudioClip gameOverSound;
     private static AudioClip rocketSound;
 
-
+    public void run(){
+        musicThread=this;
+        initializeMedia();
+    }
 
     public static void initializeMedia() {
         mainMenuMusic = new MediaPlayer(new Media(Objects.requireNonNull(Main.class.getResource("sounds/menu.m4a")).toString()));
