@@ -2,7 +2,18 @@
 
 Adaptation of [Will Hero](https://play.google.com/store/apps/details?id=com.zplay.willhero) for our [Advanced Programming Course (CSE201)](http://techtree.iiitd.edu.in/viewDescription/filename?=CSE201)
 
-<!-- ## Designs 
+## Visuals
+
+Main menu:
+
+![Mainmenu](screenshots/main_menu.png)
+
+Game Play:
+
+![GamePlay](screenshots/game.png)
+
+
+## Designs 
 
 UML Diagram -
 
@@ -10,7 +21,7 @@ UML Diagram -
 
 Use Case Diagram - 
 
-![UseCase](UML/Use%20Case%20Diagram1.png) -->
+![UseCase](UML/Use%20Case%20Diagram1.png)
 
 Group 29
 
